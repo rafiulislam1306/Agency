@@ -1,0 +1,21 @@
+# Task List - Next.js Agency Website Build
+
+- [x] Scaffold Next.js project
+- [x] Install dependencies (`lucide-react` for icons, etc.)
+- [x] Configure Tailwind CSS and global styling with brand colors
+- [x] Create layout and common components:
+  - [x] Navigation header (`components/Navbar.tsx`)
+  - [x] Footer (`components/Footer.tsx`)
+  - [x] Reusable buttons (`components/CTAButton.tsx`)
+  - [x] Interactive FAQ Accordion (`components/FAQAccordion.tsx`)
+  - [x] Case Study Card (`components/CaseStudyCard.tsx`)
+- [x] Implement Pages:
+  - [x] Homepage (`app/page.tsx`)
+  - [x] Services Page (`app/services/page.tsx`)
+  - [x] Case Studies Listing and Details (`app/case-studies/page.tsx` & `[slug]/page.tsx`)
+  - [x] About Page (`app/about/page.tsx`)
+  - [x] Pricing Page (`app/pricing/page.tsx`)
+  - [x] Blog Page (`app/blog/page.tsx`)
+  - [x] Contact Page (`app/contact/page.tsx`)
+- [x] Verify build and fix compilation/eslint issues
+- [x] Document in Walkthrough
