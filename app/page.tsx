@@ -111,7 +111,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* 1. Hero Section */}
-      <section className="relative bg-gradient-to-br from-brand-blue via-blue-950 to-slate-900 text-white py-24 md:py-32 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-brand-blue via-blue-950 to-slate-900 text-white pt-36 pb-24 md:pt-44 md:pb-32 overflow-hidden">
         {/* Decorative Grid background pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
         

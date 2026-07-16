@@ -8,7 +8,7 @@ export default function CaseStudiesPage() {
   const studies = Object.values(caseStudiesData);
 
   return (
-    <div className="bg-white min-h-screen py-16">
+    <div className="bg-white min-h-screen pt-28 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Page Header */}

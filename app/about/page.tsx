@@ -4,7 +4,7 @@ import CTAButton from "@/components/CTAButton";
 
 export default function AboutPage() {
   return (
-    <div className="bg-white min-h-screen py-16">
+    <div className="bg-white min-h-screen pt-28 pb-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Intro Section */}

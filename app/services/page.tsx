@@ -51,7 +51,7 @@ export default function ServicesPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Header Banner */}
-      <section className="bg-gradient-to-br from-brand-blue to-blue-950 text-white py-16">
+      <section className="bg-gradient-to-br from-brand-blue to-blue-950 text-white pt-28 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">Our Services</h1>
           <p className="text-lg text-blue-100 mt-4 max-w-2xl mx-auto leading-relaxed">
