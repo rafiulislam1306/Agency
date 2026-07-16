@@ -110,15 +110,12 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <section className="relative bg-gradient-to-br from-brand-blue via-blue-950 to-slate-900 text-white pt-28 pb-20 md:pt-36 md:pb-24 lg:pt-0 lg:pb-0 lg:min-h-screen lg:flex lg:flex-col overflow-hidden">
+      <section className="relative bg-gradient-to-br from-brand-blue via-blue-950 to-slate-900 text-white pt-28 pb-20 md:pt-32 md:pb-24 lg:pt-28 lg:pb-20 overflow-hidden">
         {/* Decorative Grid background pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
         
-        {/* Spacer to clear sticky navbar on desktop */}
-        <div className="hidden lg:block lg:h-20 lg:flex-shrink-0"></div>
-        
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left lg:flex-grow lg:flex lg:items-center lg:py-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-3 py-1 text-sm font-semibold text-brand-green border border-white/10">
                 <ShieldCheck className="w-4 h-4" />
