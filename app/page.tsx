@@ -121,10 +121,10 @@ export default function Home() {
                 <ShieldCheck className="w-4 h-4" />
                 <span>Risk-Free 30-Min Strategy Session</span>
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white leading-[1.1]">
                 Turn Google Searchers Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-teal-400">Paying Customers</span>
               </h1>
-              <p className="text-lg md:text-xl text-blue-100 font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="text-lg md:text-xl text-blue-100 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 We help small & medium businesses acquire qualified leads and increase revenue through expert Google Ads management and Local SEO. Claim your free audit to see what's possible.
               </p>
               
@@ -190,10 +190,10 @@ export default function Home() {
       <section className="py-20 bg-gray-50 border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-blue tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
               Most Small Businesses Leave Money on the Table
             </h2>
-            <p className="text-lg text-gray-600 font-medium">
+            <p className="text-lg text-gray-600 font-normal">
               Getting customers from Google shouldn't feel like gambling. Here are the core challenges we solve:
             </p>
           </div>
@@ -205,7 +205,7 @@ export default function Home() {
                   <div className="bg-brand-orange/10 p-3 rounded-xl w-fit">
                     {point.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-brand-blue">{point.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-display font-bold text-brand-blue">{point.title}</h3>
                   <p className="text-gray-600 leading-relaxed text-sm">{point.description}</p>
                 </div>
                 <div className="mt-6 text-brand-blue text-xs font-bold uppercase tracking-wider border-t border-gray-50 pt-4">
@@ -221,10 +221,10 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-blue tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
               Two Paths to Dominate Google Search
             </h2>
-            <p className="text-lg text-gray-600 font-medium">
+            <p className="text-lg text-gray-600 font-normal">
               We leverage both immediate paid search leads and long-term organic local presence.
             </p>
           </div>
@@ -234,7 +234,7 @@ export default function Home() {
             <div className="bg-gradient-to-br from-slate-50 to-white p-8 sm:p-10 rounded-3xl border border-gray-100 shadow-xs relative flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-2xl font-extrabold text-brand-blue">Google Ads (Paid Search)</h3>
+                  <h3 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue">Google Ads (Paid Search)</h3>
                   <span className="text-xs font-bold text-brand-blue bg-blue-100/60 px-3 py-1 rounded-full uppercase tracking-wider">Immediate Leads</span>
                 </div>
                 <p className="text-gray-600 leading-relaxed font-medium mb-6">
@@ -268,7 +268,7 @@ export default function Home() {
             <div className="bg-gradient-to-br from-slate-50 to-white p-8 sm:p-10 rounded-3xl border border-gray-100 shadow-xs relative flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-2xl font-extrabold text-brand-blue">Local SEO & Maps</h3>
+                  <h3 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue">Local SEO & Maps</h3>
                   <span className="text-xs font-bold text-brand-green bg-green-100/60 px-3 py-1 rounded-full uppercase tracking-wider">Sustained Authority</span>
                 </div>
                 <p className="text-gray-600 leading-relaxed font-medium mb-6">
@@ -305,10 +305,10 @@ export default function Home() {
       <section className="py-20 bg-gray-50 border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-blue tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
               A Direct, Transparent Process
             </h2>
-            <p className="text-lg text-gray-600 font-medium">
+            <p className="text-lg text-gray-600 font-normal">
               We skip the complex acronyms and long setup periods. Here is our simple three-step approach:
             </p>
           </div>
@@ -326,7 +326,7 @@ export default function Home() {
                       {step.icon}
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-brand-blue mb-3">{step.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-display font-bold text-brand-blue mb-3">{step.title}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
                 </div>
                 {index === 0 && (
@@ -353,10 +353,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div className="space-y-4 max-w-xl">
-              <h2 className="text-3xl md:text-4xl font-extrabold text-brand-blue tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
                 Typical Results From Businesses Like Yours
               </h2>
-              <p className="text-lg text-gray-600 font-medium">
+              <p className="text-lg text-gray-600 font-normal">
                 Review example case studies showcasing performance models across industries.
               </p>
             </div>
@@ -387,10 +387,10 @@ export default function Home() {
       <section className="py-20 bg-gray-50 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-brand-blue tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
               Frequently Asked Questions
             </h2>
-            <p className="text-lg text-gray-600 font-medium">
+            <p className="text-lg text-gray-600 font-normal">
               Everything you need to know about working with us.
             </p>
           </div>
@@ -403,10 +403,10 @@ export default function Home() {
       <section className="py-24 bg-gradient-to-br from-brand-blue to-blue-950 text-white relative overflow-hidden text-center">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.12)_0,transparent_60%)]"></div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black tracking-tight leading-tight">
             Ready to Grow Your Business From Google?
           </h2>
-          <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed font-normal">
             Book your free 30-min Google Ads + Local SEO audit. You get a personalized strategy document with 3 concrete growth ideas. No pressure, no obligations.
           </p>
           

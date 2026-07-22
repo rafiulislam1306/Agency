@@ -21,7 +21,9 @@
   --color-brand-light: var(--brand-light);
   --color-brand-dark: var(--brand-dark);
   
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+  --font-display: var(--font-red-hat), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
@@ -34,7 +36,6 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  color: var(--brand-blue);
 }
 
 .text-gradient {

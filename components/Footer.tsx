@@ -49,7 +49,7 @@ export default function Footer() {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h4 className="text-lg font-bold text-white mb-6">Quick Links</h4>
+            <h4 className="text-lg font-display font-bold text-white mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {[
                 { name: "Home", href: "/" },
@@ -73,7 +73,7 @@ export default function Footer() {
 
           {/* Column 3: Contact & Support */}
           <div>
-            <h4 className="text-lg font-bold text-white mb-6">Get in Touch</h4>
+            <h4 className="text-lg font-display font-bold text-white mb-6">Get in Touch</h4>
             <ul className="space-y-4">
               <li className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-brand-green flex-shrink-0" />
@@ -101,7 +101,7 @@ export default function Footer() {
 
           {/* Column 4: Conversion / Calendly CTA */}
           <div className="space-y-6">
-            <h4 className="text-lg font-bold text-white mb-2">Ready to Grow?</h4>
+            <h4 className="text-lg font-display font-bold text-white mb-2">Ready to Grow?</h4>
             <p className="text-blue-100 text-sm leading-relaxed">
               Schedule your free Google Ads OR Local SEO audit and get 3 specific growth ideas.
             </p>

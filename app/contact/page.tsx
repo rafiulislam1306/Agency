@@ -44,10 +44,10 @@ export default function ContactPage() {
         
         {/* Title Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-brand-blue tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-brand-blue tracking-tight leading-tight">
             Let's Talk About Growing Your Business
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed font-medium">
+          <p className="text-lg text-gray-600 leading-relaxed font-normal">
             Book a strategy session directly on our calendar, or write us a message below. We look forward to helping you grow.
           </p>
         </div>
@@ -60,7 +60,7 @@ export default function ContactPage() {
             
             {/* Direct Contact Cards */}
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-brand-blue border-b border-gray-100 pb-2">Direct Contact</h3>
+              <h3 className="text-xl md:text-2xl font-display font-bold text-brand-blue border-b border-gray-100 pb-2">Direct Contact</h3>
               
               <div className="flex items-center space-x-4 bg-gray-50 p-4 rounded-xl border border-gray-100/50">
                 <div className="bg-brand-blue/10 p-3 rounded-lg text-brand-blue">
@@ -89,7 +89,7 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <div className="bg-white p-6 sm:p-8 rounded-2xl border border-gray-100 shadow-sm space-y-6">
-              <h3 className="text-xl font-bold text-brand-blue border-b border-gray-100 pb-2">Send a Message</h3>
+              <h3 className="text-xl md:text-2xl font-display font-bold text-brand-blue border-b border-gray-100 pb-2">Send a Message</h3>
               
               {isSubmitted ? (
                 <div className="bg-green-50 border border-green-200 text-green-800 rounded-xl p-5 text-center space-y-3">
@@ -198,7 +198,7 @@ export default function ContactPage() {
 
             {/* Trust Signals */}
             <div className="space-y-3 bg-brand-blue/5 p-6 rounded-2xl border border-brand-blue/10">
-              <h4 className="font-bold text-brand-blue text-sm flex items-center">
+              <h4 className="font-display font-bold text-brand-blue text-sm flex items-center">
                 <Clock className="w-4.5 h-4.5 mr-2 text-brand-orange" />
                 Working Guidelines
               </h4>
@@ -214,7 +214,7 @@ export default function ContactPage() {
           {/* Right Column: Calendly Embed */}
           <div className="lg:col-span-7 space-y-6">
             <div className="space-y-2">
-              <h3 className="text-xl font-bold text-brand-blue border-b border-gray-100 pb-2 flex items-center">
+              <h3 className="text-xl md:text-2xl font-display font-bold text-brand-blue border-b border-gray-100 pb-2 flex items-center">
                 <span className="mr-2">🗓️</span> Book Your Free Audit & Strategy Call
               </h3>
               <p className="text-sm text-gray-500 leading-relaxed font-medium">

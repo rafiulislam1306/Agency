@@ -54,10 +54,10 @@ export default function PricingPage() {
             <DollarSign className="w-4 h-4 mr-1 text-brand-blue" />
             Transparent Pricing
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-brand-blue tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-brand-blue tracking-tight leading-tight">
             Custom Pricing Based on Your Situation
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed font-medium">
+          <p className="text-lg text-gray-600 leading-relaxed font-normal">
             We don't have rigid, pre-packaged tiers because every market is different. We structure pricing around what will actually get you results.
           </p>
         </div>
@@ -70,7 +70,7 @@ export default function PricingPage() {
             <div>
               <div className="border-b border-gray-100 pb-6 mb-6">
                 <span className="text-xs font-bold text-brand-blue bg-blue-50 px-2.5 py-1 rounded-md uppercase tracking-wider block w-fit mb-3">Google Ads</span>
-                <h3 className="text-2xl font-extrabold text-brand-blue">Paid Search Management</h3>
+                <h3 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue">Paid Search Management</h3>
               </div>
               <ul className="space-y-3 mb-8">
                 {adsFeatures.map((feat, idx) => (
@@ -106,7 +106,7 @@ export default function PricingPage() {
             <div>
               <div className="border-b border-gray-100 pb-6 mb-6">
                 <span className="text-xs font-bold text-brand-green bg-green-50 px-2.5 py-1 rounded-md uppercase tracking-wider block w-fit mb-3">Local SEO</span>
-                <h3 className="text-2xl font-extrabold text-brand-blue">Maps & Organic Authority</h3>
+                <h3 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue">Maps & Organic Authority</h3>
               </div>
               <ul className="space-y-3 mb-8">
                 {seoFeatures.map((feat, idx) => (
@@ -145,7 +145,7 @@ export default function PricingPage() {
             <div>
               <div className="border-b border-white/10 pb-6 mb-6">
                 <span className="text-xs font-bold text-brand-orange bg-brand-orange/20 px-2.5 py-1 rounded-md uppercase tracking-wider block w-fit mb-3">Combined System</span>
-                <h3 className="text-2xl font-extrabold text-white">Full Search Dominance</h3>
+                <h3 className="text-2xl md:text-3xl font-display font-extrabold text-white">Full Search Dominance</h3>
               </div>
               <p className="text-sm text-blue-100 leading-relaxed mb-6 font-medium">
                 Our combined system blends the immediate customer acquisition of Google Ads with the compounding, zero-cost map clicks of Local SEO. 
@@ -187,15 +187,15 @@ export default function PricingPage() {
         <section className="py-16 border-t border-gray-100">
           <div className="max-w-3xl mx-auto space-y-12">
             <div className="text-center space-y-4">
-              <h2 className="text-3xl font-extrabold text-brand-blue tracking-tight">What Determines Your Price?</h2>
-              <p className="text-sm text-gray-500 leading-relaxed max-w-xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">What Determines Your Price?</h2>
+              <p className="text-sm text-gray-500 leading-relaxed max-w-xl mx-auto font-normal">
                 We design quotes after evaluating your current search footprint. Here are the core variables we analyze:
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {pricingFactors.map((factor, idx) => (
                 <div key={idx} className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                  <h4 className="font-bold text-brand-blue text-base mb-2">{factor.title}</h4>
+                  <h4 className="font-display font-bold text-brand-blue text-base mb-2">{factor.title}</h4>
                   <p className="text-xs text-gray-600 leading-relaxed">{factor.desc}</p>
                 </div>
               ))}
@@ -211,7 +211,7 @@ export default function PricingPage() {
         {/* FAQ Section */}
         <section className="py-16 border-t border-gray-100">
           <div className="text-center mb-12 space-y-4">
-            <h2 className="text-3xl font-extrabold text-brand-blue tracking-tight">Pricing FAQs</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">Pricing FAQs</h2>
             <p className="text-sm text-gray-500 leading-relaxed">
               Common questions regarding our billing, agreements, and trial terms.
             </p>
@@ -221,7 +221,7 @@ export default function PricingPage() {
 
         {/* Final CTA */}
         <section className="text-center pt-8 border-t border-gray-100 space-y-6">
-          <h3 className="text-2xl font-bold text-brand-blue">Get a Ballpark Price for Your Market</h3>
+          <h3 className="text-2xl md:text-3xl font-display font-bold text-brand-blue">Get a Ballpark Price for Your Market</h3>
           <p className="text-gray-600 text-sm max-w-md mx-auto">
             Book a free audit. We'll run competitor budgets and show you exactly what budget fits your growth targets.
           </p>

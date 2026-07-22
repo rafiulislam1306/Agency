@@ -40,12 +40,12 @@ export default function CaseStudyCard({
         </div>
 
         {/* Business Type */}
-        <h3 className="text-xl font-bold text-brand-blue mb-2 group-hover:text-brand-blue-hover transition-colors">
+        <h3 className="text-xl md:text-2xl font-display font-bold text-brand-blue mb-2 group-hover:text-brand-blue-hover transition-colors">
           {businessType}
         </h3>
 
         {/* Metric */}
-        <div className="text-3xl font-extrabold text-brand-green tracking-tight mb-1">
+        <div className="text-3xl md:text-4xl font-display font-extrabold text-brand-green tracking-tight mb-1">
           {metric}
         </div>
 

@@ -17,10 +17,10 @@ export default function CaseStudiesPage() {
             <TrendingUp className="w-4 h-4 mr-1 text-brand-blue" />
             Proven Frameworks
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-brand-blue tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-brand-blue tracking-tight leading-tight">
             See Real Results from Businesses Like Yours
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed font-medium">
+          <p className="text-lg text-gray-600 leading-relaxed font-normal">
             Below are example case studies showing typical results. Your results will vary based on your industry, budget, and starting point. Book a free audit to discuss what's realistic for your business.
           </p>
         </div>
@@ -53,7 +53,7 @@ export default function CaseStudiesPage() {
         <div className="max-w-4xl mx-auto bg-gradient-to-br from-brand-blue to-blue-950 rounded-3xl p-8 sm:p-12 text-white text-center space-y-6 relative overflow-hidden shadow-md">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.08)_0,transparent_60%)]"></div>
           <div className="relative z-10 space-y-4">
-            <h3 className="text-2xl sm:text-3xl font-extrabold">Ready to Outline Your Growth Strategy?</h3>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold">Ready to Outline Your Growth Strategy?</h3>
             <p className="text-blue-100 text-sm max-w-xl mx-auto leading-relaxed">
               We will pull active competitor budgets, keyword click costs, and local map rankings in your service market to design a custom 90-day plan.
             </p>
