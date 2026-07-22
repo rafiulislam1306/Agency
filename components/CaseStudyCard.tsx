@@ -50,12 +50,12 @@ export default function CaseStudyCard({
         </div>
 
         {/* Timeframe */}
-        <div className="text-sm text-gray-500 mb-4 font-medium">
+        <div className="text-base text-gray-500 mb-4 font-normal">
           Timeline: {timeframe}
         </div>
 
         {/* Client Quote */}
-        <div className="relative pl-4 border-l-2 border-brand-orange/40 my-4 italic text-gray-600 text-sm leading-relaxed">
+        <div className="relative pl-4 border-l-2 border-brand-orange/40 my-4 italic text-gray-600 text-base leading-relaxed">
           <div className="absolute -left-1 -top-2 text-2xl text-brand-orange/20 select-none">“</div>
           &ldquo;{quote}&rdquo;
         </div>
@@ -65,7 +65,7 @@ export default function CaseStudyCard({
       <div className="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
         <Link
           href={`/case-studies/${slug}`}
-          className="inline-flex items-center text-sm font-bold text-brand-blue hover:text-brand-orange transition-colors cursor-pointer"
+          className="inline-flex items-center text-base font-bold text-brand-blue hover:text-brand-orange transition-colors cursor-pointer"
         >
           View Full Case Study
           <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" />

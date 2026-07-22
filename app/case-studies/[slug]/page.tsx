@@ -62,7 +62,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           <div className="inline-flex items-center text-xs font-bold text-brand-green bg-brand-green/10 rounded-md px-3 py-1">
             {study.serviceUsed}
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-blue tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-black text-brand-blue tracking-tight leading-tight">
             {study.businessType}
           </h1>
           
@@ -91,17 +91,17 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           
           {/* 1. Situation */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-extrabold text-brand-blue flex items-center">
+            <h2 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue flex items-center">
               The Situation
             </h2>
-            <p className="text-gray-600 leading-relaxed text-base font-medium">
+            <p className="text-gray-600 leading-relaxed text-base font-normal">
               {study.situation}
             </p>
           </div>
 
           {/* 2. What We Did */}
           <div className="space-y-6">
-            <h2 className="text-2xl font-extrabold text-brand-blue">
+            <h2 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue">
               Our Action Plan
             </h2>
             <div className="space-y-4">
@@ -110,7 +110,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   <div className="bg-brand-blue text-white rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs mr-4 mt-0.5 flex-shrink-0">
                     {idx + 1}
                   </div>
-                  <p className="text-gray-600 text-sm leading-relaxed font-medium">{action}</p>
+                  <p className="text-gray-600 text-base leading-relaxed font-normal">{action}</p>
                 </div>
               ))}
             </div>
@@ -118,13 +118,13 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
           {/* 3. The Results */}
           <div className="space-y-6">
-            <h2 className="text-2xl font-extrabold text-brand-blue">
+            <h2 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue">
               The Results
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {study.results.map((result, idx) => (
                 <div key={idx} className="border border-gray-100 rounded-xl p-5 bg-white shadow-xs">
-                  <span className="text-xs text-gray-500 font-bold uppercase tracking-wider block">{result.label}</span>
+                  <span className="text-sm text-gray-500 font-bold uppercase tracking-wider block">{result.label}</span>
                   <span className="text-xl font-extrabold text-brand-green block mt-1">{result.value}</span>
                 </div>
               ))}
@@ -139,19 +139,19 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div>
-                  <span className="text-xs text-gray-500 font-bold block">Avg. Job Value</span>
+                  <span className="text-sm text-gray-500 font-bold block">Avg. Job Value</span>
                   <span className="text-lg font-bold text-brand-blue">{study.financialImpact.avgJobValue}</span>
                 </div>
                 <div>
-                  <span className="text-xs text-gray-500 font-bold block">Previous GBP Rev</span>
+                  <span className="text-sm text-gray-500 font-bold block">Previous GBP Rev</span>
                   <span className="text-lg font-bold text-gray-500">{study.financialImpact.previousRevenue}/mo</span>
                 </div>
                 <div>
-                  <span className="text-xs text-gray-500 font-bold block">Current GBP Rev</span>
+                  <span className="text-sm text-gray-500 font-bold block">Current GBP Rev</span>
                   <span className="text-lg font-bold text-brand-green">{study.financialImpact.currentRevenue}/mo</span>
                 </div>
                 <div>
-                  <span className="text-xs text-gray-500 font-bold block">Net Increase</span>
+                  <span className="text-sm text-gray-500 font-bold block">Net Increase</span>
                   <span className="text-lg font-bold text-brand-green">{study.financialImpact.additionalRevenue}/mo</span>
                 </div>
               </div>
@@ -175,12 +175,12 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
           {/* 6. Key Learnings */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-extrabold text-brand-blue flex items-center">
+            <h2 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue flex items-center">
               <Lightbulb className="w-5 h-5 mr-2 text-brand-orange" /> Key Takeaways
             </h2>
             <ul className="space-y-3">
               {study.keyLearnings.map((learning, idx) => (
-                <li key={idx} className="flex items-start text-sm text-gray-600">
+                <li key={idx} className="flex items-start text-base text-gray-600">
                   <CheckCircle2 className="w-4 h-4 text-brand-green mr-3 flex-shrink-0 mt-0.5" />
                   <span>{learning}</span>
                 </li>
@@ -190,8 +190,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
           {/* 7. Footer CTA Block */}
           <div className="border-t border-gray-100 pt-12 text-center space-y-6">
-            <h3 className="text-xl font-bold text-brand-blue">What is possible for your business?</h3>
-            <p className="text-gray-600 text-sm max-w-lg mx-auto font-medium">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-brand-blue">What is possible for your business?</h3>
+            <p className="text-gray-600 text-base max-w-lg mx-auto font-normal">
               {study.nextStepsText}
             </p>
             <div className="pt-2">
@@ -199,7 +199,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 {study.ctaLabel}
               </CTAButton>
             </div>
-            <p className="text-xs text-gray-400">
+            <p className="text-sm text-gray-400">
               *Disclaimer: Example case studies represent typical results. Your results will vary depending on your starting baseline, industry competition, and local market size.
             </p>
           </div>

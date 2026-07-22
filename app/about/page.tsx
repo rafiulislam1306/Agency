@@ -56,7 +56,7 @@ export default function AboutPage() {
                   <CheckCircle2 className="w-5 h-5 text-brand-green mr-4 mt-0.5 flex-shrink-0" />
                   <div>
                     <h4 className="font-display font-bold text-brand-blue text-base">{step.title}</h4>
-                    <p className="text-sm text-gray-600 mt-1 leading-relaxed">{step.text}</p>
+                    <p className="text-base text-gray-600 mt-1 leading-relaxed">{step.text}</p>
                   </div>
                 </div>
               ))}
@@ -80,7 +80,7 @@ export default function AboutPage() {
           {/* Core CTA */}
           <div className="text-center pt-8 space-y-6">
             <h3 className="text-2xl md:text-3xl font-display font-bold text-brand-blue">Want to See If We Can Help You?</h3>
-            <p className="text-gray-600 text-sm max-w-md mx-auto">
+            <p className="text-base text-gray-600 max-w-md mx-auto">
               Schedule a free 30-min audit session. We'll show you exactly how many people search for your services and how many leads you could capture.
             </p>
             <div className="pt-2">

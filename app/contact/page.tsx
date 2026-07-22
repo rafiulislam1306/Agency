@@ -110,7 +110,7 @@ export default function ContactPage() {
                   {error && <div className="text-xs text-red-600 bg-red-50 p-3 rounded-lg border border-red-100">{error}</div>}
                   
                   <div>
-                    <label htmlFor="businessName" className="block text-xs font-bold text-brand-blue uppercase tracking-wider mb-1">
+                    <label htmlFor="businessName" className="block text-sm font-bold text-brand-blue uppercase tracking-wider mb-1">
                       Business Name
                     </label>
                     <input
@@ -121,12 +121,12 @@ export default function ContactPage() {
                       value={formData.businessName}
                       onChange={handleChange}
                       placeholder="e.g. Houston HVAC Pro"
-                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-base text-brand-dark focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-xs font-bold text-brand-blue uppercase tracking-wider mb-1">
+                    <label htmlFor="email" className="block text-sm font-bold text-brand-blue uppercase tracking-wider mb-1">
                       Your Email
                     </label>
                     <input
@@ -137,12 +137,12 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="name@company.com"
-                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-base text-brand-dark focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="businessType" className="block text-xs font-bold text-brand-blue uppercase tracking-wider mb-1">
+                    <label htmlFor="businessType" className="block text-sm font-bold text-brand-blue uppercase tracking-wider mb-1">
                       Business Type
                     </label>
                     <select
@@ -150,7 +150,7 @@ export default function ContactPage() {
                       name="businessType"
                       value={formData.businessType}
                       onChange={handleChange}
-                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all cursor-pointer"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-base text-brand-dark focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all cursor-pointer"
                     >
                       <option value="local-service">Local Service Business (HVAC, Plumbing, Salon, etc.)</option>
                       <option value="ecommerce">E-commerce Store</option>
@@ -160,7 +160,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-xs font-bold text-brand-blue uppercase tracking-wider mb-1">
+                    <label htmlFor="message" className="block text-sm font-bold text-brand-blue uppercase tracking-wider mb-1">
                       Message / Questions
                     </label>
                     <textarea
@@ -171,7 +171,7 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Briefly describe your marketing goals or website..."
-                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all resize-none"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-base text-brand-dark focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all resize-none"
                     ></textarea>
                   </div>
 
@@ -202,7 +202,7 @@ export default function ContactPage() {
                 <Clock className="w-4.5 h-4.5 mr-2 text-brand-orange" />
                 Working Guidelines
               </h4>
-              <ul className="space-y-2.5 text-xs text-gray-600 font-semibold">
+              <ul className="space-y-2.5 text-sm text-gray-600 font-semibold">
                 <li className="flex items-center"><ShieldCheck className="w-4 h-4 text-brand-green mr-2 flex-shrink-0" /> We respond to all written inquiries within 24 hours</li>
                 <li className="flex items-center"><ShieldCheck className="w-4 h-4 text-brand-green mr-2 flex-shrink-0" /> Free, no-pressure consultation call</li>
                 <li className="flex items-center"><ShieldCheck className="w-4 h-4 text-brand-green mr-2 flex-shrink-0" /> Honest evaluation - we'll tell you if search isn't right for you</li>

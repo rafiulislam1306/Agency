@@ -28,7 +28,7 @@ export default function CaseStudiesPage() {
         {/* Templates Disclaimer Banner */}
         <div className="max-w-3xl mx-auto mb-12 bg-amber-50 border border-amber-200 rounded-2xl p-5 flex items-start space-x-3 text-amber-800">
           <AlertTriangle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-          <div className="text-xs leading-relaxed font-medium">
+          <div className="text-sm leading-relaxed font-normal">
             <strong className="block font-bold mb-1 uppercase tracking-wider">Example Templates Notice:</strong>
             The client scenarios listed below represent typified performance matrices based on our client experiences. They are provided as illustrative frameworks of what we can achieve for your business. Specific campaign numbers will vary depending on localized search competition, bidding markets, and seasonal factors.
           </div>
@@ -54,7 +54,7 @@ export default function CaseStudiesPage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.08)_0,transparent_60%)]"></div>
           <div className="relative z-10 space-y-4">
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold">Ready to Outline Your Growth Strategy?</h3>
-            <p className="text-blue-100 text-sm max-w-xl mx-auto leading-relaxed">
+            <p className="text-blue-100 text-base max-w-xl mx-auto leading-relaxed font-normal">
               We will pull active competitor budgets, keyword click costs, and local map rankings in your service market to design a custom 90-day plan.
             </p>
             <div className="pt-4">
@@ -62,7 +62,7 @@ export default function CaseStudiesPage() {
                 Schedule Your Free Search Audit
               </CTAButton>
             </div>
-            <p className="text-xs text-blue-200 pt-2 font-medium">
+            <p className="text-sm text-blue-200 pt-2 font-normal">
               *These results are real but not guaranteed. Your results depend on your industry, competition, budget, and implementation quality.
             </p>
           </div>

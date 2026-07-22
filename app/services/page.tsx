@@ -125,11 +125,11 @@ export default function ServicesPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {googleAdsBullets.map((bullet, idx) => (
                   <div key={idx} className="space-y-2">
-                    <h4 className="font-bold text-brand-blue text-sm flex items-center">
+                    <h4 className="font-display font-bold text-brand-blue text-base flex items-center">
                       <CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0" />
                       {bullet.title}
                     </h4>
-                    <p className="text-xs text-gray-500 leading-relaxed">{bullet.desc}</p>
+                    <p className="text-sm text-gray-500 leading-relaxed">{bullet.desc}</p>
                   </div>
                 ))}
               </div>
@@ -151,7 +151,7 @@ export default function ServicesPage() {
                       {item.period}
                     </span>
                     <h4 className="font-display font-bold text-brand-blue text-base">{item.title}</h4>
-                    <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
+                    <p className="text-base text-gray-600 mt-1">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -164,19 +164,19 @@ export default function ServicesPage() {
               </h3>
               <div className="space-y-5">
                 <div className="bg-gray-50 p-5 rounded-xl border border-gray-100">
-                  <h4 className="font-display font-bold text-brand-blue text-sm">What's the minimum budget?</h4>
-                  <p className="text-xs text-gray-600 mt-2 leading-relaxed">
+                  <h4 className="font-display font-bold text-brand-blue text-base">What's the minimum budget?</h4>
+                  <p className="text-sm text-gray-600 mt-2 leading-relaxed">
                     We typically recommend a minimum ad budget of $500–$2,000/month to collect sufficient market data and show meaningful sales results.
                   </p>
                 </div>
                 <div className="bg-gray-50 p-5 rounded-xl border border-gray-100">
-                  <h4 className="font-display font-bold text-brand-blue text-sm">Will my ads show up immediately?</h4>
-                  <p className="text-xs text-gray-600 mt-2 leading-relaxed">
+                  <h4 className="font-display font-bold text-brand-blue text-base">Will my ads show up immediately?</h4>
+                  <p className="text-sm text-gray-600 mt-2 leading-relaxed">
                     Yes. Once setup is finalized and Google approves the copy, ads can go live within hours, putting you in front of searching customers instantly.
                   </p>
                 </div>
                 <div className="bg-gray-50 p-5 rounded-xl border border-gray-100">
-                  <h4 className="font-display font-bold text-brand-blue text-sm">How do you ensure good ROI?</h4>
+                  <h4 className="font-display font-bold text-brand-blue text-base">How do you ensure good ROI?</h4>
                   <p className="text-xs text-gray-600 mt-2 leading-relaxed">
                     We start with tightly configured target keywords, limit broad match parameters, and install exact conversion tracking so we double-down only on what sells.
                   </p>
@@ -259,7 +259,7 @@ export default function ServicesPage() {
                       {item.period}
                     </span>
                     <h4 className="font-display font-bold text-brand-blue text-base">{item.title}</h4>
-                    <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
+                    <p className="text-base text-gray-600 mt-1">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -272,19 +272,19 @@ export default function ServicesPage() {
               </h3>
               <div className="space-y-5">
                 <div className="bg-gray-50 p-5 rounded-xl border border-gray-100">
-                  <h4 className="font-display font-bold text-brand-blue text-sm">How long until I rank in Google Maps?</h4>
-                  <p className="text-xs text-gray-600 mt-2 leading-relaxed">
+                  <h4 className="font-display font-bold text-brand-blue text-base">How long until I rank in Google Maps?</h4>
+                  <p className="text-sm text-gray-600 mt-2 leading-relaxed">
                     Map positioning typically sees positive growth within 60 to 90 days. Top-3 category spots usually consolidate between months 4 and 6.
                   </p>
                 </div>
                 <div className="bg-gray-50 p-5 rounded-xl border border-gray-100">
-                  <h4 className="font-display font-bold text-brand-blue text-sm">Do I need a physical storefront?</h4>
-                  <p className="text-xs text-gray-600 mt-2 leading-relaxed">
+                  <h4 className="font-display font-bold text-brand-blue text-base">Do I need a physical storefront?</h4>
+                  <p className="text-sm text-gray-600 mt-2 leading-relaxed">
                     No. We optimize Service Area Businesses (SABs) by defining your service boundaries correctly in Google, letting you rank without disclosing a home address.
                   </p>
                 </div>
                 <div className="bg-gray-50 p-5 rounded-xl border border-gray-100">
-                  <h4 className="font-display font-bold text-brand-blue text-sm">What if my business has negative reviews?</h4>
+                  <h4 className="font-display font-bold text-brand-blue text-base">What if my business has negative reviews?</h4>
                   <p className="text-xs text-gray-600 mt-2 leading-relaxed">
                     We deploy custom response scripts to de-escalate negative remarks and configure automated email templates that encourage happy clients to leave positive reviews.
                   </p>
@@ -309,7 +309,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm max-w-4xl mx-auto">
-            <table className="min-w-full divide-y divide-gray-200 text-sm">
+            <table className="min-w-full divide-y divide-gray-200 text-base">
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-6 py-4 text-left font-bold text-brand-blue uppercase tracking-wider">Feature</th>
@@ -348,7 +348,7 @@ export default function ServicesPage() {
       <section className="py-16 bg-gray-50 border-t border-gray-100 text-center">
         <div className="max-w-3xl mx-auto px-4 space-y-6">
           <h3 className="text-2xl md:text-3xl font-display font-bold text-brand-blue">Not Sure Which Service You Need?</h3>
-          <p className="text-gray-600 text-sm max-w-xl mx-auto">
+          <p className="text-gray-600 text-base max-w-xl mx-auto">
             Book our free 30-min audit call. We'll run a diagnostic on both your local map footprint and current ad space to show you which has the highest growth potential.
           </p>
           <div className="pt-2">

@@ -74,7 +74,7 @@ export default function PricingPage() {
               </div>
               <ul className="space-y-3 mb-8">
                 {adsFeatures.map((feat, idx) => (
-                  <li key={idx} className="flex items-start text-sm text-gray-600">
+                  <li key={idx} className="flex items-start text-base text-gray-600">
                     <CheckCircle2 className="w-4 h-4 text-brand-green mr-2.5 flex-shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </li>
@@ -83,15 +83,15 @@ export default function PricingPage() {
             </div>
             <div className="pt-6 border-t border-gray-100 space-y-4">
               <div>
-                <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block">Typical Investment</span>
+                <span className="text-sm text-gray-400 font-bold uppercase tracking-wider block">Typical Investment</span>
                 <span className="text-lg font-bold text-brand-blue block mt-1">
                   $500 - $5,000/mo ad spend
                 </span>
-                <span className="text-xs text-gray-500 italic block mt-0.5">
+                <span className="text-sm text-gray-500 italic block mt-0.5">
                   + management fee (typically 15-25% of spend)
                 </span>
               </div>
-              <div className="bg-brand-blue/5 p-4 rounded-xl text-xs text-gray-600 font-medium">
+              <div className="bg-brand-blue/5 p-4 rounded-xl text-sm text-gray-600 font-medium">
                 <span className="font-bold text-brand-blue block mb-1">Better Question:</span>
                 &ldquo;What is your budget? We will design a strategy that works within it.&rdquo;
               </div>
@@ -110,7 +110,7 @@ export default function PricingPage() {
               </div>
               <ul className="space-y-3 mb-8">
                 {seoFeatures.map((feat, idx) => (
-                  <li key={idx} className="flex items-start text-sm text-gray-600">
+                  <li key={idx} className="flex items-start text-base text-gray-600">
                     <CheckCircle2 className="w-4 h-4 text-brand-green mr-2.5 flex-shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </li>
@@ -119,15 +119,15 @@ export default function PricingPage() {
             </div>
             <div className="pt-6 border-t border-gray-100 space-y-4">
               <div>
-                <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block">Typical Investment</span>
+                <span className="text-sm text-gray-400 font-bold uppercase tracking-wider block">Typical Investment</span>
                 <span className="text-lg font-bold text-brand-blue block mt-1">
                   $500 - $2,000/mo retainer
                 </span>
-                <span className="text-xs text-gray-500 italic block mt-0.5">
+                <span className="text-sm text-gray-500 italic block mt-0.5">
                   (varies by local market competition)
                 </span>
               </div>
-              <div className="bg-brand-green/5 p-4 rounded-xl text-xs text-gray-600 font-medium">
+              <div className="bg-brand-green/5 p-4 rounded-xl text-sm text-gray-600 font-medium">
                 <span className="font-bold text-brand-green block mb-1">Better Question:</span>
                 &ldquo;What is your service area? We will give you a realistic local estimate.&rdquo;
               </div>
@@ -158,7 +158,7 @@ export default function PricingPage() {
                   "Unified performance dashboard",
                   "Synced keyword target sharing"
                 ].map((feat, idx) => (
-                  <li key={idx} className="flex items-start text-sm text-blue-100">
+                  <li key={idx} className="flex items-start text-base text-blue-100">
                     <CheckCircle2 className="w-4 h-4 text-brand-green mr-2.5 flex-shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </li>
@@ -167,11 +167,11 @@ export default function PricingPage() {
             </div>
             <div className="pt-6 border-t border-white/10 space-y-4">
               <div>
-                <span className="text-xs text-blue-300 font-bold uppercase tracking-wider block">Typical Investment</span>
+                <span className="text-sm text-blue-300 font-bold uppercase tracking-wider block">Typical Investment</span>
                 <span className="text-lg font-bold text-white block mt-1">
                   Custom Bundled Plan
                 </span>
-                <span className="text-xs text-blue-200 italic block mt-0.5">
+                <span className="text-sm text-blue-200 italic block mt-0.5">
                   Get discounted management fees when combined.
                 </span>
               </div>
@@ -196,12 +196,12 @@ export default function PricingPage() {
               {pricingFactors.map((factor, idx) => (
                 <div key={idx} className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
                   <h4 className="font-display font-bold text-brand-blue text-base mb-2">{factor.title}</h4>
-                  <p className="text-xs text-gray-600 leading-relaxed">{factor.desc}</p>
+                  <p className="text-base text-gray-600 leading-relaxed">{factor.desc}</p>
                 </div>
               ))}
             </div>
             
-            <div className="bg-brand-blue/5 p-6 rounded-2xl border border-brand-blue/10 text-center text-xs text-gray-500">
+            <div className="bg-brand-blue/5 p-6 rounded-2xl border border-brand-blue/10 text-center text-sm text-gray-500">
               <strong className="text-brand-blue font-bold block mb-1">Why don't we list static pricing?</strong>
               What works for a local suburban plumber ($800/mo) won't deliver results for a metropolitan HVAC firm ($3,000/mo). We prefer providing honest numbers specific to your target geography.
             </div>
@@ -222,7 +222,7 @@ export default function PricingPage() {
         {/* Final CTA */}
         <section className="text-center pt-8 border-t border-gray-100 space-y-6">
           <h3 className="text-2xl md:text-3xl font-display font-bold text-brand-blue">Get a Ballpark Price for Your Market</h3>
-          <p className="text-gray-600 text-sm max-w-md mx-auto">
+          <p className="text-gray-600 text-base max-w-md mx-auto">
             Book a free audit. We'll run competitor budgets and show you exactly what budget fits your growth targets.
           </p>
           <div className="pt-2">

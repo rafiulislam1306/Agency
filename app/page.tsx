@@ -138,7 +138,7 @@ export default function Home() {
               </div>
 
               {/* Quick trust micro-copy */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-xs text-blue-200 font-semibold pt-4">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-blue-200 font-semibold pt-4">
                 <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" /> 100% Free Strategy Session</span>
                 <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" /> No Credit Card Required</span>
                 <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" /> 3 Specific Growth Ideas</span>
@@ -158,7 +158,7 @@ export default function Home() {
                   </div>
                   <div>
                     <span className="text-3xl font-extrabold text-white tracking-tight">+180% More Calls</span>
-                    <p className="text-xs text-blue-100 mt-1">Acquired from Google Maps local searches in 6 months.</p>
+                    <p className="text-sm text-blue-100 mt-1.5">Acquired from Google Maps local searches in 6 months.</p>
                   </div>
                   <div className="bg-white/5 rounded-xl p-4 border border-white/5">
                     <div className="flex items-center space-x-1.5 mb-2 text-brand-orange">
@@ -167,16 +167,16 @@ export default function Home() {
                     </div>
                     <div className="flex justify-between items-end">
                       <div>
-                        <span className="text-xs text-blue-200 block">Additional Revenue</span>
+                        <span className="text-sm text-blue-200 block">Additional Revenue</span>
                         <span className="text-xl font-bold text-brand-green">$23,800/mo</span>
                       </div>
                       <div className="text-right">
-                        <span className="text-xs text-blue-200 block">Annual ROI</span>
+                        <span className="text-sm text-blue-200 block">Annual ROI</span>
                         <span className="text-xl font-bold text-white">15x</span>
                       </div>
                     </div>
                   </div>
-                  <Link href="/case-studies/local-service" className="flex items-center justify-center text-sm font-bold text-brand-green hover:underline pt-2">
+                  <Link href="/case-studies/local-service" className="flex items-center justify-center text-base font-bold text-brand-green hover:underline pt-2">
                     Read HVAC Case Study <ChevronRight className="w-4 h-4 ml-1" />
                   </Link>
                 </div>
@@ -206,7 +206,7 @@ export default function Home() {
                     {point.icon}
                   </div>
                   <h3 className="text-xl md:text-2xl font-display font-bold text-brand-blue">{point.title}</h3>
-                  <p className="text-gray-600 leading-relaxed text-sm">{point.description}</p>
+                  <p className="text-gray-600 leading-relaxed text-base">{point.description}</p>
                 </div>
                 <div className="mt-6 text-brand-blue text-xs font-bold uppercase tracking-wider border-t border-gray-50 pt-4">
                   We solve this.
@@ -237,7 +237,7 @@ export default function Home() {
                   <h3 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue">Google Ads (Paid Search)</h3>
                   <span className="text-xs font-bold text-brand-blue bg-blue-100/60 px-3 py-1 rounded-full uppercase tracking-wider">Immediate Leads</span>
                 </div>
-                <p className="text-gray-600 leading-relaxed font-medium mb-6">
+                <p className="text-gray-600 leading-relaxed text-base mb-6">
                   Get in front of buyer-intent searchers the moment they search for your products or services.
                 </p>
                 <ul className="space-y-3.5 mb-8">
@@ -247,7 +247,7 @@ export default function Home() {
                     "A/B testing, bid adjustment, and landing page audit included",
                     "Typical result: 3-5x ROI in 90 days"
                   ].map((bullet, idx) => (
-                    <li key={idx} className="flex items-start text-sm text-gray-600">
+                    <li key={idx} className="flex items-start text-base text-gray-600">
                       <CheckCircle2 className="w-5 h-5 text-brand-green mr-3 flex-shrink-0 mt-0.5" />
                       <span>{bullet}</span>
                     </li>
@@ -255,7 +255,7 @@ export default function Home() {
                 </ul>
               </div>
               <div className="flex items-center justify-between pt-6 border-t border-gray-100">
-                <Link href="/services#google-ads" className="inline-flex items-center text-sm font-bold text-brand-blue hover:text-brand-orange transition-colors">
+                <Link href="/services#google-ads" className="inline-flex items-center text-base font-bold text-brand-blue hover:text-brand-orange transition-colors">
                   Learn More About Google Ads <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
                 <CTAButton href="/contact" variant="outline" size="sm">
@@ -271,7 +271,7 @@ export default function Home() {
                   <h3 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue">Local SEO & Maps</h3>
                   <span className="text-xs font-bold text-brand-green bg-green-100/60 px-3 py-1 rounded-full uppercase tracking-wider">Sustained Authority</span>
                 </div>
-                <p className="text-gray-600 leading-relaxed font-medium mb-6">
+                <p className="text-gray-600 leading-relaxed text-base mb-6">
                   Secure premium positions in local map packs and organic searches for searchers in your geographic area.
                 </p>
                 <ul className="space-y-3.5 mb-8">
@@ -281,7 +281,7 @@ export default function Home() {
                     "Review management workflow and local citations building",
                     "Typical result: 2-3x local search impressions in 180 days"
                   ].map((bullet, idx) => (
-                    <li key={idx} className="flex items-start text-sm text-gray-600">
+                    <li key={idx} className="flex items-start text-base text-gray-600">
                       <CheckCircle2 className="w-5 h-5 text-brand-green mr-3 flex-shrink-0 mt-0.5" />
                       <span>{bullet}</span>
                     </li>
@@ -289,7 +289,7 @@ export default function Home() {
                 </ul>
               </div>
               <div className="flex items-center justify-between pt-6 border-t border-gray-100">
-                <Link href="/services#local-seo" className="inline-flex items-center text-sm font-bold text-brand-blue hover:text-brand-orange transition-colors">
+                <Link href="/services#local-seo" className="inline-flex items-center text-base font-bold text-brand-blue hover:text-brand-orange transition-colors">
                   Learn More About Local SEO <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
                 <CTAButton href="/contact" variant="outline" size="sm">
@@ -327,11 +327,11 @@ export default function Home() {
                     </div>
                   </div>
                   <h3 className="text-xl md:text-2xl font-display font-bold text-brand-blue mb-3">{step.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                  <p className="text-gray-600 text-base leading-relaxed">{step.description}</p>
                 </div>
                 {index === 0 && (
                   <div className="mt-6 pt-4 border-t border-gray-50">
-                    <Link href="/contact" className="inline-flex items-center text-xs font-bold text-brand-orange hover:underline uppercase tracking-wider">
+                    <Link href="/contact" className="inline-flex items-center text-sm font-bold text-brand-orange hover:underline uppercase tracking-wider">
                       Book Your Free Audit Now <ArrowRight className="w-3.5 h-3.5 ml-1" />
                     </Link>
                   </div>
@@ -341,7 +341,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-10">
-            <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-brand-blue/5 text-brand-blue font-semibold text-sm">
+            <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-brand-blue/5 text-brand-blue font-semibold text-base">
               Flexible commitments &bull; Results-based pricing &bull; Monthly billing
             </span>
           </div>

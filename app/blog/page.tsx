@@ -58,10 +58,10 @@ export default function BlogPage() {
                 <h3 className="font-display font-bold text-brand-blue text-lg mt-3 leading-snug">
                   {post.title}
                 </h3>
-                <p className="text-xs text-gray-500 mt-2 leading-relaxed">
+                <p className="text-sm text-gray-500 mt-2 leading-relaxed">
                   {post.summary}
                 </p>
-                <div className="mt-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest flex items-center">
+                <div className="mt-4 text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center">
                   Status: In Drafting <ArrowRight className="w-3 h-3 ml-1" />
                 </div>
               </div>
@@ -72,7 +72,7 @@ export default function BlogPage() {
         {/* CTA Block */}
         <div className="bg-brand-blue/5 border border-brand-blue/10 rounded-3xl p-8 sm:p-10 text-center space-y-6">
           <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-brand-blue">Want to See These Optimization Steps Implemented Live?</h3>
-          <p className="text-gray-600 text-sm max-w-md mx-auto">
+          <p className="text-gray-600 text-base max-w-md mx-auto">
             Don't wait for the articles. Book your free strategy audit session today, and we'll walk you through these exact concepts on your own account.
           </p>
           <div className="pt-2">
