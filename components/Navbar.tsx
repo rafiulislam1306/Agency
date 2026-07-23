@@ -38,7 +38,7 @@ export default function Navbar() {
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="flex items-center space-x-2 group">
                 <div className="bg-brand-blue p-2 rounded-xl text-white group-hover:bg-brand-blue-hover transition-colors">
-                  <Rocket className="w-5 h-5" />
+                  <Rocket className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <span className="font-extrabold text-xl tracking-tight text-brand-blue">
                   LeadGrow<span className="text-brand-green">.</span>
@@ -77,9 +77,10 @@ export default function Navbar() {
                 onClick={toggleMenu}
                 className="inline-flex items-center justify-center p-2 rounded-xl text-gray-500 hover:text-brand-blue hover:bg-gray-100 focus:outline-none cursor-pointer"
                 aria-expanded={isOpen}
+                aria-label="Toggle Navigation Menu"
               >
                 <span className="sr-only">Open main menu</span>
-                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {isOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
               </button>
             </div>
           </div>
@@ -89,11 +90,11 @@ export default function Navbar() {
         <div
           className={`lg:hidden transition-all duration-300 ease-in-out ${
             isOpen
-              ? "max-h-[500px] opacity-100 border-b border-gray-100"
+              ? "max-h-[550px] opacity-100 border-b border-gray-100 shadow-md"
               : "max-h-0 opacity-0 overflow-hidden pointer-events-none"
           }`}
         >
-          <div className="px-4 pt-2 pb-6 space-y-2 bg-white">
+          <div className="px-4 pt-2 pb-6 space-y-2 bg-white/95 backdrop-blur-md">
             {navLinks.map((link) => (
               <Link
                 key={link.name}

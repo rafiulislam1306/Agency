@@ -39,7 +39,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-white min-h-screen pt-28 pb-16">
+    <div className="bg-white min-h-screen pt-24 pb-12 md:pt-28 md:pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Title Header */}
@@ -64,7 +64,7 @@ export default function ContactPage() {
               
               <div className="flex items-center space-x-4 bg-gray-50 p-4 rounded-xl border border-gray-100/50">
                 <div className="bg-brand-blue/10 p-3 rounded-lg text-brand-blue">
-                  <Mail className="w-5 h-5" />
+                  <Mail className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
                   <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">Email us</span>
@@ -76,7 +76,7 @@ export default function ContactPage() {
 
               <div className="flex items-center space-x-4 bg-gray-50 p-4 rounded-xl border border-gray-100/50">
                 <div className="bg-brand-green/10 p-3 rounded-lg text-brand-green">
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
                   <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">Call us</span>
@@ -93,7 +93,7 @@ export default function ContactPage() {
               
               {isSubmitted ? (
                 <div className="bg-green-50 border border-green-200 text-green-800 rounded-xl p-5 text-center space-y-3">
-                  <CheckCircle className="w-10 h-10 text-brand-green mx-auto" />
+                  <CheckCircle className="w-10 h-10 text-brand-green mx-auto" aria-hidden="true" />
                   <h4 className="font-bold">Message Sent Successfully!</h4>
                   <p className="text-xs text-green-700 leading-relaxed">
                     Thank you for reaching out. A strategy manager will review your submission and respond within 24 hours.
@@ -187,7 +187,7 @@ export default function ContactPage() {
                       </>
                     ) : (
                       <>
-                        <Send className="w-4 h-4" />
+                        <Send className="w-4 h-4" aria-hidden="true" />
                         <span className="text-sm">Send Message</span>
                       </>
                     )}
@@ -199,13 +199,13 @@ export default function ContactPage() {
             {/* Trust Signals */}
             <div className="space-y-3 bg-brand-blue/5 p-6 rounded-2xl border border-brand-blue/10">
               <h4 className="font-display font-bold text-brand-blue text-sm flex items-center">
-                <Clock className="w-4.5 h-4.5 mr-2 text-brand-orange" />
+                <Clock className="w-4.5 h-4.5 mr-2 text-brand-orange" aria-hidden="true" />
                 Working Guidelines
               </h4>
               <ul className="space-y-2.5 text-sm text-gray-600 font-semibold">
-                <li className="flex items-center"><ShieldCheck className="w-4 h-4 text-brand-green mr-2 flex-shrink-0" /> We respond to all written inquiries within 24 hours</li>
-                <li className="flex items-center"><ShieldCheck className="w-4 h-4 text-brand-green mr-2 flex-shrink-0" /> Free, no-pressure consultation call</li>
-                <li className="flex items-center"><ShieldCheck className="w-4 h-4 text-brand-green mr-2 flex-shrink-0" /> Honest evaluation - we'll tell you if search isn't right for you</li>
+                <li className="flex items-center"><ShieldCheck className="w-4 h-4 text-brand-green mr-2 flex-shrink-0" aria-hidden="true" /> We respond to all written inquiries within 24 hours</li>
+                <li className="flex items-center"><ShieldCheck className="w-4 h-4 text-brand-green mr-2 flex-shrink-0" aria-hidden="true" /> Free, no-pressure consultation call</li>
+                <li className="flex items-center"><ShieldCheck className="w-4 h-4 text-brand-green mr-2 flex-shrink-0" aria-hidden="true" /> Honest evaluation - we'll tell you if search isn't right for you</li>
               </ul>
             </div>
 

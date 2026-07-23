@@ -8,13 +8,13 @@ export default function CaseStudiesPage() {
   const studies = Object.values(caseStudiesData);
 
   return (
-    <div className="bg-white min-h-screen pt-28 pb-16">
+    <div className="bg-white min-h-screen pt-24 pb-12 md:pt-28 md:pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Page Header */}
         <div className="text-center max-w-3xl mx-auto space-y-6 mb-16">
           <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-brand-blue bg-brand-blue/10 px-3 py-1 rounded-md">
-            <TrendingUp className="w-4 h-4 mr-1 text-brand-blue" />
+            <TrendingUp className="w-4 h-4 mr-1 text-brand-blue" aria-hidden="true" />
             Proven Frameworks
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-brand-blue tracking-tight leading-tight">
@@ -27,7 +27,7 @@ export default function CaseStudiesPage() {
 
         {/* Templates Disclaimer Banner */}
         <div className="max-w-3xl mx-auto mb-12 bg-amber-50 border border-amber-200 rounded-2xl p-5 flex items-start space-x-3 text-amber-800">
-          <AlertTriangle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+          <AlertTriangle className="w-5 h-5 flex-shrink-0 mt-0.5" aria-hidden="true" />
           <div className="text-sm leading-relaxed font-normal">
             <strong className="block font-bold mb-1 uppercase tracking-wider">Example Templates Notice:</strong>
             The client scenarios listed below represent typified performance matrices based on our client experiences. They are provided as illustrative frameworks of what we can achieve for your business. Specific campaign numbers will vary depending on localized search competition, bidding markets, and seasonal factors.

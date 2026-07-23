@@ -27,13 +27,13 @@ export default function BlogPage() {
   ];
 
   return (
-    <div className="bg-white min-h-screen pt-28 pb-16">
+    <div className="bg-white min-h-screen pt-24 pb-12 md:pt-28 md:pb-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
         <div className="text-center space-y-6 mb-16">
           <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-brand-blue bg-brand-blue/10 px-3 py-1 rounded-md">
-            <Rss className="w-4 h-4 mr-1 text-brand-blue" />
+            <Rss className="w-4 h-4 mr-1 text-brand-blue" aria-hidden="true" />
             Knowledge Base
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-brand-blue tracking-tight leading-tight">
@@ -62,7 +62,7 @@ export default function BlogPage() {
                   {post.summary}
                 </p>
                 <div className="mt-4 text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center">
-                  Status: In Drafting <ArrowRight className="w-3 h-3 ml-1" />
+                  Status: In Drafting <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
                 </div>
               </div>
             ))}

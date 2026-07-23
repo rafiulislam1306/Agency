@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2 group">
               <div className="bg-white p-2 rounded-xl text-brand-blue group-hover:bg-brand-light transition-colors">
-                <Rocket className="w-5 h-5" />
+                <Rocket className="w-5 h-5" aria-hidden="true" />
               </div>
               <span className="font-extrabold text-xl tracking-tight text-white">
                 LeadGrow<span className="text-brand-green">.</span>
@@ -31,18 +31,18 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-200 hover:text-brand-green transition-colors"
-                aria-label="LinkedIn"
+                aria-label="Visit our LinkedIn profile"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-5 h-5" aria-hidden="true" />
               </a>
               <a
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-200 hover:text-brand-green transition-colors"
-                aria-label="Twitter"
+                aria-label="Visit our Twitter profile"
               >
-                <Twitter className="w-5 h-5" />
+                <Twitter className="w-5 h-5" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -76,7 +76,7 @@ export default function Footer() {
             <h4 className="text-lg font-display font-bold text-white mb-6">Get in Touch</h4>
             <ul className="space-y-4">
               <li className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-brand-green flex-shrink-0" />
+                <Mail className="w-4 h-4 text-brand-green flex-shrink-0" aria-hidden="true" />
                 <a
                   href="mailto:contact@leadgrowagency.com"
                   className="text-blue-100 hover:text-brand-green text-sm transition-colors"
@@ -85,7 +85,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-brand-green flex-shrink-0" />
+                <Phone className="w-4 h-4 text-brand-green flex-shrink-0" aria-hidden="true" />
                 <a
                   href="tel:+15550199"
                   className="text-blue-100 hover:text-brand-green text-sm transition-colors"

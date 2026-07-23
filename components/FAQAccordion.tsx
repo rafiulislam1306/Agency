@@ -38,6 +38,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
                 className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${
                   isOpen ? "rotate-180 text-brand-blue" : ""
                 }`}
+                aria-hidden="true"
               />
             </button>
             <div

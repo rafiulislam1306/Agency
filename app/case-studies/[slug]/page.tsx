@@ -35,7 +35,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   }
 
   return (
-    <div className="bg-white min-h-screen pt-28 pb-16">
+    <div className="bg-white min-h-screen pt-24 pb-12 md:pt-28 md:pb-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Back Link */}
@@ -44,14 +44,14 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             href="/case-studies"
             className="inline-flex items-center text-sm font-bold text-gray-500 hover:text-brand-blue transition-colors group cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
+            <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
             Back to Case Studies
           </Link>
         </div>
 
         {/* Template Notification */}
         <div className="mb-10 bg-amber-50 border border-amber-200 rounded-2xl p-4 flex items-center space-x-3 text-amber-800">
-          <AlertTriangle className="w-5 h-5 flex-shrink-0" />
+          <AlertTriangle className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
           <span className="text-xs font-semibold uppercase tracking-wider">
             [TEMPLATE EXAMPLE - Results may vary based on industry and market]
           </span>
@@ -67,8 +67,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           </h1>
           
           <div className="flex flex-wrap gap-y-2 gap-x-6 text-sm text-gray-500 font-semibold pt-2">
-            <span className="flex items-center"><Calendar className="w-4 h-4 mr-2 text-brand-orange" /> Duration: {study.timeframe}</span>
-            <span className="flex items-center"><TrendingUp className="w-4 h-4 mr-2 text-brand-green" /> Goal: {study.goal}</span>
+            <span className="flex items-center"><Calendar className="w-4 h-4 mr-2 text-brand-orange" aria-hidden="true" /> Duration: {study.timeframe}</span>
+            <span className="flex items-center"><TrendingUp className="w-4 h-4 mr-2 text-brand-green" aria-hidden="true" /> Goal: {study.goal}</span>
           </div>
         </div>
 
@@ -135,7 +135,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           {study.financialImpact && (
             <div className="bg-green-50/40 border border-green-100 rounded-3xl p-6 sm:p-8 space-y-6">
               <h3 className="text-xl font-extrabold text-brand-blue flex items-center">
-                <DollarSign className="w-5 h-5 mr-2 text-brand-green" /> Detailed Financial Impact
+                <DollarSign className="w-5 h-5 mr-2 text-brand-green" aria-hidden="true" /> Detailed Financial Impact
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div>
@@ -176,12 +176,12 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           {/* 6. Key Learnings */}
           <div className="space-y-4">
             <h2 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue flex items-center">
-              <Lightbulb className="w-5 h-5 mr-2 text-brand-orange" /> Key Takeaways
+              <Lightbulb className="w-5 h-5 mr-2 text-brand-orange" aria-hidden="true" /> Key Takeaways
             </h2>
             <ul className="space-y-3">
               {study.keyLearnings.map((learning, idx) => (
                 <li key={idx} className="flex items-start text-base text-gray-600">
-                  <CheckCircle2 className="w-4 h-4 text-brand-green mr-3 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-brand-green mr-3 flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <span>{learning}</span>
                 </li>
               ))}

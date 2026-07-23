@@ -35,7 +35,7 @@ export default function CaseStudyCard({
       <div>
         {/* Service Type Tag */}
         <div className="inline-flex items-center text-xs font-semibold text-brand-green bg-brand-green/10 rounded-md px-2.5 py-1 mb-4">
-          <TrendingUp className="w-3.5 h-3.5 mr-1" />
+          <TrendingUp className="w-3.5 h-3.5 mr-1" aria-hidden="true" />
           {serviceUsed}
         </div>
 
@@ -68,7 +68,7 @@ export default function CaseStudyCard({
           className="inline-flex items-center text-base font-bold text-brand-blue hover:text-brand-orange transition-colors cursor-pointer"
         >
           View Full Case Study
-          <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" />
+          <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
         </Link>
       </div>
     </div>

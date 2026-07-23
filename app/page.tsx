@@ -21,17 +21,17 @@ import CaseStudyCard from "@/components/CaseStudyCard";
 export default function Home() {
   const problemPoints = [
     {
-      icon: <AlertCircle className="w-8 h-8 text-brand-orange" />,
+      icon: <AlertCircle className="w-8 h-8 text-brand-orange" aria-hidden="true" />,
       title: "Not getting qualified leads",
       description: "Your website exists, but it sits idle and does not drive actual customers or phone calls to your business."
     },
     {
-      icon: <TrendingUp className="w-8 h-8 text-brand-orange" />,
+      icon: <TrendingUp className="w-8 h-8 text-brand-orange" aria-hidden="true" />,
       title: "Unsure if Ads or SEO actually work",
       description: "Uncertainty about Return on Investment (ROI) keeps you from scaling. You don't want to waste budget on empty clicks."
     },
     {
-      icon: <Clock className="w-8 h-8 text-brand-orange" />,
+      icon: <Clock className="w-8 h-8 text-brand-orange" aria-hidden="true" />,
       title: "Juggling too many things already",
       description: "You don't have 20+ hours a month to learn complex digital marketing algorithms. You need to focus on running your business."
     }
@@ -40,19 +40,19 @@ export default function Home() {
   const steps = [
     {
       number: "01",
-      icon: <Search className="w-6 h-6 text-brand-blue" />,
+      icon: <Search className="w-6 h-6 text-brand-blue" aria-hidden="true" />,
       title: "Free Audit + Call",
       description: "We audit your current Google Ads account or Local SEO search footprint and walk you through 3 specific growth opportunities in a free 30-min call."
     },
     {
       number: "02",
-      icon: <FileText className="w-6 h-6 text-brand-blue" />,
+      icon: <FileText className="w-6 h-6 text-brand-blue" aria-hidden="true" />,
       title: "Custom 90-Day Strategy",
       description: "If it's a mutual fit, we design a custom 90-day plan showing exactly what optimizations we'll make and the expected result milestones."
     },
     {
       number: "03",
-      icon: <TrendingUp className="w-6 h-6 text-brand-blue" />,
+      icon: <TrendingUp className="w-6 h-6 text-brand-blue" aria-hidden="true" />,
       title: "Results & Scale",
       description: "We execute the campaigns and optimization. You receive simplified, jargon-free monthly reports mapping traffic directly to revenue."
     }
@@ -110,15 +110,15 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <section className="relative bg-gradient-to-br from-brand-blue via-blue-950 to-slate-900 text-white pt-28 pb-20 md:pt-32 md:pb-24 lg:pt-28 lg:pb-20 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-brand-blue via-blue-950 to-slate-900 text-white pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-28 lg:pb-20 overflow-hidden">
         {/* Decorative Grid background pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" aria-hidden="true"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-3 py-1 text-sm font-semibold text-brand-green border border-white/10">
-                <ShieldCheck className="w-4 h-4" />
+                <ShieldCheck className="w-4 h-4" aria-hidden="true" />
                 <span>Risk-Free 30-Min Strategy Session</span>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white leading-[1.1]">
@@ -139,9 +139,9 @@ export default function Home() {
 
               {/* Quick trust micro-copy */}
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-blue-200 font-semibold pt-4">
-                <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" /> 100% Free Strategy Session</span>
-                <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" /> No Credit Card Required</span>
-                <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" /> 3 Specific Growth Ideas</span>
+                <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" aria-hidden="true" /> 100% Free Strategy Session</span>
+                <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" aria-hidden="true" /> No Credit Card Required</span>
+                <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" aria-hidden="true" /> 3 Specific Growth Ideas</span>
               </div>
             </div>
 
@@ -162,7 +162,7 @@ export default function Home() {
                   </div>
                   <div className="bg-white/5 rounded-xl p-4 border border-white/5">
                     <div className="flex items-center space-x-1.5 mb-2 text-brand-orange">
-                      <Award className="w-4 h-4" />
+                      <Award className="w-4 h-4" aria-hidden="true" />
                       <span className="text-xs font-bold uppercase tracking-wider">Financial Impact</span>
                     </div>
                     <div className="flex justify-between items-end">
@@ -177,7 +177,7 @@ export default function Home() {
                     </div>
                   </div>
                   <Link href="/case-studies/local-service" className="flex items-center justify-center text-base font-bold text-brand-green hover:underline pt-2">
-                    Read HVAC Case Study <ChevronRight className="w-4 h-4 ml-1" />
+                    Read HVAC Case Study <ChevronRight className="w-4 h-4 ml-1" aria-hidden="true" />
                   </Link>
                 </div>
               </div>
@@ -187,7 +187,7 @@ export default function Home() {
       </section>
 
       {/* 2. Problem Statement Section */}
-      <section className="py-20 bg-gray-50 border-y border-gray-100">
+      <section className="py-12 md:py-20 bg-gray-50 border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
@@ -218,7 +218,7 @@ export default function Home() {
       </section>
 
       {/* 3. Services Overview (Equal Emphasis) */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
@@ -256,7 +256,7 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-between pt-6 border-t border-gray-100">
                 <Link href="/services#google-ads" className="inline-flex items-center text-base font-bold text-brand-blue hover:text-brand-orange transition-colors">
-                  Learn More About Google Ads <ArrowRight className="w-4 h-4 ml-1" />
+                  Learn More About Google Ads <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
                 </Link>
                 <CTAButton href="/contact" variant="outline" size="sm">
                   Get Ads Audit
@@ -282,7 +282,7 @@ export default function Home() {
                     "Typical result: 2-3x local search impressions in 180 days"
                   ].map((bullet, idx) => (
                     <li key={idx} className="flex items-start text-base text-gray-600">
-                      <CheckCircle2 className="w-5 h-5 text-brand-green mr-3 flex-shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-5 h-5 text-brand-green mr-3 flex-shrink-0 mt-0.5" aria-hidden="true" />
                       <span>{bullet}</span>
                     </li>
                   ))}
@@ -290,7 +290,7 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-between pt-6 border-t border-gray-100">
                 <Link href="/services#local-seo" className="inline-flex items-center text-base font-bold text-brand-blue hover:text-brand-orange transition-colors">
-                  Learn More About Local SEO <ArrowRight className="w-4 h-4 ml-1" />
+                  Learn More About Local SEO <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
                 </Link>
                 <CTAButton href="/contact" variant="outline" size="sm">
                   Get SEO Audit
@@ -302,7 +302,7 @@ export default function Home() {
       </section>
 
       {/* 4. How It Works Section */}
-      <section className="py-20 bg-gray-50 border-y border-gray-100">
+      <section className="py-12 md:py-20 bg-gray-50 border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
@@ -332,7 +332,7 @@ export default function Home() {
                 {index === 0 && (
                   <div className="mt-6 pt-4 border-t border-gray-50">
                     <Link href="/contact" className="inline-flex items-center text-sm font-bold text-brand-orange hover:underline uppercase tracking-wider">
-                      Book Your Free Audit Now <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                      Book Your Free Audit Now <ArrowRight className="w-3.5 h-3.5 ml-1" aria-hidden="true" />
                     </Link>
                   </div>
                 )}
@@ -349,7 +349,7 @@ export default function Home() {
       </section>
 
       {/* 5. Social Proof Section (Case Studies Preview) */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div className="space-y-4 max-w-xl">
@@ -384,7 +384,7 @@ export default function Home() {
       </section>
 
       {/* 6. FAQ Section */}
-      <section className="py-20 bg-gray-50 border-t border-gray-100">
+      <section className="py-12 md:py-20 bg-gray-50 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
@@ -400,7 +400,7 @@ export default function Home() {
       </section>
 
       {/* 7. Final CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-brand-blue to-blue-950 text-white relative overflow-hidden text-center">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-brand-blue to-blue-950 text-white relative overflow-hidden text-center">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.12)_0,transparent_60%)]"></div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black tracking-tight leading-tight">

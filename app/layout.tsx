@@ -39,6 +39,52 @@ export default function RootLayout({
       lang="en"
       className={`${outfit.variable} ${playfair.variable} ${redHat.variable} h-full antialiased scroll-smooth`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "LeadGrow Agency",
+              "image": "https://leadgrowagency.com/logo.png",
+              "priceRange": "$$",
+              "telephone": "+15550199",
+              "email": "contact@leadgrowagency.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "123 Search Marketing Way",
+                "addressLocality": "Houston",
+                "addressRegion": "TX",
+                "postalCode": "77001",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 29.7604,
+                "longitude": -95.3698
+              },
+              "url": "https://leadgrowagency.com",
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "17:00"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/leadgrow",
+                "https://twitter.com/leadgrow"
+              ]
+            })
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-white text-brand-dark">
         <Navbar />
         <main className="flex-grow">

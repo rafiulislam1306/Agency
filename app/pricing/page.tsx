@@ -45,13 +45,13 @@ export default function PricingPage() {
   ];
 
   return (
-    <div className="bg-white min-h-screen pt-28 pb-16">
+    <div className="bg-white min-h-screen pt-24 pb-12 md:pt-28 md:pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-6 mb-16">
           <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-brand-blue bg-brand-blue/10 px-3 py-1 rounded-md">
-            <DollarSign className="w-4 h-4 mr-1 text-brand-blue" />
+            <DollarSign className="w-4 h-4 mr-1 text-brand-blue" aria-hidden="true" />
             Transparent Pricing
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-brand-blue tracking-tight leading-tight">
@@ -75,7 +75,7 @@ export default function PricingPage() {
               <ul className="space-y-3 mb-8">
                 {adsFeatures.map((feat, idx) => (
                   <li key={idx} className="flex items-start text-base text-gray-600">
-                    <CheckCircle2 className="w-4 h-4 text-brand-green mr-2.5 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-brand-green mr-2.5 flex-shrink-0 mt-0.5" aria-hidden="true" />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -111,7 +111,7 @@ export default function PricingPage() {
               <ul className="space-y-3 mb-8">
                 {seoFeatures.map((feat, idx) => (
                   <li key={idx} className="flex items-start text-base text-gray-600">
-                    <CheckCircle2 className="w-4 h-4 text-brand-green mr-2.5 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-brand-green mr-2.5 flex-shrink-0 mt-0.5" aria-hidden="true" />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -159,7 +159,7 @@ export default function PricingPage() {
                   "Synced keyword target sharing"
                 ].map((feat, idx) => (
                   <li key={idx} className="flex items-start text-base text-blue-100">
-                    <CheckCircle2 className="w-4 h-4 text-brand-green mr-2.5 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-brand-green mr-2.5 flex-shrink-0 mt-0.5" aria-hidden="true" />
                     <span>{feat}</span>
                   </li>
                 ))}

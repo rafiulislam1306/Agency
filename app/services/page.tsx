@@ -51,7 +51,7 @@ export default function ServicesPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Header Banner */}
-      <section className="bg-gradient-to-br from-brand-blue to-blue-950 text-white pt-28 pb-16">
+      <section className="bg-gradient-to-br from-brand-blue to-blue-950 text-white pt-24 pb-12 md:pt-32 md:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black tracking-tight text-white leading-tight">Our Services</h1>
           <p className="text-lg text-blue-100 mt-4 max-w-2xl mx-auto leading-relaxed font-normal">
@@ -81,14 +81,14 @@ export default function ServicesPage() {
       </section>
 
       {/* Service 1: Google Ads */}
-      <section id="google-ads" className="py-20 border-b border-gray-100 scroll-mt-20">
+      <section id="google-ads" className="py-12 md:py-20 border-b border-gray-100 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Info Column */}
             <div className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-md">
-                <Zap className="w-4.5 h-4.5 mr-1" />
+                <Zap className="w-4.5 h-4.5 mr-1" aria-hidden="true" />
                 Immediate Visibility
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
@@ -100,13 +100,13 @@ export default function ServicesPage() {
               
               <div className="bg-brand-blue/5 rounded-2xl p-6 border border-brand-blue/10">
                 <h4 className="font-display font-bold text-brand-blue flex items-center mb-3">
-                  <Target className="w-5 h-5 mr-2 text-brand-orange" />
+                  <Target className="w-5 h-5 mr-2 text-brand-orange" aria-hidden="true" />
                   Who It's Best For:
                 </h4>
                 <ul className="space-y-2.5 text-sm text-gray-600">
-                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" /> Businesses needing leads today (can't wait months)</li>
-                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" /> High-margin service/product categories</li>
-                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" /> Companies with a dedicated monthly marketing spend ($500+)</li>
+                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" aria-hidden="true" /> Businesses needing leads today (can't wait months)</li>
+                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" aria-hidden="true" /> High-margin service/product categories</li>
+                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" aria-hidden="true" /> Companies with a dedicated monthly marketing spend ($500+)</li>
                 </ul>
               </div>
 
@@ -126,7 +126,7 @@ export default function ServicesPage() {
                 {googleAdsBullets.map((bullet, idx) => (
                   <div key={idx} className="space-y-2">
                     <h4 className="font-display font-bold text-brand-blue text-base flex items-center">
-                      <CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0" aria-hidden="true" />
                       {bullet.title}
                     </h4>
                     <p className="text-sm text-gray-500 leading-relaxed">{bullet.desc}</p>
@@ -189,14 +189,14 @@ export default function ServicesPage() {
       </section>
 
       {/* Service 2: Local SEO */}
-      <section id="local-seo" className="py-20 bg-gray-50/50 border-b border-gray-100 scroll-mt-20">
+      <section id="local-seo" className="py-12 md:py-20 bg-gray-50/50 border-b border-gray-100 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Info Column */}
             <div className="lg:col-span-6 space-y-6 lg:order-last">
               <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-brand-green bg-brand-green/10 px-3 py-1 rounded-md">
-                <MapPin className="w-4.5 h-4.5 mr-1" />
+                <MapPin className="w-4.5 h-4.5 mr-1" aria-hidden="true" />
                 Long-Term Authority
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
@@ -208,13 +208,13 @@ export default function ServicesPage() {
               
               <div className="bg-brand-green/5 rounded-2xl p-6 border border-brand-green/10">
                 <h4 className="font-display font-bold text-brand-blue flex items-center mb-3">
-                  <Target className="w-5 h-5 mr-2 text-brand-green" />
+                  <Target className="w-5 h-5 mr-2 text-brand-green" aria-hidden="true" />
                   Who It's Best For:
                 </h4>
                 <ul className="space-y-2.5 text-sm text-gray-600">
-                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" /> Home service businesses (plumbers, HVAC, electricians, salons)</li>
-                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" /> Physical retail, clinics, or restaurants serving a local area</li>
-                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" /> Businesses aiming to reduce long-term dependencies on paid ads</li>
+                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" aria-hidden="true" /> Home service businesses (plumbers, HVAC, electricians, salons)</li>
+                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" aria-hidden="true" /> Physical retail, clinics, or restaurants serving a local area</li>
+                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" aria-hidden="true" /> Businesses aiming to reduce long-term dependencies on paid ads</li>
                 </ul>
               </div>
 
@@ -233,11 +233,11 @@ export default function ServicesPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {localSeoBullets.map((bullet, idx) => (
                   <div key={idx} className="space-y-2">
-                    <h4 className="font-bold text-brand-blue text-sm flex items-center">
-                      <CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0" />
+                    <h4 className="font-display font-bold text-brand-blue text-base flex items-center">
+                      <CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0" aria-hidden="true" />
                       {bullet.title}
                     </h4>
-                    <p className="text-xs text-gray-500 leading-relaxed">{bullet.desc}</p>
+                    <p className="text-sm text-gray-500 leading-relaxed">{bullet.desc}</p>
                   </div>
                 ))}
               </div>
@@ -297,7 +297,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Comparison Chart Section */}
-      <section id="comparison" className="py-20 bg-white scroll-mt-20">
+      <section id="comparison" className="py-12 md:py-20 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
@@ -308,7 +308,8 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm max-w-4xl mx-auto">
+          {/* Desktop Table View */}
+          <div className="hidden md:block overflow-x-auto rounded-2xl border border-gray-200 shadow-sm max-w-4xl mx-auto">
             <table className="min-w-full divide-y divide-gray-200 text-base">
               <thead className="bg-gray-50">
                 <tr>
@@ -335,6 +336,33 @@ export default function ServicesPage() {
             </table>
           </div>
 
+          {/* Mobile Stacked Cards View */}
+          <div className="md:hidden space-y-6">
+            {[
+              { feature: "Time to Results", ads: "Days / Weeks", seo: "2 - 6 Months" },
+              { feature: "Cost Model", ads: "Pay-per-click (Ad Spend + Management)", seo: "Flat Monthly Retainer" },
+              { feature: "Best for Volume", ads: "Immediate Lead Volume Boosts", seo: "Sustained Organic Map Visibility" },
+              { feature: "Effort to Maintain", ads: "High (Requires constant bid monitoring)", seo: "Medium (Periodic citation & review updates)" },
+              { feature: "ROI Timeline", ads: "Immediate validation, quick stabilization", seo: "Longer timeline but compounds over time" }
+            ].map((row, idx) => (
+              <div key={idx} className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="bg-gray-50 px-5 py-3.5 border-b border-gray-200">
+                  <h4 className="font-display font-bold text-brand-blue text-base">{row.feature}</h4>
+                </div>
+                <div className="p-5 space-y-4 text-sm">
+                  <div className="bg-blue-50/20 p-4 rounded-xl border border-blue-50">
+                    <span className="text-xs font-bold text-brand-blue uppercase tracking-wider block mb-1">Google Ads</span>
+                    <p className="text-gray-700 font-medium">{row.ads}</p>
+                  </div>
+                  <div className="bg-green-50/20 p-4 rounded-xl border border-green-50">
+                    <span className="text-xs font-bold text-brand-green uppercase tracking-wider block mb-1">Local SEO</span>
+                    <p className="text-gray-700 font-medium">{row.seo}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
           <div className="max-w-3xl mx-auto text-center mt-12 bg-brand-blue/5 p-6 rounded-2xl border border-brand-blue/10">
             <h4 className="font-display font-bold text-brand-blue mb-2 text-base">Our Recommendation</h4>
             <p className="text-sm text-gray-600 leading-relaxed">
@@ -345,7 +373,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-16 bg-gray-50 border-t border-gray-100 text-center">
+      <section className="py-12 md:py-16 bg-gray-50 border-t border-gray-100 text-center">
         <div className="max-w-3xl mx-auto px-4 space-y-6">
           <h3 className="text-2xl md:text-3xl font-display font-bold text-brand-blue">Not Sure Which Service You Need?</h3>
           <p className="text-gray-600 text-base max-w-xl mx-auto">
