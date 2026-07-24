@@ -248,17 +248,17 @@ export default function Home() {
                     "Typical result: 3-5x ROI in 90 days"
                   ].map((bullet, idx) => (
                     <li key={idx} className="flex items-start text-base text-gray-600">
-                      <CheckCircle2 className="w-5 h-5 text-brand-green mr-3 flex-shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-5 h-5 text-brand-green mr-3 flex-shrink-0 mt-0.5" aria-hidden="true" />
                       <span>{bullet}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="flex items-center justify-between pt-6 border-t border-gray-100">
-                <Link href="/services#google-ads" className="inline-flex items-center text-base font-bold text-brand-blue hover:text-brand-orange transition-colors">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-6 border-t border-gray-100">
+                <Link href="/services#google-ads" className="inline-flex items-center justify-center sm:justify-start text-base font-bold text-brand-blue hover:text-brand-orange transition-colors">
                   Learn More About Google Ads <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
                 </Link>
-                <CTAButton href="/contact" variant="outline" size="sm">
+                <CTAButton href="/contact" variant="outline" size="sm" className="w-full sm:w-auto">
                   Get Ads Audit
                 </CTAButton>
               </div>
@@ -288,11 +288,11 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
-              <div className="flex items-center justify-between pt-6 border-t border-gray-100">
-                <Link href="/services#local-seo" className="inline-flex items-center text-base font-bold text-brand-blue hover:text-brand-orange transition-colors">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-6 border-t border-gray-100">
+                <Link href="/services#local-seo" className="inline-flex items-center justify-center sm:justify-start text-base font-bold text-brand-blue hover:text-brand-orange transition-colors">
                   Learn More About Local SEO <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
                 </Link>
-                <CTAButton href="/contact" variant="outline" size="sm">
+                <CTAButton href="/contact" variant="outline" size="sm" className="w-full sm:w-auto">
                   Get SEO Audit
                 </CTAButton>
               </div>
