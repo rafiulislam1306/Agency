@@ -17,6 +17,7 @@ import {
 import CTAButton from "@/components/CTAButton";
 import FAQAccordion from "@/components/FAQAccordion";
 import CaseStudyCard from "@/components/CaseStudyCard";
+import HeroCaseStudySlider from "@/components/HeroCaseStudySlider";
 
 export default function Home() {
   const problemPoints = [
@@ -145,43 +146,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Visual element / Interactive Mockup on the right */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6 sm:p-8 w-full max-w-md shadow-2xl">
-                <div className="absolute -top-3 -left-3 bg-brand-green text-brand-blue font-extrabold px-3 py-1 rounded-lg text-xs uppercase tracking-wide">
-                  Live Case Study Preview
-                </div>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center pb-4 border-b border-white/10">
-                    <span className="text-xs text-blue-200 font-bold tracking-wider uppercase">Local HVAC Client</span>
-                    <span className="text-xs bg-brand-green/20 text-brand-green px-2 py-0.5 rounded font-bold">Local SEO</span>
-                  </div>
-                  <div>
-                    <span className="text-3xl font-extrabold text-white tracking-tight">+180% More Calls</span>
-                    <p className="text-sm text-blue-100 mt-1.5">Acquired from Google Maps local searches in 6 months.</p>
-                  </div>
-                  <div className="bg-white/5 rounded-xl p-4 border border-white/5">
-                    <div className="flex items-center space-x-1.5 mb-2 text-brand-orange">
-                      <Award className="w-4 h-4" aria-hidden="true" />
-                      <span className="text-xs font-bold uppercase tracking-wider">Financial Impact</span>
-                    </div>
-                    <div className="flex justify-between items-end">
-                      <div>
-                        <span className="text-sm text-blue-200 block">Additional Revenue</span>
-                        <span className="text-xl font-bold text-brand-green">$23,800/mo</span>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-sm text-blue-200 block">Annual ROI</span>
-                        <span className="text-xl font-bold text-white">15x</span>
-                      </div>
-                    </div>
-                  </div>
-                  <Link href="/case-studies/local-service" className="flex items-center justify-center text-base font-bold text-brand-green hover:underline pt-2">
-                    Read HVAC Case Study <ChevronRight className="w-4 h-4 ml-1" aria-hidden="true" />
-                  </Link>
-                </div>
-              </div>
-            </div>
+            {/* Interactive Sliding Case Study Carousel */}
+            <HeroCaseStudySlider />
           </div>
         </div>
       </section>
