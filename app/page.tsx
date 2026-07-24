@@ -229,13 +229,13 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Google Ads */}
-            <div className="bg-gradient-to-br from-slate-50 to-white p-8 sm:p-10 rounded-3xl border border-gray-100 shadow-xs relative flex flex-col justify-between">
+            <div className="bg-gradient-to-br from-slate-50 to-white p-6 sm:p-10 rounded-3xl border border-gray-100 shadow-xs relative flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
                   <h3 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue">Google Ads (Paid Search)</h3>
-                  <span className="text-xs font-bold text-brand-blue bg-blue-100/60 px-3 py-1 rounded-full uppercase tracking-wider">Immediate Leads</span>
+                  <span className="text-xs font-bold text-brand-blue bg-blue-100/60 px-3 py-1 rounded-full uppercase tracking-wider w-fit">Immediate Leads</span>
                 </div>
                 <p className="text-gray-600 leading-relaxed text-base mb-6">
                   Get in front of buyer-intent searchers the moment they search for your products or services.
@@ -265,11 +265,11 @@ export default function Home() {
             </div>
 
             {/* Local SEO */}
-            <div className="bg-gradient-to-br from-slate-50 to-white p-8 sm:p-10 rounded-3xl border border-gray-100 shadow-xs relative flex flex-col justify-between">
+            <div className="bg-gradient-to-br from-slate-50 to-white p-6 sm:p-10 rounded-3xl border border-gray-100 shadow-xs relative flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
                   <h3 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue">Local SEO & Maps</h3>
-                  <span className="text-xs font-bold text-brand-green bg-green-100/60 px-3 py-1 rounded-full uppercase tracking-wider">Sustained Authority</span>
+                  <span className="text-xs font-bold text-brand-green bg-green-100/60 px-3 py-1 rounded-full uppercase tracking-wider w-fit">Sustained Authority</span>
                 </div>
                 <p className="text-gray-600 leading-relaxed text-base mb-6">
                   Secure premium positions in local map packs and organic searches for searchers in your geographic area.
