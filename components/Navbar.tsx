@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Rocket, ArrowRight } from "lucide-react";
+import { Rocket } from "lucide-react";
 import CTAButton from "./CTAButton";
 
 export default function Navbar() {
@@ -31,31 +31,31 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs">
+      <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100/80 shadow-xs transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="flex items-center space-x-2 group">
-                <div className="bg-brand-blue p-2 rounded-xl text-white group-hover:bg-brand-blue-hover transition-colors">
-                  <Rocket className="w-5 h-5" aria-hidden="true" />
+              <Link href="/" className="flex items-center space-x-2.5 group">
+                <div className="bg-gradient-to-br from-brand-blue to-blue-800 p-2 rounded-xl text-white shadow-xs group-hover:shadow-md transition-all duration-300 group-hover:scale-105">
+                  <Rocket className="w-5 h-5 transform transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
                 </div>
-                <span className="font-extrabold text-xl tracking-tight text-brand-blue">
+                <span className="font-display font-black text-xl tracking-tight text-brand-blue group-hover:text-brand-blue-hover transition-colors">
                   LeadGrow<span className="text-brand-green">.</span>
                 </span>
               </Link>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex space-x-8 items-center">
+            <nav className="hidden lg:flex space-x-1.5 items-center">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm font-semibold transition-colors duration-200 ${
+                  className={`text-xs font-bold tracking-wide uppercase px-4 py-2 rounded-full transition-all duration-200 ${
                     isActive(link.href)
-                      ? "text-brand-blue border-b-2 border-brand-orange py-1"
-                      : "text-gray-600 hover:text-brand-blue"
+                      ? "bg-brand-blue/5 text-brand-blue"
+                      : "text-gray-600 hover:text-brand-blue hover:bg-gray-50"
                   }`}
                 >
                   {link.name}
@@ -75,12 +75,16 @@ export default function Navbar() {
             <div className="flex items-center lg:hidden">
               <button
                 onClick={toggleMenu}
-                className="inline-flex items-center justify-center p-2 rounded-xl text-gray-500 hover:text-brand-blue hover:bg-gray-100 focus:outline-none cursor-pointer"
+                className="relative inline-flex items-center justify-center w-10 h-10 rounded-xl text-gray-500 hover:text-brand-blue hover:bg-gray-50 focus:outline-none cursor-pointer"
                 aria-expanded={isOpen}
                 aria-label="Toggle Navigation Menu"
               >
                 <span className="sr-only">Open main menu</span>
-                {isOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
+                <div className="absolute flex flex-col justify-between w-5 h-3.5 transform transition-all duration-300">
+                  <span className={`w-5 h-0.5 bg-current rounded-full transform transition-all duration-300 origin-left ${isOpen ? "rotate-45 translate-x-0.5 -translate-y-0.5" : ""}`} />
+                  <span className={`w-5 h-0.5 bg-current rounded-full transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
+                  <span className={`w-5 h-0.5 bg-current rounded-full transform transition-all duration-300 origin-left ${isOpen ? "-rotate-45 translate-x-0.5 translate-y-0.5" : ""}`} />
+                </div>
               </button>
             </div>
           </div>
