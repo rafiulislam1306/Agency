@@ -306,9 +306,20 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center mt-10">
-            <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-brand-blue/5 text-brand-blue font-semibold text-base">
-              Flexible commitments &bull; Results-based pricing &bull; Monthly billing
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-y-3 gap-x-6 lg:gap-x-8 mt-12 text-sm md:text-base text-gray-600 font-bold border-t border-gray-100 pt-8">
+            <span className="flex items-center">
+              <CheckCircle2 className="w-4.5 h-4.5 text-brand-green mr-2 flex-shrink-0" aria-hidden="true" />
+              Flexible commitments
+            </span>
+            <span className="hidden sm:inline text-gray-300">|</span>
+            <span className="flex items-center">
+              <CheckCircle2 className="w-4.5 h-4.5 text-brand-green mr-2 flex-shrink-0" aria-hidden="true" />
+              Results-based pricing
+            </span>
+            <span className="hidden sm:inline text-gray-300">|</span>
+            <span className="flex items-center">
+              <CheckCircle2 className="w-4.5 h-4.5 text-brand-green mr-2 flex-shrink-0" aria-hidden="true" />
+              Monthly billing
             </span>
           </div>
         </div>
