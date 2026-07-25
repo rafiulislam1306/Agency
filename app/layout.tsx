@@ -17,10 +17,33 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://leadgrowagency.com"),
   title: "LeadGrow Agency | Google Ads + Local SEO for SMBs",
   description:
     "We help small & medium businesses get qualified customers from Google Ads and Local Search. Free audit + 30-min strategy call to show you what's possible.",
   keywords: ["Google Ads Agency", "Local SEO Agency", "Google Business Profile Optimization", "SMB Marketing", "Lead Generation"],
+  openGraph: {
+    title: "LeadGrow Agency | Google Ads + Local SEO for SMBs",
+    description: "We help small & medium businesses get qualified customers from Google Ads and Local Search. Free audit + 30-min strategy call to show you what's possible.",
+    url: "https://leadgrowagency.com",
+    siteName: "LeadGrow Agency",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "LeadGrow Agency - Google Ads + Local SEO for SMBs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LeadGrow Agency | Google Ads + Local SEO for SMBs",
+    description: "We help small & medium businesses get qualified customers from Google Ads and Local Search. Free audit + 30-min strategy call to show you what's possible.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
