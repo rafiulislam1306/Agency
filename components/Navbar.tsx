@@ -61,14 +61,12 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <CTAButton
+              <Link
                 href="/contact"
-                variant="primary"
-                size="sm"
-                className="ml-4"
+                className="ml-4 inline-flex items-center justify-center px-5 py-2.5 border border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white rounded-full text-xs font-bold uppercase tracking-wide transition-all duration-300 active:scale-95 shadow-xs"
               >
                 Schedule Free Audit
-              </CTAButton>
+              </Link>
             </nav>
 
             {/* Mobile Menu Button */}
