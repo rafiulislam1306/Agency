@@ -77,7 +77,7 @@ export default function BlogPage() {
           </p>
           <div className="pt-2">
             <CTAButton href="/contact" variant="primary" size="lg">
-              Schedule Your Free Audit Call
+              Schedule Free Audit Call
             </CTAButton>
           </div>
         </div>

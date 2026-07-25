@@ -85,7 +85,7 @@ export default function AboutPage() {
             </p>
             <div className="pt-2">
               <CTAButton href="/contact" variant="primary" size="lg">
-                Schedule Your Free Audit
+                Schedule Free Audit
               </CTAButton>
             </div>
           </div>

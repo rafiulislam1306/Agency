@@ -215,7 +215,7 @@ export default function ContactPage() {
           <div className="lg:col-span-7 space-y-6">
             <div className="space-y-2">
               <h3 className="text-xl md:text-2xl font-display font-bold text-brand-blue border-b border-gray-100 pb-2 flex items-center">
-                <span className="mr-2">🗓️</span> Book Your Free Audit & Strategy Call
+                <span className="mr-2">🗓️</span> Book Free Audit & Strategy Call
               </h3>
               <p className="text-sm text-gray-500 leading-relaxed font-medium">
                 Pick a slot that matches your availability. We'll run a baseline audit prior to our call so we can deliver maximum value.

@@ -131,7 +131,7 @@ export default function Home() {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
                 <CTAButton href="/contact" variant="primary" size="lg">
-                  Schedule Your Free Audit
+                  Schedule Free Audit
                 </CTAButton>
                 <CTAButton href="/case-studies" variant="white" size="lg">
                   See Example Results
@@ -298,7 +298,7 @@ export default function Home() {
                 {index === 0 && (
                   <div className="mt-6 pt-4 border-t border-gray-50">
                     <Link href="/contact" className="inline-flex items-center text-sm font-bold text-brand-orange hover:underline uppercase tracking-wider">
-                      Book Your Free Audit Now <ArrowRight className="w-3.5 h-3.5 ml-1" aria-hidden="true" />
+                      Book Free Audit Now <ArrowRight className="w-3.5 h-3.5 ml-1" aria-hidden="true" />
                     </Link>
                   </div>
                 )}
@@ -389,7 +389,7 @@ export default function Home() {
           
           <div className="pt-4">
             <CTAButton href="/contact" variant="primary" size="lg" className="px-10 py-5 text-lg">
-              Schedule Your Free Audit
+              Schedule Free Audit
             </CTAButton>
           </div>
 

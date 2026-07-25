@@ -81,7 +81,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           </div>
           <div className="relative z-10">
             <CTAButton href="/contact" variant="white">
-              Schedule Your Free Audit
+              Schedule Free Audit
             </CTAButton>
           </div>
         </div>
