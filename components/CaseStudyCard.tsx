@@ -56,7 +56,6 @@ export default function CaseStudyCard({
 
         {/* Client Quote */}
         <div className="relative pl-4 border-l-2 border-brand-orange/40 my-4 italic text-gray-600 text-base leading-relaxed">
-          <div className="absolute -left-1 -top-2 text-2xl text-brand-orange/20 select-none">“</div>
           &ldquo;{quote}&rdquo;
         </div>
       </div>
