@@ -397,8 +397,8 @@ export default function Home() {
                   "Actionable 3-point search growth roadmap",
                   "Direct consulting (no pitch pressure)"
                 ].map((item, idx) => (
-                  <li key={idx} className="flex items-center text-blue-100">
-                    <CheckCircle2 className="w-5 h-5 text-brand-green mr-3 flex-shrink-0" aria-hidden="true" />
+                  <li key={idx} className="flex items-start text-blue-100">
+                    <CheckCircle2 className="w-5 h-5 text-brand-green mr-3 flex-shrink-0 mt-0.5" aria-hidden="true" />
                     <span>{item}</span>
                   </li>
                 ))}
