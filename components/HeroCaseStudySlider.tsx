@@ -76,7 +76,7 @@ export default function HeroCaseStudySlider() {
 
   return (
     <div 
-      className="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/10 shadow-lg text-left flex flex-col justify-start h-[430px] sm:h-[450px] lg:h-[400px] relative overflow-hidden group"
+      className="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-3xl p-5 sm:p-6 lg:p-5 border border-white/10 shadow-lg text-left flex flex-col justify-start h-[430px] sm:h-[450px] lg:h-[415px] relative overflow-hidden group"
       onMouseEnter={stopAutoPlay}
       onMouseLeave={startAutoPlay}
     >
@@ -85,8 +85,8 @@ export default function HeroCaseStudySlider() {
       </div>
 
       {/* Main card body with smooth fade transitions */}
-      <div className={`space-y-6 flex-grow transition-opacity duration-200 ${isFading ? "opacity-0" : "opacity-100"}`}>
-        <div className="space-y-4">
+      <div className={`space-y-4 lg:space-y-3 flex-grow transition-opacity duration-200 ${isFading ? "opacity-0" : "opacity-100"}`}>
+        <div className="space-y-3 lg:space-y-2">
           <span className={`text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider block w-fit ${getSubTagColor(currentStudy.slug)}`}>
             {getSubTagName(currentStudy.slug)}
           </span>
@@ -98,14 +98,14 @@ export default function HeroCaseStudySlider() {
           </div>
         </div>
 
-        <div className="space-y-4 border-t border-white/10 pt-4 text-xs font-semibold">
+        <div className="space-y-3 lg:space-y-2.5 border-t border-white/10 pt-3 text-xs font-semibold">
           <div>
             <span className="text-3xl font-extrabold text-white tracking-tight">{currentStudy.metric}</span>
             <p className="text-sm text-blue-100 mt-1.5">{getSubheadlineText(currentStudy.slug)}</p>
           </div>
           
-          <div className="bg-white/5 rounded-xl p-4 border border-white/5">
-            <div className="flex items-center space-x-1.5 mb-2 text-brand-orange">
+          <div className="bg-white/5 rounded-xl p-3 border border-white/5">
+            <div className="flex items-center space-x-1.5 mb-1.5 text-brand-orange">
               <Award className="w-4 h-4" aria-hidden="true" />
               <span className="text-xs font-bold uppercase tracking-wider">Highlight Result</span>
             </div>
@@ -124,7 +124,7 @@ export default function HeroCaseStudySlider() {
       </div>
 
       {/* Action Footer & Controls */}
-      <div className="border-t border-white/10 pt-4 flex items-center justify-between mt-auto">
+      <div className="border-t border-white/10 pt-3 flex items-center justify-between mt-auto">
         <Link 
           href={`/case-studies/${currentStudy.slug}`} 
           className={`flex items-center text-sm font-bold text-brand-green hover:underline transition-opacity duration-200 ${isFading ? "opacity-0" : "opacity-100"}`}
