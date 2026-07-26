@@ -27,10 +27,7 @@ export default function CaseStudyCard({
     <div
       className={`relative flex flex-col justify-between p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1 ${bgColor}`}
     >
-      {/* Template Tag */}
-      <div className="absolute top-4 right-4 bg-brand-light text-brand-blue text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full">
-        Template Example
-      </div>
+
 
       <div>
         {/* Service Type Tag */}

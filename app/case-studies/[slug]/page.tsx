@@ -7,7 +7,6 @@ import {
   CheckCircle2,
   TrendingUp,
   MapPin,
-  AlertTriangle,
   Lightbulb,
   DollarSign
 } from "lucide-react";
@@ -49,13 +48,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           </Link>
         </div>
 
-        {/* Template Notification */}
-        <div className="mb-10 bg-amber-50 border border-amber-200 rounded-2xl p-4 flex items-center space-x-3 text-amber-800">
-          <AlertTriangle className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
-          <span className="text-xs font-semibold uppercase tracking-wider">
-            [TEMPLATE EXAMPLE - Results may vary based on industry and market]
-          </span>
-        </div>
+
 
         {/* Header Block */}
         <div className="border-b border-gray-100 pb-8 mb-10 space-y-4">
