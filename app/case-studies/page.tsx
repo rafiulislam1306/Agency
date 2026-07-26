@@ -44,17 +44,17 @@ export default function CaseStudiesPage() {
         <div className="max-w-4xl mx-auto bg-gradient-to-br from-brand-blue to-blue-950 rounded-3xl p-8 sm:p-12 text-white text-center space-y-6 relative overflow-hidden shadow-md">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.08)_0,transparent_60%)]"></div>
           <div className="relative z-10 space-y-4">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold">Ready to Outline Your Growth Strategy?</h3>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold">Ready to Review Pricing & Plans?</h3>
             <p className="text-blue-100 text-base max-w-xl mx-auto leading-relaxed font-normal">
-              We will pull active competitor budgets, keyword click costs, and local map rankings in your service market to design a custom 90-day plan.
+              See our transparent billing models, results-based structures, and flexible monthly commitments.
             </p>
             <div className="pt-4">
-              <CTAButton href="/contact" variant="primary" size="lg">
-                Schedule Free Search Audit
+              <CTAButton href="/pricing" variant="primary" size="lg">
+                View Pricing & Commitments
               </CTAButton>
             </div>
             <p className="text-sm text-blue-200 pt-2 font-normal">
-              *These results are real but not guaranteed. Your results depend on your industry, competition, budget, and implementation quality.
+              *All pricing is transparent and ballpark figures are tailored to client size, complexity, and regional market.
             </p>
           </div>
         </div>

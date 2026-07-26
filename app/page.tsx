@@ -131,11 +131,11 @@ export default function Home() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                <CTAButton href="/contact" variant="primary" size="lg">
+                <CTAButton href="#book-audit" variant="primary" size="lg">
                   Schedule Free Audit
                 </CTAButton>
                 <CTAButton href="/case-studies" variant="white" size="lg">
-                  See Example Results
+                  See Case Studies
                 </CTAButton>
               </div>
 
@@ -225,7 +225,7 @@ export default function Home() {
                 <Link href="/services#google-ads" className="inline-flex items-center justify-center sm:justify-start text-base font-bold text-brand-blue hover:text-brand-orange transition-colors">
                   Learn More About Google Ads <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
                 </Link>
-                <CTAButton href="/contact" variant="outline" size="sm" className="w-full sm:w-auto">
+                <CTAButton href="#book-audit" variant="outline" size="sm" className="w-full sm:w-auto">
                   Get Ads Audit
                 </CTAButton>
               </div>
@@ -259,7 +259,7 @@ export default function Home() {
                 <Link href="/services#local-seo" className="inline-flex items-center justify-center sm:justify-start text-base font-bold text-brand-blue hover:text-brand-orange transition-colors">
                   Learn More About Local SEO <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
                 </Link>
-                <CTAButton href="/contact" variant="outline" size="sm" className="w-full sm:w-auto">
+                <CTAButton href="#book-audit" variant="outline" size="sm" className="w-full sm:w-auto">
                   Get SEO Audit
                 </CTAButton>
               </div>
@@ -298,7 +298,7 @@ export default function Home() {
                 </div>
                 {index === 0 && (
                   <div className="mt-6 pt-4 border-t border-gray-50">
-                    <Link href="/contact" className="inline-flex items-center text-sm font-bold text-brand-orange hover:underline uppercase tracking-wider">
+                    <Link href="#book-audit" className="inline-flex items-center text-sm font-bold text-brand-orange hover:underline uppercase tracking-wider">
                       Book Free Audit Now <ArrowRight className="w-3.5 h-3.5 ml-1" aria-hidden="true" />
                     </Link>
                   </div>
@@ -376,7 +376,7 @@ export default function Home() {
       </section>
 
       {/* 7. Final Interactive Booking Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-brand-blue to-blue-950 text-white relative overflow-hidden">
+      <section id="book-audit" className="py-16 md:py-24 bg-gradient-to-br from-brand-blue to-blue-950 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.12)_0,transparent_60%)]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

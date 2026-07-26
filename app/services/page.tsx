@@ -385,13 +385,13 @@ export default function ServicesPage() {
       {/* Bottom CTA */}
       <section className="py-12 md:py-16 bg-gray-50 border-t border-gray-100 text-center">
         <div className="max-w-3xl mx-auto px-4 space-y-6">
-          <h3 className="text-2xl md:text-3xl font-display font-bold text-brand-blue">Not Sure Which Service You Need?</h3>
+          <h3 className="text-2xl md:text-3xl font-display font-bold text-brand-blue">Ready to See Our Work in Action?</h3>
           <p className="text-gray-600 text-base max-w-xl mx-auto">
-            Book our free 30-min audit call. We'll run a diagnostic on both your local map footprint and current ad space to show you which has the highest growth potential.
+            Review concrete search marketing results and revenue metrics achieved for our clients.
           </p>
           <div className="pt-2">
-            <CTAButton href="/contact" variant="primary" size="lg">
-              Schedule Free Combined Audit
+            <CTAButton href="/case-studies" variant="primary" size="lg">
+              See Real Case Studies
             </CTAButton>
           </div>
         </div>
