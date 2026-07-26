@@ -328,16 +328,14 @@ export default function Home() {
       {/* 5. Social Proof Section (Case Studies Preview) */}
       <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-            <div className="space-y-4 max-w-xl">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
-                Typical Results From Businesses Like Yours
-              </h2>
-              <p className="text-lg text-gray-600 font-normal">
-                Review example case studies showcasing performance models across industries.
-              </p>
-            </div>
-            <div className="mt-6 md:mt-0">
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
+              Real Results From Businesses Like Yours
+            </h2>
+            <p className="text-lg text-gray-600 font-normal max-w-xl mx-auto">
+              Review concrete case studies showcasing search performance across industries.
+            </p>
+            <div className="pt-2">
               <CTAButton href="/case-studies" variant="outline">
                 See All Case Studies
               </CTAButton>
