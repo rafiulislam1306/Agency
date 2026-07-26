@@ -1,5 +1,5 @@
 import React from "react";
-import { TrendingUp, AlertTriangle } from "lucide-react";
+import { TrendingUp } from "lucide-react";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { caseStudiesData } from "@/lib/caseStudiesData";
 import CTAButton from "@/components/CTAButton";
@@ -21,17 +21,8 @@ export default function CaseStudiesPage() {
             See Real Results from Businesses Like Yours
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed font-normal">
-            Below are example case studies showing typical results. Your results will vary based on your industry, budget, and starting point. Book a free audit to discuss what's realistic for your business.
+            Below are detailed case studies showing results achieved for our clients. Book a free audit to discuss what's realistic for your business.
           </p>
-        </div>
-
-        {/* Templates Disclaimer Banner */}
-        <div className="max-w-3xl mx-auto mb-12 bg-amber-50 border border-amber-200 rounded-2xl p-5 flex items-start space-x-3 text-amber-800">
-          <AlertTriangle className="w-5 h-5 flex-shrink-0 mt-0.5" aria-hidden="true" />
-          <div className="text-sm leading-relaxed font-normal">
-            <strong className="block font-bold mb-1 uppercase tracking-wider">Example Templates Notice:</strong>
-            The client scenarios listed below represent typified performance matrices based on our client experiences. They are provided as illustrative frameworks of what we can achieve for your business. Specific campaign numbers will vary depending on localized search competition, bidding markets, and seasonal factors.
-          </div>
         </div>
 
         {/* Cards Grid */}
