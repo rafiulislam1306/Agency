@@ -111,18 +111,18 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <section className="relative bg-gradient-to-br from-brand-blue via-blue-950 to-slate-900 text-white pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-28 lg:pb-20 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-brand-blue via-blue-950 to-slate-900 text-white pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-16 lg:pb-12 xl:pt-24 xl:pb-16 overflow-hidden">
         {/* Decorative Grid background pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" aria-hidden="true"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="lg:col-span-7 space-y-4 lg:space-y-5">
               <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-3 py-1 text-sm font-semibold text-brand-green border border-white/10">
                 <ShieldCheck className="w-4 h-4" aria-hidden="true" />
                 <span>Risk-Free 30-Min Strategy Session</span>
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-black tracking-tight text-white leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-serif font-black tracking-tight text-white leading-[1.1]">
                 Turn Google Searchers Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-teal-400">Paying Customers</span>
               </h1>
               <p className="text-lg md:text-xl text-blue-100 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
@@ -139,7 +139,7 @@ export default function Home() {
               </div>
 
               {/* Quick trust micro-copy */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-blue-200 font-semibold pt-4">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-blue-200 font-semibold pt-2 lg:pt-3">
                 <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" aria-hidden="true" /> 100% Free Strategy Session</span>
                 <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" aria-hidden="true" /> No Credit Card Required</span>
                 <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" aria-hidden="true" /> 3 Specific Growth Ideas</span>

@@ -76,7 +76,7 @@ export default function HeroCaseStudySlider() {
 
   return (
     <div 
-      className="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/10 shadow-lg text-left flex flex-col justify-between min-h-[460px] relative overflow-hidden group"
+      className="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/10 shadow-lg text-left flex flex-col justify-between min-h-[430px] sm:min-h-[450px] lg:min-h-[400px] relative overflow-hidden group"
       onMouseEnter={stopAutoPlay}
       onMouseLeave={startAutoPlay}
     >
