@@ -18,6 +18,7 @@ import CTAButton from "@/components/CTAButton";
 import FAQAccordion from "@/components/FAQAccordion";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import HeroCaseStudySlider from "@/components/HeroCaseStudySlider";
+import CalendlyEmbed from "@/components/CalendlyEmbed";
 
 export default function Home() {
   const problemPoints = [
@@ -374,27 +375,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Final CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-brand-blue to-blue-950 text-white relative overflow-hidden text-center">
+      {/* 7. Final Interactive Booking Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-brand-blue to-blue-950 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.12)_0,transparent_60%)]"></div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black tracking-tight leading-tight">
-            Ready to Grow Your Business From Google?
-          </h2>
-          <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed font-normal">
-            Book your free 30-min Google Ads + Local SEO audit. You get a personalized strategy document with 3 concrete growth ideas. No pressure, no obligations.
-          </p>
-          
-          <div className="pt-4">
-            <CTAButton href="/contact" variant="primary" size="lg" className="px-10 py-5 text-lg">
-              Schedule Free Audit
-            </CTAButton>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Column: Copy & Checklist */}
+            <div className="lg:col-span-5 space-y-6 text-center lg:text-left">
+              <h2 className="text-4xl md:text-5xl font-serif font-black tracking-tight leading-tight">
+                Ready to Grow Your Business From Google?
+              </h2>
+              <p className="text-lg text-blue-100 leading-relaxed font-normal">
+                Book a free 30-minute Google Ads + Local SEO audit. We will run competitor budgets and show you exactly where you're losing customers.
+              </p>
+              
+              <ul className="space-y-4 pt-2 text-sm font-semibold max-w-md mx-auto lg:mx-0">
+                {[
+                  "100% Free Strategy Session (30 Min)",
+                  "Competitive search budget breakdown included",
+                  "Actionable 3-point search growth roadmap",
+                  "Direct consulting (no pitch pressure)"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-center text-blue-100">
+                    <CheckCircle2 className="w-5 h-5 text-brand-green mr-3 flex-shrink-0" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            {/* Right Column: Embedded live Calendly scheduler */}
+            <div className="lg:col-span-7 w-full max-w-2xl mx-auto">
+              <div className="bg-white/5 backdrop-blur-md p-2 rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
+                <CalendlyEmbed />
+              </div>
+            </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-blue-200 font-semibold pt-4">
-            <span>&bull; 100% Free Strategy Session</span>
-            <span>&bull; No Credit Card Required</span>
-            <span>&bull; 30 Minutes of Pure Value</span>
           </div>
         </div>
       </section>
