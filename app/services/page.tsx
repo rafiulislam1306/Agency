@@ -144,14 +144,19 @@ export default function ServicesPage() {
               <h3 className="text-xl md:text-2xl font-display font-bold text-brand-blue flex items-center mb-6">
                 <Clock className="w-5 h-5 mr-2 text-brand-orange" /> Typical Implementation Timeline
               </h3>
-              <div className="space-y-6 relative border-l-2 border-brand-blue/15 pl-6 ml-3">
+              <div className="space-y-6 relative border-l-2 border-brand-blue/15 ml-3">
                 {adsTimeline.map((item, idx) => (
-                  <div key={idx} className="relative">
-                    <span className="absolute -left-[35px] top-0 bg-white border-2 border-brand-blue text-brand-blue font-bold text-xs rounded-full px-2 py-0.5 z-10">
-                      {item.period}
-                    </span>
-                    <h4 className="font-display font-bold text-brand-blue text-base">{item.title}</h4>
-                    <p className="text-base text-gray-600 mt-1">{item.desc}</p>
+                  <div key={idx} className="relative pl-6">
+                    {/* Circle Dot Indicator on the line */}
+                    <span className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-white border-2 border-brand-blue z-10"></span>
+                    
+                    <div className="space-y-1">
+                      <span className="inline-block bg-brand-blue/10 text-brand-blue font-extrabold text-[10px] uppercase tracking-wider rounded-full px-2.5 py-0.5 mb-1">
+                        {item.period}
+                      </span>
+                      <h4 className="font-display font-bold text-brand-blue text-base">{item.title}</h4>
+                      <p className="text-sm text-gray-600 mt-1 leading-relaxed">{item.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -252,14 +257,19 @@ export default function ServicesPage() {
               <h3 className="text-xl md:text-2xl font-display font-bold text-brand-blue flex items-center mb-6">
                 <Clock className="w-5 h-5 mr-2 text-brand-green" /> Typical Implementation Timeline
               </h3>
-              <div className="space-y-6 relative border-l-2 border-brand-green/15 pl-6 ml-3">
+              <div className="space-y-6 relative border-l-2 border-brand-green/15 ml-3">
                 {seoTimeline.map((item, idx) => (
-                  <div key={idx} className="relative">
-                    <span className="absolute -left-[35px] top-0 bg-white border-2 border-brand-green text-brand-green font-bold text-xs rounded-full px-2 py-0.5 z-10">
-                      {item.period}
-                    </span>
-                    <h4 className="font-display font-bold text-brand-blue text-base">{item.title}</h4>
-                    <p className="text-base text-gray-600 mt-1">{item.desc}</p>
+                  <div key={idx} className="relative pl-6">
+                    {/* Circle Dot Indicator on the line */}
+                    <span className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-white border-2 border-brand-green z-10"></span>
+                    
+                    <div className="space-y-1">
+                      <span className="inline-block bg-brand-green/10 text-brand-green font-extrabold text-[10px] uppercase tracking-wider rounded-full px-2.5 py-0.5 mb-1">
+                        {item.period}
+                      </span>
+                      <h4 className="font-display font-bold text-brand-blue text-base">{item.title}</h4>
+                      <p className="text-sm text-gray-600 mt-1 leading-relaxed">{item.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
