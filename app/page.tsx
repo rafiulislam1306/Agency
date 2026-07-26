@@ -333,7 +333,7 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
               Real Results From Businesses <br className="hidden md:inline" /> Like Yours
             </h2>
-            <p className="text-lg text-gray-600 font-normal max-w-xl mx-auto">
+            <p className="text-lg text-gray-600 font-normal max-w-2xl mx-auto">
               Review concrete case studies showcasing search performance across industries.
             </p>
             <div className="pt-2">
