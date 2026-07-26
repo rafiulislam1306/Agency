@@ -76,7 +76,7 @@ export default function HeroCaseStudySlider() {
 
   return (
     <div 
-      className="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/10 shadow-lg text-left flex flex-col justify-between min-h-[430px] sm:min-h-[450px] lg:min-h-[400px] relative overflow-hidden group"
+      className="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/10 shadow-lg text-left flex flex-col justify-start h-[430px] sm:h-[450px] lg:h-[400px] relative overflow-hidden group"
       onMouseEnter={stopAutoPlay}
       onMouseLeave={startAutoPlay}
     >
@@ -110,11 +110,13 @@ export default function HeroCaseStudySlider() {
               <span className="text-xs font-bold uppercase tracking-wider">Highlight Result</span>
             </div>
             <div className="flex justify-between items-end">
-              <div className="pr-2">
+              <div className="pr-2 w-full">
                 <span className="text-xs text-blue-200 block mb-1">Client Feedback</span>
-                <span className="text-sm font-bold text-white leading-relaxed block italic">
-                  &ldquo;{currentStudy.quote}&rdquo;
-                </span>
+                <div className="h-[76px] sm:h-[68px] lg:h-[72px] flex items-center overflow-hidden">
+                  <span className="text-sm font-bold text-white leading-relaxed block italic">
+                    &ldquo;{currentStudy.quote}&rdquo;
+                  </span>
+                </div>
               </div>
             </div>
           </div>
