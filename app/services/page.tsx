@@ -112,7 +112,7 @@ export default function ServicesPage() {
 
               <div className="pt-2">
                 <CTAButton href="/contact" variant="primary" size="lg">
-                  Schedule Your Free Ads Audit
+                  Schedule Free Ads Audit
                 </CTAButton>
               </div>
             </div>
@@ -220,7 +220,7 @@ export default function ServicesPage() {
 
               <div className="pt-2">
                 <CTAButton href="/contact" variant="primary" size="lg">
-                  Schedule Your Free Local SEO Audit
+                  Schedule Free Local SEO Audit
                 </CTAButton>
               </div>
             </div>
@@ -381,7 +381,7 @@ export default function ServicesPage() {
           </p>
           <div className="pt-2">
             <CTAButton href="/contact" variant="primary" size="lg">
-              Schedule Your Free Combined Audit
+              Schedule Free Combined Audit
             </CTAButton>
           </div>
         </div>

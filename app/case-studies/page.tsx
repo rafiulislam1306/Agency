@@ -50,7 +50,7 @@ export default function CaseStudiesPage() {
             </p>
             <div className="pt-4">
               <CTAButton href="/contact" variant="primary" size="lg">
-                Schedule Your Free Search Audit
+                Schedule Free Search Audit
               </CTAButton>
             </div>
             <p className="text-sm text-blue-200 pt-2 font-normal">
