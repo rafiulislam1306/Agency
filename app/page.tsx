@@ -390,7 +390,7 @@ export default function Home() {
                 Book a free 30-minute Google Ads + Local SEO audit. We will run competitor budgets and show you exactly where you're losing customers.
               </p>
               
-              <ul className="space-y-4 pt-2 text-sm font-semibold max-w-md mx-auto lg:mx-0">
+              <ul className="space-y-4 pt-2 text-sm font-semibold max-w-md mx-auto lg:mx-0 text-left">
                 {[
                   "100% Free Strategy Session (30 Min)",
                   "Competitive search budget breakdown included",
