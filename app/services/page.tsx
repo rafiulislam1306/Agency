@@ -57,7 +57,7 @@ export default function ServicesPage() {
           <p className="text-lg text-blue-100 mt-4 max-w-2xl mx-auto leading-relaxed font-normal">
             Choose the path that fits your timeline and goals. We manage every detail, you focus on your new customers.
           </p>
-          <div className="flex justify-center space-x-4 mt-8">
+          <div className="flex flex-wrap justify-center gap-4 mt-8">
             <a
               href="#google-ads"
               className="bg-white/10 hover:bg-white/20 text-white font-bold px-5 py-2.5 rounded-lg border border-white/10 text-sm transition-all"
