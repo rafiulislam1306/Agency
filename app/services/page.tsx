@@ -106,7 +106,7 @@ export default function ServicesPage() {
                 <ul className="space-y-2.5 text-sm text-gray-600">
                   <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0 mt-0.5" aria-hidden="true" /> Businesses needing leads today (can't wait months)</li>
                   <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0 mt-0.5" aria-hidden="true" /> High-margin service/product categories</li>
-                  <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0 mt-0.5" aria-hidden="true" /> Companies with a dedicated monthly marketing spend ($500+)</li>
+                  <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0 mt-0.5" aria-hidden="true" /> Companies with a dedicated monthly marketing spend ($300+)</li>
                 </ul>
               </div>
 
@@ -171,7 +171,7 @@ export default function ServicesPage() {
                 <div className="bg-gray-50 p-5 rounded-xl border border-gray-100">
                   <h4 className="font-display font-bold text-brand-blue text-base">What's the minimum budget?</h4>
                   <p className="text-sm text-gray-600 mt-2 leading-relaxed">
-                    We typically recommend a minimum ad budget of $500–$2,000/month to collect sufficient market data and show meaningful sales results.
+                    We typically recommend a minimum ad budget of $300–$2,000/month to collect sufficient market data and show meaningful sales results.
                   </p>
                 </div>
                 <div className="bg-gray-50 p-5 rounded-xl border border-gray-100">

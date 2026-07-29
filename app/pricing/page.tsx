@@ -40,7 +40,7 @@ export default function PricingPage() {
     },
     {
       question: "Can I start with a small budget?",
-      answer: "Absolutely. We often recommend small businesses start with a budget of $500/month in Google Ads or a basic Local SEO map setup. You can scale up the investments once search results prove positive ROI."
+      answer: "Absolutely. We often recommend small businesses start with a budget of $300/month in Google Ads or a basic Local SEO map setup. You can scale up the investments once search results prove positive ROI."
     }
   ];
 
@@ -85,7 +85,7 @@ export default function PricingPage() {
               <div>
                 <span className="text-sm text-gray-400 font-bold uppercase tracking-wider block">Typical Investment</span>
                 <span className="text-lg font-bold text-brand-blue block mt-1">
-                  $500 - $5,000/mo ad spend
+                  $300 - $2,000/mo ad spend
                 </span>
                 <span className="text-sm text-gray-500 italic block mt-0.5">
                   + management fee (typically 15-25% of spend)
@@ -121,7 +121,7 @@ export default function PricingPage() {
               <div>
                 <span className="text-sm text-gray-400 font-bold uppercase tracking-wider block">Typical Investment</span>
                 <span className="text-lg font-bold text-brand-blue block mt-1">
-                  $500 - $2,000/mo retainer
+                  $400 - $2,000/mo retainer
                 </span>
                 <span className="text-sm text-gray-500 italic block mt-0.5">
                   (varies by local market competition)
