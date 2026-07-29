@@ -104,9 +104,9 @@ export default function ServicesPage() {
                   Who It's Best For:
                 </h4>
                 <ul className="space-y-2.5 text-sm text-gray-600">
-                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" aria-hidden="true" /> Businesses needing leads today (can't wait months)</li>
-                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" aria-hidden="true" /> High-margin service/product categories</li>
-                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" aria-hidden="true" /> Companies with a dedicated monthly marketing spend ($500+)</li>
+                  <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0 mt-0.5" aria-hidden="true" /> Businesses needing leads today (can't wait months)</li>
+                  <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0 mt-0.5" aria-hidden="true" /> High-margin service/product categories</li>
+                  <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0 mt-0.5" aria-hidden="true" /> Companies with a dedicated monthly marketing spend ($500+)</li>
                 </ul>
               </div>
 
@@ -217,9 +217,9 @@ export default function ServicesPage() {
                   Who It's Best For:
                 </h4>
                 <ul className="space-y-2.5 text-sm text-gray-600">
-                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" aria-hidden="true" /> Home service businesses (plumbers, HVAC, electricians, salons)</li>
-                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" aria-hidden="true" /> Physical retail, clinics, or restaurants serving a local area</li>
-                  <li className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2" aria-hidden="true" /> Businesses aiming to reduce long-term dependencies on paid ads</li>
+                  <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0 mt-0.5" aria-hidden="true" /> Home service businesses (plumbers, HVAC, electricians, salons)</li>
+                  <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0 mt-0.5" aria-hidden="true" /> Physical retail, clinics, or restaurants serving a local area</li>
+                  <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-brand-green mr-2 flex-shrink-0 mt-0.5" aria-hidden="true" /> Businesses aiming to reduce long-term dependencies on paid ads</li>
                 </ul>
               </div>
 
