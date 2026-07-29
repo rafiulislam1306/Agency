@@ -112,7 +112,7 @@ export default function HeroCaseStudySlider() {
             <div className="flex justify-between items-end">
               <div className="pr-2 w-full">
                 <span className="text-xs text-blue-200 block mb-1">Client Feedback</span>
-                <div className="h-[76px] sm:h-[68px] lg:h-[72px] flex items-center overflow-hidden">
+                <div className="lg:h-[72px] flex items-center lg:overflow-hidden">
                   <span className="text-sm font-bold text-white leading-relaxed block italic">
                     &ldquo;{currentStudy.quote}&rdquo;
                   </span>
