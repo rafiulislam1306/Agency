@@ -10,6 +10,11 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
+  // Hide Navbar on template pages to ensure distraction-free CRO
+  if (pathname?.startsWith("/templates")) {
+    return null;
+  }
+
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [

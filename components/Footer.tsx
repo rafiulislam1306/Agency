@@ -2,10 +2,17 @@
 
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Mail, Phone, Rocket, Linkedin, Twitter, ExternalLink } from "lucide-react";
 
 export default function Footer() {
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
+
+  // Hide Footer on template pages to ensure distraction-free CRO
+  if (pathname?.startsWith("/templates")) {
+    return null;
+  }
 
   return (
     <footer className="bg-brand-blue text-white pt-16 pb-8 border-t border-blue-950">
