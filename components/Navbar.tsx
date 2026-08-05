@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Rocket } from "lucide-react";
+import Image from "next/image";
 import CTAButton from "./CTAButton";
 
 export default function Navbar() {
@@ -38,8 +38,14 @@ export default function Navbar() {
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="flex items-center space-x-2.5 group">
-                <div className="bg-gradient-to-br from-brand-blue to-blue-800 p-2 rounded-xl text-white shadow-xs group-hover:shadow-md transition-all duration-300 group-hover:scale-105">
-                  <Rocket className="w-5 h-5 transform transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                <div className="relative w-9 h-9 transform transition-transform duration-300 group-hover:scale-105">
+                  <Image
+                    src="/logo.svg"
+                    alt="LeadGrow Logo"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
                 </div>
                 <span className="font-display font-black text-xl tracking-tight text-brand-blue group-hover:text-brand-blue-hover transition-colors">
                   LeadGrow<span className="text-brand-green">.</span>

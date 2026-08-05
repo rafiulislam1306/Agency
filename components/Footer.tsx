@@ -3,7 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Mail, Phone, Rocket, Linkedin, Twitter, ExternalLink } from "lucide-react";
+import { Mail, Phone, Linkedin, Twitter, ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -22,8 +23,14 @@ export default function Footer() {
           {/* Column 1: Brand & Intro */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2 group">
-              <div className="bg-white p-2 rounded-xl text-brand-blue group-hover:bg-brand-light transition-colors">
-                <Rocket className="w-5 h-5" aria-hidden="true" />
+              <div className="bg-white p-1.5 rounded-xl transition-colors w-9 h-9 relative flex items-center justify-center">
+                <Image
+                  src="/logo.svg"
+                  alt="LeadGrow Logo"
+                  width={24}
+                  height={24}
+                  className="object-contain"
+                />
               </div>
               <span className="font-extrabold text-xl tracking-tight text-white">
                 LeadGrow<span className="text-brand-green">.</span>
