@@ -1,182 +1,272 @@
 import React from "react";
 import Link from "next/link";
-import {
-  TrendingUp,
-  MapPin,
-  CheckCircle2,
-  PhoneCall,
-  Search,
-  FileText,
-  Clock,
-  ArrowRight,
-  ShieldCheck,
-  ChevronRight,
-  Award,
-  AlertCircle
-} from "lucide-react";
+import Image from "next/image";
+import { CheckCircle2, ArrowRight, ShieldCheck, Star } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import FAQAccordion from "@/components/FAQAccordion";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import HeroCaseStudySlider from "@/components/HeroCaseStudySlider";
-import CalendlyEmbed from "@/components/CalendlyEmbed";
+import BottomLineReportPreview from "@/components/BottomLineReportPreview";
+import DualTrackLeadCapture from "@/components/DualTrackLeadCapture";
+import { caseStudiesData } from "@/lib/caseStudiesData";
+import {
+  painPointsAndAntidotes,
+  digitalBillOfRights,
+} from "@/lib/agencyData";
+
+const CLIENT_LOGOS = [
+  { name: "LoneStar HVAC", sector: "Home Services · TX" },
+  { name: "Northbridge Advisory", sector: "B2B Consulting · SG" },
+  { name: "Kestrel Apparel", sector: "E-Commerce · UK" },
+  { name: "Apex Roofworks", sector: "Commercial Trades · FL" },
+  { name: "Vanguard Dental", sector: "Multi-Site Clinics · AZ" },
+  { name: "Harborline SaaS", sector: "B2B Software · US" },
+  { name: "Meridian Electrical", sector: "Service Trades · CO" },
+];
 
 export default function Home() {
-  const problemPoints = [
-    {
-      icon: <AlertCircle className="w-8 h-8 text-brand-orange" aria-hidden="true" />,
-      title: "Not getting qualified leads",
-      description: "Your website exists, but it sits idle and does not drive actual customers or phone calls to your business."
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8 text-brand-orange" aria-hidden="true" />,
-      title: "Unsure if Ads or SEO actually work",
-      description: "Uncertainty about Return on Investment (ROI) keeps you from scaling. You don't want to waste budget on empty clicks."
-    },
-    {
-      icon: <Clock className="w-8 h-8 text-brand-orange" aria-hidden="true" />,
-      title: "Juggling too many things already",
-      description: "You don't have 20+ hours a month to learn complex digital marketing algorithms. You need to focus on running your business."
-    }
-  ];
-
-  const steps = [
-    {
-      number: "01",
-      icon: <Search className="w-6 h-6 text-brand-blue" aria-hidden="true" />,
-      title: "Free Audit + Call",
-      description: "We audit your current Google Ads account or Local SEO search footprint and walk you through 3 specific growth opportunities in a free 30-min call."
-    },
-    {
-      number: "02",
-      icon: <FileText className="w-6 h-6 text-brand-blue" aria-hidden="true" />,
-      title: "Custom 90-Day Strategy",
-      description: "If it's a mutual fit, we design a custom 90-day plan showing exactly what optimizations we'll make and the expected result milestones."
-    },
-    {
-      number: "03",
-      icon: <TrendingUp className="w-6 h-6 text-brand-blue" aria-hidden="true" />,
-      title: "Results & Scale",
-      description: "We execute the campaigns and optimization. You receive simplified, jargon-free monthly reports mapping traffic directly to revenue."
-    }
-  ];
-
-  const caseStudies = [
-    {
-      slug: "ecommerce-store",
-      businessType: "E-commerce Store (UK)",
-      metric: "+247% sales growth",
-      timeframe: "First 90 days",
-      serviceUsed: "Google Ads",
-      quote: "We went from 2-3 orders/week to 8-10. Wish we'd done this sooner."
-    },
-    {
-      slug: "local-service",
-      businessType: "HVAC Contractor (USA)",
-      metric: "+180% phone calls",
-      timeframe: "6 months",
-      serviceUsed: "Local SEO",
-      quote: "Customers started calling us saying they found us on Google Maps. Game-changer."
-    },
-    {
-      slug: "saas-consulting",
-      businessType: "SaaS/Consulting (Singapore)",
-      metric: "$45K revenue generated",
-      timeframe: "From cold start",
-      serviceUsed: "Google Ads + Local SEO",
-      quote: "They treated our account like their own. Results speak louder than promises."
-    }
-  ];
+  const studies = Object.values(caseStudiesData);
 
   const faqItems = [
     {
-      question: "How long until I see results?",
-      answer: "Google Ads campaigns can drive qualified leads in a matter of days or weeks as ads go live immediately. Local SEO is a long-term asset and typically requires 2 to 3 months of optimization before showing ranking jumps. We outline custom timelines during your free audit."
+      question: "Do I keep full ownership of my Google Ads account, GBP, and domain?",
+      answer:
+        "Yes—100% from day one under our Digital Bill of Rights. Your business email is Primary Owner on your Google Business Profile, Google Analytics, and domain, and your card pays Google directly. We connect strictly via delegated Manager access so you are never held hostage.",
     },
     {
-      question: "What if I don't have a Google Business Profile yet?",
-      answer: "No problem at all. We will set up, verify, and fully optimize your Google Business Profile (formerly Google My Business) from scratch as a core component of our Local SEO services."
+      question: "Why do you charge a flat monthly fee instead of a percentage of ad spend?",
+      answer:
+        "Percentage-of-spend pricing creates a conflict of interest: the agency makes more money simply by telling you to spend more, even if returns drop. A flat retainer aligns us around your Cost Per Acquisition and net profit.",
     },
     {
-      question: "How is this different from doing it myself?",
-      answer: "While you can manage search campaigns yourself, staying current with search algorithms, bid strategies, and tracking setups takes 20+ hours a month. We handle all technical execution, copywriting, and bidding configurations, optimizing campaigns daily for maximum return on spend."
+      question: "How do you stop wasted clicks, bots, and out-of-state inquiries?",
+      answer:
+        "Before scaling a single campaign, we seal leaks: Search Partners and Display Network are turned off on Search campaigns, location targeting is locked strictly to 'Presence: People IN your target area', keywords launch on Exact and Phrase match, and we prune search terms every Monday alongside landing-page bot filtering.",
     },
     {
-      question: "What's your typical pricing?",
-      answer: "Our fees are customized based on your business size, service area, and growth goals. We do not require long-term lock-in contracts, preferring to earn your business month-to-month. We provide transparent ballpark pricing during your free call."
+      question: "How is your Local SEO different from agencies that just publish blog posts?",
+      answer:
+        "Local service buyers click the Google Maps 3-Pack—they rarely read generic 1,500-word blog posts. We focus on Relevance, Distance, and Prominence: primary and secondary GBP category precision, authentic geotagged fieldwork photos, automated SMS review velocity, citation cleanup, and manual suspension defense.",
     },
     {
-      question: "Do you work with my specific industry?",
-      answer: "We partner with any business that has customers searching on Google Search or Google Maps. This includes local home services, e-commerce stores, retail outlets, medical clinics, and B2B consulting firms."
-    }
+      question: "Are we locked into a 12-month contract?",
+      answer:
+        "Never. Every partnership is month-to-month with a simple 30-day notice and a clear 90-day profitability benchmark. We also publish a weekly Change Log showing every manual optimization performed in your accounts.",
+    },
+    {
+      question: "Why do you audit conversion tracking (GA4, Tag Gateway/sGTM, Consent Mode) before scaling ads?",
+      answer:
+        "In 2026, standard browser pixels lose 34.5% to 70.5% of real conversions to ad blockers, Safari 7-day caps, and consent gates—or double-count form fills. Fixing tracking in Phase 0 reconciles your real bank/CRM receipts against Google Ads (within 5%–10% variance) so Smart Bidding learns from verified revenue instead of phantom clicks.",
+    },
   ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
-      <section className="relative bg-gradient-to-br from-brand-blue via-blue-950 to-slate-900 text-white pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-16 lg:pb-12 xl:pt-24 xl:pb-16 overflow-hidden">
-        {/* Decorative Grid background pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" aria-hidden="true"></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            <div className="lg:col-span-7 space-y-4 lg:space-y-5">
-              <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-3 py-1 text-sm font-semibold text-brand-green border border-white/10">
-                <ShieldCheck className="w-4 h-4" aria-hidden="true" />
-                <span>Risk-Free 30-Min Strategy Session</span>
-              </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-serif font-black tracking-tight text-white leading-[1.1]">
-                Turn Google Searchers Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-teal-400">Paying Customers</span>
-              </h1>
-              <p className="text-lg md:text-xl text-blue-100 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                We help small & medium businesses acquire qualified leads and increase revenue through expert Google Ads management and Local SEO. Claim your free audit to see what's possible.
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      {/* 1. Hero Section — Minto Pyramid [Outcome] for [ICP] + Dual CTA + Third-Party Review Bar */}
+      <section className="relative bg-gradient-to-br from-brand-blue via-blue-950 to-slate-950 text-white py-16 md:py-22 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
+          aria-hidden="true"
+        />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+              <p className="text-xs sm:text-sm font-medium text-brand-green">
+                Revenue-First Search Agency · Flat Retainers · 100% Client Asset Ownership
               </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.35rem] font-serif font-extrabold tracking-tight text-white leading-[1.1] text-balance">
+                Predictable Qualified Pipeline for{" "}
+                <span className="text-brand-green">
+                  B2B &amp; High-Ticket Service Teams
+                </span>
+                .
+              </h1>
+
+              <p className="text-base sm:text-lg text-blue-100 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                We seal 35%–70% conversion signal loss in Phase 0, then scale leak-proof Google Ads, 1:1 CRO landing pages, and Google Maps 3-Pack authority—tied directly to closed CRM revenue with zero ad-spend markups.
+              </p>
+
+              {/* Dual-Track CTAs for High-Intent vs. Mid-Intent Buyers */}
+              <div className="flex flex-col sm:flex-row gap-3.5 justify-center lg:justify-start pt-1">
                 <CTAButton href="#book-audit" variant="primary" size="lg">
-                  Schedule Free Audit
+                  Book a Strategy Call
                 </CTAButton>
-                <CTAButton href="/case-studies" variant="white" size="lg">
-                  See Case Studies
+                <CTAButton href="#free-audit-form" variant="white" size="lg">
+                  Get Your Free Website Audit
                 </CTAButton>
               </div>
 
-              {/* Quick trust micro-copy */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-sm text-blue-200 font-semibold pt-2 lg:pt-3">
-                <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" aria-hidden="true" /> 100% Free Strategy Session</span>
-                <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" aria-hidden="true" /> No Credit Card Required</span>
-                <span className="flex items-center"><CheckCircle2 className="w-4 h-4 text-brand-green mr-1.5" aria-hidden="true" /> 3 Specific Growth Ideas</span>
+              {/* Proof Element #4: Third-Party Review Scores & Partner Verification */}
+              <div className="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 text-xs sm:text-sm text-blue-100">
+                <a
+                  href="#client-proof"
+                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
+                >
+                  <Star
+                    className="w-3.5 h-3.5 fill-amber-300 text-amber-300 shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span className="font-bold text-white tabular-nums">4.9</span>
+                  <span>Clutch (34)</span>
+                </a>
+                <a
+                  href="#client-proof"
+                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
+                >
+                  <Star
+                    className="w-3.5 h-3.5 fill-amber-300 text-amber-300 shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span className="font-bold text-white tabular-nums">4.8</span>
+                  <span>G2 (29)</span>
+                </a>
+                <a
+                  href="#client-proof"
+                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
+                >
+                  <Star
+                    className="w-3.5 h-3.5 fill-amber-300 text-amber-300 shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span className="font-bold text-white tabular-nums">4.9</span>
+                  <span>Google (48)</span>
+                </a>
+                <span className="inline-flex items-center gap-1.5 text-brand-green font-medium whitespace-nowrap">
+                  <ShieldCheck className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                  Google Partner · sGTM Certified
+                </span>
               </div>
             </div>
 
-            {/* Interactive Sliding Case Study Carousel */}
             <HeroCaseStudySlider />
+          </div>
+
+          {/* Full-width Fiduciary Guarantee Bar below Hero */}
+          <div className="mt-12 pt-8 border-t border-white/15 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-blue-100">
+            {[
+              "100% Client Asset Ownership",
+              "Flat Retainers (0% of Ad Spend)",
+              "Phase 0 sGTM & CRM VBB Tracking",
+              "Money-In vs. Money-Out Reporting",
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-2.5">
+                <CheckCircle2
+                  className="w-4 h-4 text-brand-green shrink-0"
+                  aria-hidden="true"
+                />
+                <span className="font-medium">{item}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 2. Problem Statement Section */}
-      <section className="py-12 md:py-20 bg-gray-50 border-y border-gray-100">
+      {/* Proof Element #1: Contextualized ICP Client Logo Strip Immediately Below Hero */}
+      <section className="bg-white border-b border-slate-200 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
+          <p className="text-xs font-semibold text-slate-500 text-center">
+            Trusted by B2B SaaS, high-ticket home-service, healthcare, and e-commerce revenue teams
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 items-center">
+            {CLIENT_LOGOS.map((client) => (
+              <div
+                key={client.name}
+                className="px-3 py-2.5 rounded-lg border border-slate-100 bg-slate-50/70 text-center"
+              >
+                <span className="block text-sm font-display font-bold text-slate-800 tracking-tight">
+                  {client.name}
+                </span>
+                <span className="block text-[11px] text-slate-500 mt-0.5">
+                  {client.sector}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 2. The 5 Industry Failures vs. Our Antidotes */}
+      <section className="py-16 md:py-24 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
-              Most Small Businesses Leave Money on the Table
+          <div className="max-w-3xl space-y-4 mb-12">
+            <p className="text-xs font-semibold text-brand-orange">
+              Why Most Businesses Lose Trust in Agencies
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 tracking-tight leading-tight text-balance">
+              Five Broken Agency Practices—and the Revenue Infrastructure Built to Replace Them
             </h2>
-            <p className="text-lg text-gray-600 font-normal">
-              Getting customers from Google shouldn't feel like gambling. Here are the core challenges we solve:
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+              Owners don&apos;t hate Google Ads or SEO—they hate paying for unqualifiable junk leads, opaque percentage markups, and losing control of their own accounts.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {problemPoints.map((point, index) => (
-              <div key={index} className="bg-white p-8 rounded-2xl border border-gray-100 shadow-xs flex flex-col justify-between h-full">
-                <div className="space-y-4">
-                  <div className="bg-brand-orange/10 p-3 rounded-xl w-fit">
-                    {point.icon}
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-display font-bold text-brand-blue">{point.title}</h3>
-                  <p className="text-gray-600 leading-relaxed text-base">{point.description}</p>
+          <div className="divide-y divide-slate-200 border border-slate-200 rounded-2xl bg-white overflow-hidden">
+            {painPointsAndAntidotes.map((item) => (
+              <div
+                key={item.id}
+                className="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start"
+              >
+                <div className="lg:col-span-5 space-y-2">
+                  <p className="text-xs font-semibold text-slate-400 tabular-nums">
+                    {item.number}. Industry Failure
+                  </p>
+                  <h3 className="text-xl font-display font-bold text-slate-900">
+                    {item.painTitle}
+                  </h3>
+                  <p className="text-sm text-slate-500 italic">
+                    {item.ownerQuote}
+                  </p>
+                  <p className="text-sm text-slate-600 pt-1">
+                    <span className="font-semibold text-slate-700">
+                      Traditional cause:
+                    </span>{" "}
+                    {item.traditionalFailure}
+                  </p>
                 </div>
-                <div className="mt-6 text-brand-blue text-xs font-bold uppercase tracking-wider border-t border-gray-50 pt-4">
-                  We solve this.
+
+                <div className="lg:col-span-7 bg-slate-50 rounded-xl border border-slate-200 p-5 sm:p-6 space-y-3">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h4 className="text-lg font-display font-bold text-brand-blue">
+                      Our Antidote: {item.antidoteName}
+                    </h4>
+                  </div>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    {item.antidoteSummary}
+                  </p>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
+                    {item.technicalProof.map((point) => (
+                      <li
+                        key={point}
+                        className="flex items-start gap-2 text-xs sm:text-sm text-slate-700"
+                      >
+                        <CheckCircle2
+                          className="w-4 h-4 text-brand-green shrink-0 mt-0.5"
+                          aria-hidden="true"
+                        />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             ))}
@@ -184,83 +274,150 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Services Overview (Equal Emphasis) */}
-      <section className="py-12 md:py-20 bg-white">
+      {/* 3. Two Paths to Dominate Search — With Proof Element #2 (Outcome-Led Case Snippets Beside Claims) */}
+      <section className="py-16 md:py-24 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
-              Two Paths to Dominate <br className="hidden md:inline" /> Google Search
+          <div className="max-w-3xl space-y-3 mb-12">
+            <p className="text-xs font-semibold text-brand-blue">
+              Revenue Architecture
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 tracking-tight text-balance">
+              Architects of Pipeline—Not Just Media Buyers
             </h2>
-            <p className="text-lg text-gray-600 font-normal">
-              We leverage both immediate paid search leads and long-term organic local presence.
+            <p className="text-base sm:text-lg text-slate-600">
+              Combine leak-sealed Google Ads, 1:1 CRO landing pages, and CRM Value-Based Bidding with compounding Google Maps 3-Pack authority.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Google Ads */}
-            <div className="bg-gradient-to-br from-slate-50 to-white p-6 sm:p-10 rounded-3xl border border-gray-100 shadow-xs relative flex flex-col justify-between">
-              <div>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
-                  <h3 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue">Google Ads</h3>
-                  <span className="text-xs font-bold text-brand-blue bg-blue-100/60 px-3 py-1 rounded-full uppercase tracking-wider w-fit">Immediate Leads</span>
-                </div>
-                <p className="text-gray-600 leading-relaxed text-base mb-6">
-                  Get in front of buyer-intent searchers the moment they search for your products or services.
+            <div className="p-7 sm:p-9 rounded-2xl border border-slate-200 bg-white flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <p className="text-xs font-semibold text-brand-orange">
+                  Immediate Intent · Google Ads, PMax &amp; CRO
                 </p>
-                <ul className="space-y-3.5 mb-8">
+                <h3 className="text-2xl font-display font-bold text-slate-900">
+                  Zero-Waste Google Ads + CRM Bidding
+                </h3>
+                <p className="text-base text-slate-600 leading-relaxed">
+                  We control the click AND the landing page—training Google&apos;s AI on your closed CRM pipeline rather than flooding sales with cheap MQLs.
+                </p>
+                <ul className="space-y-3 pt-1">
                   {[
-                    "Reach customers actively searching for what you offer",
-                    "Only pay when people click your ad (PPC)",
-                    "A/B testing, bid adjustment, and landing page audit included",
-                    "Typical result: 3-5x ROI in 90 days"
-                  ].map((bullet, idx) => (
-                    <li key={idx} className="flex items-start text-base text-gray-600">
-                      <CheckCircle2 className="w-5 h-5 text-brand-green mr-3 flex-shrink-0 mt-0.5" aria-hidden="true" />
-                      <span>{bullet}</span>
+                    "60/20/20 intent allocation with Exact/Phrase STAGs & cross-pollination negatives",
+                    "Phase 0 Tag Gateway / sGTM + CRM Value-Based Bidding mapped to SQLs",
+                    "Isolated PMax Asset Groups with competitor URL segments & spam filters",
+                    "Dedicated 1:1 message-matched landing pages that double conversion rates",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2.5 text-sm text-slate-700"
+                    >
+                      <CheckCircle2
+                        className="w-4 h-4 text-brand-green shrink-0 mt-0.5"
+                        aria-hidden="true"
+                      />
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
+
+                {/* Proof Element #2: Outcome-Led Case Snippet Adjacent to Service Claim */}
+                <div className="rounded-xl bg-slate-50 border border-slate-200 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-semibold text-emerald-700 tabular-nums">
+                      Verified Client Proof · -57% junk leads · 2x pipeline in 90 days
+                    </p>
+                    <p className="text-xs text-slate-600 mt-0.5">
+                      B2B SaaS &amp; Advisory Practice switched from Max Conversions to HubSpot Target ROAS.
+                    </p>
+                  </div>
+                  <Link
+                    href="/case-studies/saas-consulting"
+                    className="text-xs font-semibold text-brand-blue hover:text-brand-orange whitespace-nowrap shrink-0 inline-flex items-center gap-1"
+                  >
+                    Read breakdown
+                    <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                  </Link>
+                </div>
               </div>
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-6 border-t border-gray-100">
-                <Link href="/services#google-ads" className="inline-flex items-center justify-center sm:justify-start text-base font-bold text-brand-blue hover:text-brand-orange transition-colors">
-                  Learn More About Google Ads <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
+
+              <div className="pt-5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+                <Link
+                  href="/services#google-ads"
+                  className="inline-flex items-center text-sm font-semibold text-brand-blue hover:text-brand-orange transition-colors"
+                >
+                  Inspect Ads &amp; CRO Blueprint
+                  <ArrowRight className="w-4 h-4 ml-1.5" aria-hidden="true" />
                 </Link>
-                <CTAButton href="#book-audit" variant="outline" size="sm" className="w-full sm:w-auto">
-                  Get Ads Audit
+                <CTAButton href="/pricing" variant="outline" size="sm">
+                  View Flat Pricing &amp; ROI
                 </CTAButton>
               </div>
             </div>
 
             {/* Local SEO */}
-            <div className="bg-gradient-to-br from-slate-50 to-white p-6 sm:p-10 rounded-3xl border border-gray-100 shadow-xs relative flex flex-col justify-between">
-              <div>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
-                  <h3 className="text-2xl md:text-3xl font-display font-extrabold text-brand-blue">Local SEO & Maps</h3>
-                  <span className="text-xs font-bold text-brand-green bg-green-100/60 px-3 py-1 rounded-full uppercase tracking-wider w-fit">Sustained Authority</span>
-                </div>
-                <p className="text-gray-600 leading-relaxed text-base mb-6">
-                  Secure premium positions in local map packs and organic searches for searchers in your geographic area.
+            <div className="p-7 sm:p-9 rounded-2xl border border-slate-200 bg-white flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <p className="text-xs font-semibold text-brand-green-hover">
+                  Compounding Authority · 42% Local Click Share
                 </p>
-                <ul className="space-y-3.5 mb-8">
+                <h3 className="text-2xl font-display font-bold text-slate-900">
+                  GBP-First Map Pack &amp; Ask Maps Dominance
+                </h3>
+                <p className="text-base text-slate-600 leading-relaxed">
+                  Top-3 Map Pack listings win +126% more traffic and +93% more calls than #4–#10. We engineer GBP signals, Proof-of-Work Service-Area Pages, and AI entity coherence.
+                </p>
+                <ul className="space-y-3 pt-1">
                   {[
-                    "Rank for '[Your Service] near me' and localized terms",
-                    "Google Business Profile setup, optimization, and monthly maintenance",
-                    "Review management workflow and local citations building",
-                    "Typical result: 2-3x local search impressions in 180 days"
-                  ].map((bullet, idx) => (
-                    <li key={idx} className="flex items-start text-base text-gray-600">
-                      <CheckCircle2 className="w-5 h-5 text-brand-green mr-3 flex-shrink-0 mt-0.5" aria-hidden="true" />
-                      <span>{bullet}</span>
+                    "Primary ('IS a' test) & secondary GBP category precision (~32% weight)",
+                    "Proof-of-Work Service-Area Pages + modern areaServed JSON-LD schema",
+                    "Compliant zero-gating SMS review velocity (4.5+ star floor, <90-day recency)",
+                    "Cross-Surface Entity Coherence for Google Ask Maps & AI Overviews",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2.5 text-sm text-slate-700"
+                    >
+                      <CheckCircle2
+                        className="w-4 h-4 text-brand-green shrink-0 mt-0.5"
+                        aria-hidden="true"
+                      />
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
+
+                {/* Proof Element #2: Outcome-Led Case Snippet Adjacent to Service Claim */}
+                <div className="rounded-xl bg-slate-50 border border-slate-200 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-semibold text-emerald-700 tabular-nums">
+                      Verified Client Proof · +180% calls · +$23,800/mo in 6 months
+                    </p>
+                    <p className="text-xs text-slate-600 mt-0.5">
+                      Houston HVAC contractor climbed from #7 avg to #1–#2 across 25-pin service grid.
+                    </p>
+                  </div>
+                  <Link
+                    href="/case-studies/local-service"
+                    className="text-xs font-semibold text-brand-blue hover:text-brand-orange whitespace-nowrap shrink-0 inline-flex items-center gap-1"
+                  >
+                    Read breakdown
+                    <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                  </Link>
+                </div>
               </div>
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-6 border-t border-gray-100">
-                <Link href="/services#local-seo" className="inline-flex items-center justify-center sm:justify-start text-base font-bold text-brand-blue hover:text-brand-orange transition-colors">
-                  Learn More About Local SEO <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
+
+              <div className="pt-5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+                <Link
+                  href="/services#map-pack-calculator"
+                  className="inline-flex items-center text-sm font-semibold text-brand-blue hover:text-brand-orange transition-colors"
+                >
+                  Calculate Missed Map Revenue
+                  <ArrowRight className="w-4 h-4 ml-1.5" aria-hidden="true" />
                 </Link>
-                <CTAButton href="#book-audit" variant="outline" size="sm" className="w-full sm:w-auto">
-                  Get SEO Audit
+                <CTAButton href="/templates/hvac" variant="outline" size="sm">
+                  Inspect 1:1 CRO Landing Page
                 </CTAButton>
               </div>
             </div>
@@ -268,151 +425,155 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. How It Works Section */}
-      <section className="py-12 md:py-20 bg-gray-50 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
-              A Direct, Transparent Process
+      {/* 4. Bottom-Line Reporting & Digital Bill of Rights */}
+      <section className="py-16 md:py-24 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+          <div className="max-w-3xl space-y-3">
+            <p className="text-xs font-semibold text-brand-blue">
+              Radical Transparency
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 tracking-tight text-balance">
+              No 20-Page Vanity Decks. See Every Dollar Out, Every Dollar In, and Every Weekly Edit.
             </h2>
-            <p className="text-lg text-gray-600 font-normal">
-              We skip the complex acronyms and long setup periods. Here is our simple three-step approach:
+            <p className="text-base sm:text-lg text-slate-600">
+              Preview the exact 1-page monthly financial summary and weekly manual Change Log every client receives.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
-            {/* Connector Line for Desktop */}
-            <div className="hidden lg:block absolute top-1/2 left-4 right-4 h-0.5 bg-gray-200 -translate-y-12 z-0"></div>
+          <BottomLineReportPreview />
 
-            {steps.map((step, index) => (
-              <div key={index} className="bg-white p-8 rounded-2xl border border-gray-100 shadow-xs relative z-10 flex flex-col justify-between">
-                <div>
-                  <div className="flex justify-between items-center mb-6">
-                    <span className="text-4xl font-black text-brand-blue/10">{step.number}</span>
-                    <div className="bg-blue-50 p-2.5 rounded-lg">
-                      {step.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-display font-bold text-brand-blue mb-3">{step.title}</h3>
-                  <p className="text-gray-600 text-base leading-relaxed">{step.description}</p>
+          {/* Digital Bill of Rights */}
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 space-y-6">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+              <div className="space-y-1">
+                <div className="inline-flex items-center gap-2 text-xs font-semibold text-brand-blue">
+                  <ShieldCheck className="w-4 h-4 text-brand-green" aria-hidden="true" />
+                  Contractual Guarantee
                 </div>
-                {index === 0 && (
-                  <div className="mt-6 pt-4 border-t border-gray-50">
-                    <Link href="#book-audit" className="inline-flex items-center text-sm font-bold text-brand-orange hover:underline uppercase tracking-wider">
-                      Book Free Audit Now <ArrowRight className="w-3.5 h-3.5 ml-1" aria-hidden="true" />
-                    </Link>
-                  </div>
-                )}
+                <h3 className="text-2xl font-display font-bold text-slate-900">
+                  Our Digital Bill of Rights: You Never Lose Control of Your Business
+                </h3>
               </div>
-            ))}
-          </div>
+              <Link
+                href="/about"
+                className="text-sm font-semibold text-brand-blue hover:text-brand-orange whitespace-nowrap"
+              >
+                Meet the leadership team &amp; terms →
+              </Link>
+            </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-y-3 gap-x-6 lg:gap-x-8 mt-12 text-sm md:text-base text-gray-600 font-bold border-t border-gray-100 pt-8">
-            <span className="flex items-center">
-              <CheckCircle2 className="w-4.5 h-4.5 text-brand-green mr-2 flex-shrink-0" aria-hidden="true" />
-              Flexible commitments
-            </span>
-            <span className="hidden sm:inline text-gray-300">|</span>
-            <span className="flex items-center">
-              <CheckCircle2 className="w-4.5 h-4.5 text-brand-green mr-2 flex-shrink-0" aria-hidden="true" />
-              Results-based pricing
-            </span>
-            <span className="hidden sm:inline text-gray-300">|</span>
-            <span className="flex items-center">
-              <CheckCircle2 className="w-4.5 h-4.5 text-brand-green mr-2 flex-shrink-0" aria-hidden="true" />
-              Monthly billing
-            </span>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+              {digitalBillOfRights.map((right) => (
+                <div
+                  key={right.asset}
+                  className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2"
+                >
+                  <h4 className="text-sm font-display font-bold text-slate-900">
+                    {right.asset}
+                  </h4>
+                  <p className="text-xs font-semibold text-emerald-700">
+                    Owner: {right.owner}
+                  </p>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    {right.guarantee}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 5. Social Proof Section (Case Studies Preview) */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
-              Real Results From Businesses <br className="hidden md:inline" /> Like Yours
-            </h2>
-            <p className="text-lg text-gray-600 font-normal max-w-2xl mx-auto">
-              Review concrete case studies showcasing search performance across industries.
-            </p>
-            <div className="pt-2">
-              <CTAButton href="/case-studies" variant="outline">
-                See All Case Studies
-              </CTAButton>
+      {/* 5. Un-Gated Case Studies + Proof Element #3 (Named Photo-Backed Problem-Owner Proof) */}
+      <section
+        id="client-proof"
+        className="py-16 md:py-24 bg-white border-b border-slate-200 scroll-mt-20"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="max-w-2xl space-y-3">
+              <p className="text-xs font-semibold text-brand-green-hover">
+                Un-Gated Buying-Committee Proof
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 tracking-tight text-balance">
+                What Happens When Leaks Are Sealed and Attribution Is Closed
+              </h2>
             </div>
+            <CTAButton href="/case-studies" variant="outline">
+              View All Case Studies
+            </CTAButton>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {caseStudies.map((study, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {studies.map((study) => (
               <CaseStudyCard
-                key={index}
+                key={study.slug}
                 slug={study.slug}
                 businessType={study.businessType}
+                region={study.region}
                 metric={study.metric}
                 timeframe={study.timeframe}
-                serviceUsed={study.serviceUsed}
+                serviceUsed={study.shortTag}
                 quote={study.quote}
+                quoteAuthor={study.quoteAuthor}
               />
             ))}
           </div>
+
+          {/* Photo-Backed Named Executive Testimonial Banner */}
+          <div className="rounded-2xl bg-slate-50 border border-slate-200 p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div className="lg:col-span-8 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <div className="relative w-16 h-16 rounded-full overflow-hidden border border-slate-200 shrink-0">
+                <Image
+                  src="/images/client-vp-portrait.jpg"
+                  alt="David Miller, VP of Operations at LoneStar Cooling & Mechanical"
+                  fill
+                  sizes="64px"
+                  className="object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <p className="text-base text-slate-800 leading-relaxed italic">
+                  &ldquo;After two agencies burned $18,000 on generic clicks and withheld our ad account access, LeadGrow put everything under our own billing, rebuilt our GBP Map Pack footprint, and delivered +180% verified service calls in six months.&rdquo;
+                </p>
+                <p className="text-xs font-semibold text-slate-600">
+                  David Miller · VP of Operations, LoneStar Cooling &amp; Mechanical (Houston, TX) · Verified Clutch Review (5.0★)
+                </p>
+              </div>
+            </div>
+            <div className="lg:col-span-4 flex lg:justify-end">
+              <CTAButton href="#free-audit-form" variant="primary" size="md">
+                Get Your Free Website Audit
+              </CTAButton>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 6. FAQ Section */}
-      <section className="py-12 md:py-20 bg-gray-50 border-t border-gray-100">
+      {/* 6. Skeptical Buyer FAQ */}
+      <section className="py-16 md:py-24 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-brand-blue tracking-tight leading-tight">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-gray-600 font-normal">
-              Everything you need to know about working with us.
+          <div className="text-center max-w-2xl mx-auto space-y-3 mb-12">
+            <p className="text-xs font-semibold text-brand-blue">
+              Straight Answers
             </p>
+            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 tracking-tight">
+              Questions Business Owners Ask Before Signing Anything
+            </h2>
           </div>
 
           <FAQAccordion items={faqItems} />
         </div>
       </section>
 
-      {/* 7. Final Interactive Booking Section */}
-      <section id="book-audit" className="py-16 md:py-24 bg-gradient-to-br from-brand-blue to-blue-950 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.12)_0,transparent_60%)]"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* Left Column: Copy & Checklist */}
-            <div className="lg:col-span-5 space-y-6 text-center lg:text-left">
-              <h2 className="text-4xl md:text-5xl font-serif font-black tracking-tight leading-tight">
-                Ready to Grow Your Business From Google?
-              </h2>
-              <p className="text-lg text-blue-100 leading-relaxed font-normal">
-                Book a free 30-minute Google Ads + Local SEO audit. We will run competitor budgets and show you exactly where you're losing customers.
-              </p>
-              
-              <ul className="space-y-4 pt-2 text-sm font-semibold max-w-md mx-auto lg:mx-0 text-left">
-                {[
-                  "100% Free Strategy Session (30 Min)",
-                  "Competitive search budget breakdown included",
-                  "Actionable 3-point search growth roadmap",
-                  "Direct consulting (no pitch pressure)"
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start text-blue-100">
-                    <CheckCircle2 className="w-5 h-5 text-brand-green mr-3 flex-shrink-0 mt-0.5" aria-hidden="true" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Right Column: Embedded live Calendly scheduler */}
-            <div className="lg:col-span-7 w-full max-w-2xl mx-auto">
-              <div className="bg-white/5 backdrop-blur-md p-2 rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
-                <CalendlyEmbed />
-              </div>
-            </div>
-
-          </div>
+      {/* 7. Dual-Track Conversion Section (3-Step Breadcrumb Free Audit + Live Strategy Call) */}
+      <section
+        id="book-audit"
+        className="py-16 md:py-24 bg-brand-blue text-white scroll-mt-20"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <DualTrackLeadCapture defaultTrack="audit" />
         </div>
       </section>
     </div>

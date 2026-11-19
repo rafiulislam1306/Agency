@@ -1,87 +1,95 @@
 import React from "react";
-import { BookOpen, Calendar, ArrowRight, Rss } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
+import { blogPlaybooks } from "@/lib/blogData";
+
+export const metadata: Metadata = {
+  title: "Playbooks & Resources | Zero-Waste Ads & Local SEO Guides",
+  description:
+    "Step-by-step checklists for sealing Google Ads budget leaks, ranking in the Google Maps 3-Pack, setting up closed-loop attribution, and protecting digital ownership.",
+};
 
 export default function BlogPage() {
-  const upcomingPosts = [
-    {
-      title: "Google Ads vs. Local SEO: Which is right for your business?",
-      category: "Strategy Guide",
-      summary: "A deep dive comparing initial setup costs, time to visibility, and the lifetime value of paid clicks versus map rankings."
-    },
-    {
-      title: "5 critical mistakes wasting your Google Ads budget",
-      category: "Google Ads",
-      summary: "Most small business owners throw away 40% of their ad spend on default keyword match types and bad landing pages. Learn what to avoid."
-    },
-    {
-      title: "How to dominate local search and maps in your market",
-      category: "Local SEO",
-      summary: "A step-by-step checklist to optimize your Google Business Profile and build citation authority that outranks local competitors."
-    },
-    {
-      title: "The ROI reality check: What's actually possible?",
-      category: "Analytics",
-      summary: "Understanding cost-per-acquisition (CPA) math and setting realistic timeline expectations for your search marketing channels."
-    }
-  ];
-
   return (
-    <div className="bg-white min-h-screen pt-24 pb-12 md:pt-28 md:pb-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header Section */}
-        <div className="text-center space-y-6 mb-16">
-          <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-brand-blue bg-brand-blue/10 px-3 py-1 rounded-md">
-            <Rss className="w-4 h-4 mr-1 text-brand-blue" aria-hidden="true" />
-            Knowledge Base
-          </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-brand-blue tracking-tight leading-tight">
-            Coming Soon: Resources for Growing Your Business from Google
+    <div className="bg-white min-h-screen py-16 md:py-24">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+        {/* Header */}
+        <div className="max-w-3xl space-y-4">
+          <p className="text-xs font-semibold text-brand-blue">
+            SMB Field Playbooks · Actionable Checklists
+          </p>
+          <h1 className="text-4xl sm:text-5xl font-serif font-extrabold text-slate-900 tracking-tight leading-tight text-balance">
+            Practical Guides to Stop Wasting Search Budget
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed font-normal max-w-2xl mx-auto">
-            We are compiling detailed guides, step-by-step optimization checklists, and case study breakdowns to help you acquire customers from Google Ads and maps.
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+            No fluff or theory. Read the exact leak-sealing, Google Business Profile, attribution, and asset-ownership checklists we run for every client.
           </p>
         </div>
 
-        {/* Upcoming content outline grid */}
-        <div className="space-y-6 mb-16">
-          <h2 className="text-xl md:text-2xl font-display font-bold text-brand-blue border-b border-gray-100 pb-3">
-            Topics We Are Researching Right Now:
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {upcomingPosts.map((post, idx) => (
-              <div key={idx} className="border border-gray-100 rounded-2xl p-6 bg-white shadow-xs hover:shadow-sm transition-all">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-brand-green bg-brand-green/10 px-2 py-0.5 rounded">
-                  {post.category}
-                </span>
-                <h3 className="font-display font-bold text-brand-blue text-lg mt-3 leading-snug">
-                  {post.title}
-                </h3>
-                <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+        {/* Playbooks Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {blogPlaybooks.map((post) => (
+            <article
+              key={post.slug}
+              className="flex flex-col justify-between p-7 rounded-2xl border border-slate-200 bg-white hover:border-brand-blue/40 transition-colors"
+            >
+              <div className="space-y-3">
+                <div className="text-xs font-medium text-slate-500">
+                  <span className="text-brand-green-hover font-semibold">
+                    {post.category}
+                  </span>
+                  <span aria-hidden="true"> · </span>
+                  <span>{post.readTime}</span>
+                  <span aria-hidden="true"> · </span>
+                  <span>{post.updatedAt}</span>
+                </div>
+
+                <h2 className="text-xl font-display font-bold text-slate-900 leading-snug">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="hover:text-brand-blue transition-colors"
+                  >
+                    {post.title}
+                  </Link>
+                </h2>
+
+                <p className="text-sm text-slate-600 leading-relaxed">
                   {post.summary}
                 </p>
-                <div className="mt-4 text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center">
-                  Status: In Drafting <ArrowRight className="w-3 h-3 ml-1" aria-hidden="true" />
-                </div>
               </div>
-            ))}
-          </div>
+
+              <div className="mt-6 pt-4 border-t border-slate-100">
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="inline-flex items-center text-sm font-semibold text-brand-blue hover:text-brand-orange transition-colors group"
+                >
+                  Read full checklist
+                  <ArrowRight
+                    className="w-4 h-4 ml-1.5 transition-transform duration-150 group-hover:translate-x-1"
+                    aria-hidden="true"
+                  />
+                </Link>
+              </div>
+            </article>
+          ))}
         </div>
 
         {/* CTA Block */}
-        <div className="bg-brand-blue/5 border border-brand-blue/10 rounded-3xl p-8 sm:p-10 text-center space-y-6">
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-brand-blue">Want to See These Optimization Steps Implemented Live?</h3>
-          <p className="text-gray-600 text-base max-w-md mx-auto">
-            Don't wait for the articles. Book your free strategy audit session today, and we'll walk you through these exact concepts on your own account.
+        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 sm:p-10 text-center space-y-4">
+          <h3 className="text-2xl font-display font-bold text-slate-900">
+            Want Us to Run These Checklists on Your Live Account?
+          </h3>
+          <p className="text-sm sm:text-base text-slate-600 max-w-lg mx-auto">
+            Book a 30-minute diagnostic call and we will audit your Google Ads settings and Google Business Profile with you live.
           </p>
           <div className="pt-2">
             <CTAButton href="/contact" variant="primary" size="lg">
-              Schedule Free Audit Call
+              Schedule Free Leak Audit
             </CTAButton>
           </div>
         </div>
-
       </div>
     </div>
   );

@@ -7,24 +7,34 @@ import Footer from "@/components/Footer";
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://leadgrowagency.com"),
-  title: "LeadGrow Agency | Google Ads + Local SEO for SMBs",
+  title: {
+    default: "LeadGrow Agency | Zero-Waste Google Ads & GBP-First Local SEO",
+    template: "%s | LeadGrow Agency",
+  },
   description:
-    "We help small & medium businesses get qualified customers from Google Ads and Local Search. Free audit + 30-min strategy call to show you what's possible.",
-  keywords: ["Google Ads Agency", "Local SEO Agency", "Google Business Profile Optimization", "SMB Marketing", "Lead Generation"],
+    "Fiduciary Google Ads and Google Business Profile Local SEO for SMBs. Flat-fee pricing, 100% client asset ownership, month-to-month terms, and revenue-first reporting.",
+  keywords: [
+    "Zero-Waste Google Ads Agency",
+    "Google Business Profile Local SEO",
+    "Transparent Search Marketing",
+    "SMB Lead Generation",
+    "Flat-Fee Google Ads Management",
+  ],
   openGraph: {
-    title: "LeadGrow Agency | Google Ads + Local SEO for SMBs",
-    description: "We help small & medium businesses get qualified customers from Google Ads and Local Search. Free audit + 30-min strategy call to show you what's possible.",
+    title: "LeadGrow Agency | Zero-Waste Google Ads & GBP-First Local SEO",
+    description:
+      "Stop bleeding budget on broad match, bots, and vanity metrics. Flat-fee Google Ads & Local Map Pack dominance with 100% client asset ownership.",
     url: "https://leadgrowagency.com",
     siteName: "LeadGrow Agency",
     locale: "en_US",
@@ -34,14 +44,15 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "LeadGrow Agency - Google Ads + Local SEO for SMBs",
+        alt: "LeadGrow Agency - Zero-Waste Google Ads & Local SEO",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "LeadGrow Agency | Google Ads + Local SEO for SMBs",
-    description: "We help small & medium businesses get qualified customers from Google Ads and Local Search. Free audit + 30-min strategy call to show you what's possible.",
+    title: "LeadGrow Agency | Zero-Waste Google Ads & GBP-First Local SEO",
+    description:
+      "Flat-fee Google Ads and GBP-First Local SEO with 100% client asset ownership and Money-In vs. Money-Out reporting.",
     images: ["/og-image.jpg"],
   },
 };
@@ -62,51 +73,44 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "name": "LeadGrow Agency",
-              "image": "https://leadgrowagency.com/logo.png",
-              "priceRange": "$$",
-              "telephone": "+15550199",
-              "email": "contact@leadgrowagency.com",
-              "address": {
+              "@type": "ProfessionalService",
+              name: "LeadGrow Agency",
+              image: "https://leadgrowagency.com/logo.png",
+              priceRange: "$$",
+              telephone: "+1-713-555-0199",
+              email: "audit@leadgrowagency.com",
+              address: {
                 "@type": "PostalAddress",
-                "streetAddress": "123 Search Marketing Way",
-                "addressLocality": "Houston",
-                "addressRegion": "TX",
-                "postalCode": "77001",
-                "addressCountry": "US"
+                addressLocality: "Houston",
+                addressRegion: "TX",
+                addressCountry: "US",
               },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": 29.7604,
-                "longitude": -95.3698
-              },
-              "url": "https://leadgrowagency.com",
-              "openingHoursSpecification": {
+              areaServed: [
+                { "@type": "City", name: "Houston" },
+                { "@type": "Country", name: "United States" },
+                { "@type": "Country", name: "United Kingdom" },
+                { "@type": "Country", name: "Singapore" },
+              ],
+              url: "https://leadgrowagency.com",
+              openingHoursSpecification: {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
+                dayOfWeek: [
                   "Monday",
                   "Tuesday",
                   "Wednesday",
                   "Thursday",
-                  "Friday"
+                  "Friday",
                 ],
-                "opens": "09:00",
-                "closes": "17:00"
+                opens: "09:00",
+                closes: "17:00",
               },
-              "sameAs": [
-                "https://www.linkedin.com/company/leadgrow",
-                "https://twitter.com/leadgrow"
-              ]
-            })
+            }),
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-white text-brand-dark">
+      <body className="min-h-full flex flex-col bg-white text-slate-800">
         <Navbar />
-        <main className="flex-grow">
-          {children}
-        </main>
+        <main className="flex-grow">{children}</main>
         <Footer />
       </body>
     </html>

@@ -2,71 +2,81 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Star, TrendingUp } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface CaseStudyCardProps {
   slug: string;
   businessType: string;
+  region?: string;
   metric: string;
   timeframe: string;
   serviceUsed: string;
   quote: string;
+  quoteAuthor?: string;
   bgColor?: string;
 }
 
 export default function CaseStudyCard({
   slug,
   businessType,
+  region,
   metric,
   timeframe,
   serviceUsed,
   quote,
+  quoteAuthor,
   bgColor = "bg-white",
 }: CaseStudyCardProps) {
   return (
-    <div
-      className={`relative flex flex-col justify-between p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1 ${bgColor}`}
+    <article
+      className={`flex flex-col justify-between p-7 rounded-2xl border border-slate-200 transition-colors duration-150 hover:border-brand-blue/40 ${bgColor}`}
     >
-
-
-      <div>
-        {/* Service Type Tag */}
-        <div className="inline-flex items-center text-xs font-semibold text-brand-green bg-brand-green/10 rounded-md px-2.5 py-1 mb-4">
-          <TrendingUp className="w-3.5 h-3.5 mr-1" aria-hidden="true" />
-          {serviceUsed}
+      <div className="space-y-4">
+        {/* Quiet unboxed metadata line */}
+        <div className="text-xs font-medium text-slate-500">
+          <span className="text-brand-green-hover font-semibold">{serviceUsed}</span>
+          {region ? (
+            <>
+              <span aria-hidden="true"> · </span>
+              <span>{region}</span>
+            </>
+          ) : null}
+          <span aria-hidden="true"> · </span>
+          <span className="tabular-nums">{timeframe}</span>
         </div>
 
-        {/* Business Type */}
-        <h3 className="text-xl md:text-2xl font-display font-bold text-brand-blue mb-2 group-hover:text-brand-blue-hover transition-colors">
-          {businessType}
-        </h3>
-
-        {/* Metric */}
-        <div className="text-3xl md:text-4xl font-display font-extrabold text-brand-green tracking-tight mb-1">
-          {metric}
+        {/* Title & Metric */}
+        <div className="space-y-1">
+          <h3 className="text-xl font-display font-bold text-brand-blue">
+            {businessType}
+          </h3>
+          <div className="text-3xl font-display font-extrabold text-slate-900 tracking-tight tabular-nums">
+            {metric}
+          </div>
         </div>
 
-        {/* Timeframe */}
-        <div className="text-base text-gray-500 mb-4 font-normal">
-          Timeline: {timeframe}
-        </div>
-
-        {/* Client Quote */}
-        <div className="relative pl-4 border-l-2 border-brand-orange/40 my-4 italic text-gray-600 text-base leading-relaxed">
+        {/* Clean quote without thick left border */}
+        <p className="text-sm text-slate-600 leading-relaxed pt-2 border-t border-slate-100">
           &ldquo;{quote}&rdquo;
-        </div>
+        </p>
+        {quoteAuthor ? (
+          <p className="text-xs text-slate-500 font-medium">— {quoteAuthor}</p>
+        ) : null}
       </div>
 
       {/* Action Link */}
-      <div className="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+      <div className="mt-6 pt-4 border-t border-slate-100">
         <Link
           href={`/case-studies/${slug}`}
-          className="inline-flex items-center text-base font-bold text-brand-blue hover:text-brand-orange transition-colors cursor-pointer"
+          className="inline-flex items-center text-sm font-semibold text-brand-blue hover:text-brand-orange transition-colors group"
         >
-          View Full Case Study
-          <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+          View full case study
+          <ArrowRight
+            className="w-4 h-4 ml-1.5 transition-transform duration-150 group-hover:translate-x-1"
+            aria-hidden="true"
+          />
         </Link>
       </div>
-    </div>
+    </article>
   );
 }

@@ -1,7 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import { Phone, Check, ShieldCheck, Clock, Lock, Sparkles, AlertTriangle, Snowflake } from "lucide-react";
+import Link from "next/link";
+import {
+  Phone,
+  Check,
+  ShieldCheck,
+  Clock,
+  Lock,
+  Sparkles,
+  Snowflake,
+  ArrowLeft,
+} from "lucide-react";
 
 export default function HvacEmergencyTemplate() {
   const [formData, setFormData] = useState({
@@ -10,113 +20,179 @@ export default function HvacEmergencyTemplate() {
     issue: "AC is blowing warm air",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showCroNotes, setShowCroNotes] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.fullName && formData.phoneNumber) {
+    if (formData.fullName.trim() && formData.phoneNumber.trim()) {
       setIsSubmitted(true);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] text-slate-800 font-sans flex flex-col justify-between selection:bg-brand-blue selection:text-white">
-      {/* Header - Intentionally stripped of navigation to prevent bounces */}
-      <header className="bg-white py-4 shadow-xs border-b border-slate-100 sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
-          {/* Logo (Identical to LeadGrow branding style but generic template logo) */}
-          <div className="flex items-center space-x-2.5">
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-900 p-2 rounded-xl text-white shadow-xs">
-              <Snowflake className="w-5 h-5 animate-spin-slow" aria-hidden="true" />
+    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans flex flex-col justify-between">
+      {/* Subtle Demo Notice Bar + CRO Anatomy Toggle */}
+      <div className="bg-slate-900 text-slate-200 text-xs py-2.5 px-4">
+        <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+          <span>
+            Sample High-Converting Google Ads Landing Page (1:1 Attention Ratio CRO)
+          </span>
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              onClick={() => setShowCroNotes((prev) => !prev)}
+              aria-expanded={showCroNotes}
+              className="px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 text-white font-semibold transition-colors cursor-pointer whitespace-nowrap"
+            >
+              {showCroNotes ? "Hide CRO Anatomy" : "Inspect 4 CRO Heuristics"}
+            </button>
+            <Link
+              href="/services#cro-heuristics"
+              className="inline-flex items-center gap-1 text-brand-green hover:text-white font-semibold whitespace-nowrap"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" aria-hidden="true" />
+              Back to Services
+            </Link>
+          </div>
+        </div>
+        {showCroNotes ? (
+          <div className="max-w-6xl mx-auto mt-3 pt-3 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-slate-300">
+            <div>
+              <strong className="text-white block">1. 1:1 Attention Ratio</strong>
+              Global nav links &amp; footer exits removed (13.5% vs 10.5% CVR).
             </div>
-            <span className="font-display font-black text-xl tracking-tight text-blue-900">
-              HVAC<span className="text-emerald-500">PROS</span>
+            <div>
+              <strong className="text-white block">2. Strict H1 Message Match</strong>
+              Headline mirrors emergency search query (+15–25% CVR lift).
+            </div>
+            <div>
+              <strong className="text-white block">3. Above-the-Fold Authority</strong>
+              4.9/5 rating, BBB A+, and 60-min SLA shown before form ask.
+            </div>
+            <div>
+              <strong className="text-white block">4. Enhanced Conversion Routing</strong>
+              Dispatch form maps directly to Google Ads offline conversion value.
+            </div>
+          </div>
+        ) : null}
+      </div>
+
+      {/* Distraction-free Header */}
+      <header className="bg-white py-4 border-b border-slate-200 sticky top-0 z-40">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center gap-4">
+          <div className="flex items-center gap-2.5">
+            <div className="bg-brand-blue p-2 rounded-lg text-white">
+              <Snowflake className="w-5 h-5" aria-hidden="true" />
+            </div>
+            <span className="font-display font-extrabold text-xl tracking-tight text-slate-900">
+              Gulf Coast <span className="text-brand-blue">HVAC</span>
             </span>
           </div>
-          
-          {/* Click-to-call Dispatch Number */}
+
           <a
-            href="tel:+15550199"
-            className="flex items-center gap-2 px-4 py-2 bg-rose-50 border border-rose-100 hover:bg-rose-100 rounded-full font-bold text-rose-600 text-sm md:text-base transition-all duration-300 hover:scale-105 active:scale-98 shadow-xs"
-            aria-label="Call Dispatch Immediately"
+            href="tel:+17135550199"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-brand-orange hover:bg-brand-orange-hover rounded-lg font-semibold text-white text-sm transition-colors whitespace-nowrap"
+            aria-label="Call 24/7 Dispatch"
           >
-            <Phone className="w-4 h-4 fill-current animate-pulse" />
-            <span className="hidden sm:inline">24/7 Dispatch:</span> (555) 0199
+            <Phone className="w-4 h-4" aria-hidden="true" />
+            <span className="hidden sm:inline">24/7 Dispatch:</span>
+            <span className="tabular-nums">(713) 555-0199</span>
           </a>
         </div>
       </header>
 
-      {/* Main Body */}
+      {/* Main Conversion Split */}
       <main className="flex-grow flex items-center py-12 md:py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
-          {/* Left Column: High-intent Copy & Social Proof */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Left Column */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 bg-rose-100/70 border border-rose-200 text-rose-700 font-bold px-4 py-1.5 rounded-full text-xs uppercase tracking-wider animate-pulse">
-              <AlertTriangle className="w-3.5 h-3.5" />
-              24/7 Emergency Dispatch Available
-            </div>
-            
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
-              Beat The Heat: <br />
-              <span className="text-blue-600 drop-shadow-xs">Emergency AC Repair</span> <br />
-              in <span className="underline decoration-emerald-500 decoration-wavy">[City Name]</span>
-            </h1>
-            
-            <p className="text-lg text-slate-600 max-w-xl leading-relaxed">
-              Don&apos;t suffer in a sweltering home. Our local, certified HVAC technicians are fully equipped and standing by to restore your cooling today.
+            <p className="text-xs font-semibold text-brand-orange">
+              Same-Day Emergency Dispatch · Greater Houston Area
             </p>
 
-            {/* Checklist of guarantees */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+            <h1 className="text-4xl sm:text-5xl font-serif font-extrabold tracking-tight text-slate-900 leading-tight text-balance">
+              Emergency AC Repair in{" "}
+              <span className="text-brand-blue">Greater Houston</span>—Dispatched in 60 Minutes
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed">
+              Licensed, background-checked HVAC technicians stocked with common parts so your cooling is restored on the first visit—with upfront flat-rate pricing before any repair begins.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               {[
-                { label: "60-Minute Response Guarantee", icon: Clock, desc: "On-time arrival or diagnostic is free" },
-                { label: "Licensed & Insured Pros", icon: ShieldCheck, desc: "Certified techs you can trust" },
-                { label: "No Hidden Emergency Fees", icon: Sparkles, desc: "Upfront pricing before work starts" },
-                { label: "100% Satisfaction Guarantee", icon: Check, desc: "We fix it right the first time" },
-              ].map((item, idx) => (
-                <div key={idx} className="flex gap-3 bg-white p-4 rounded-xl border border-slate-100 shadow-xs">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
-                    <item.icon className="w-5 h-5" />
+                {
+                  label: "60-Minute Dispatch Window",
+                  icon: Clock,
+                  desc: "On-time arrival or diagnostic fee waived",
+                },
+                {
+                  label: "Licensed & Insured Techs",
+                  icon: ShieldCheck,
+                  desc: "State-certified specialists you can verify",
+                },
+                {
+                  label: "Upfront Flat-Rate Quote",
+                  icon: Sparkles,
+                  desc: "Zero surprise overtime or hidden dispatch fees",
+                },
+                {
+                  label: "2-Year Repair Warranty",
+                  icon: Check,
+                  desc: "Parts and labor backed in writing",
+                },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="flex gap-3 bg-white p-4 rounded-xl border border-slate-200"
+                >
+                  <div className="shrink-0 w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
+                    <item.icon className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-800 text-sm">{item.label}</h4>
-                    <p className="text-xs text-slate-500">{item.desc}</p>
+                    <h2 className="font-display font-bold text-slate-900 text-sm">
+                      {item.label}
+                    </h2>
+                    <p className="text-xs text-slate-500 mt-0.5">{item.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Trust Badges */}
-            <div className="pt-6 flex flex-wrap gap-6 items-center opacity-70">
-              <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">Trusted By Local Homes:</div>
-              <div className="flex gap-4 items-center">
-                <span className="text-sm font-bold text-slate-500">⭐ 4.9/5 Google Rating</span>
-                <span className="text-slate-300">|</span>
-                <span className="text-sm font-bold text-slate-500">🛡️ BBB Accredited</span>
-              </div>
+            <div className="pt-2 text-xs font-semibold text-slate-500">
+              <span>4.9 / 5 Verified Google Rating (280+ Reviews)</span>
+              <span aria-hidden="true"> · </span>
+              <span>BBB A+ Accredited</span>
             </div>
           </div>
 
-          {/* Right Column: Stateful Form Box */}
+          {/* Right Column: Dispatch Form */}
           <div className="lg:col-span-5 w-full">
-            <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 sm:p-8 md:p-10 relative overflow-hidden">
-              {/* Header colored bar for emphasis */}
-              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-600 to-emerald-500"></div>
-
+            <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
               {!isSubmitted ? (
                 <>
-                  <div className="text-center mb-6">
-                    <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-                      Request Dispatch Now
+                  <div className="mb-6">
+                    <h2 className="text-2xl font-display font-bold text-slate-900">
+                      Request Priority Dispatch
                     </h2>
                     <p className="text-sm text-slate-500 mt-1">
-                      Or call <a href="tel:+15550199" className="font-bold text-blue-600 hover:underline">(555) 0199</a> for instant priority.
+                      Or call{" "}
+                      <a
+                        href="tel:+17135550199"
+                        className="font-semibold text-brand-blue hover:underline tabular-nums"
+                      >
+                        (713) 555-0199
+                      </a>{" "}
+                      for immediate routing.
                     </p>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <label htmlFor="fullName" className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
+                      <label
+                        htmlFor="fullName"
+                        className="block text-xs font-semibold text-slate-700 mb-1.5"
+                      >
                         Full Name
                       </label>
                       <input
@@ -124,15 +200,20 @@ export default function HvacEmergencyTemplate() {
                         id="fullName"
                         name="fullName"
                         value={formData.fullName}
-                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full px-4 py-3 bg-slate-50/50 border border-slate-200 focus:border-blue-600 focus:bg-white rounded-xl text-slate-800 placeholder-slate-400 outline-hidden transition-all duration-200"
-                        placeholder="John Doe"
+                        onChange={(e) =>
+                          setFormData({ ...formData, fullName: e.target.value })
+                        }
+                        className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 focus:border-brand-blue focus:bg-white rounded-lg text-sm text-slate-900 focus:outline-none"
+                        placeholder="Jordan Taylor"
                         required
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="phoneNumber" className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
+                      <label
+                        htmlFor="phoneNumber"
+                        className="block text-xs font-semibold text-slate-700 mb-1.5"
+                      >
                         Phone Number
                       </label>
                       <input
@@ -140,91 +221,99 @@ export default function HvacEmergencyTemplate() {
                         id="phoneNumber"
                         name="phoneNumber"
                         value={formData.phoneNumber}
-                        onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                        className="w-full px-4 py-3 bg-slate-50/50 border border-slate-200 focus:border-blue-600 focus:bg-white rounded-xl text-slate-800 placeholder-slate-400 outline-hidden transition-all duration-200"
-                        placeholder="(555) 123-4567"
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            phoneNumber: e.target.value,
+                          })
+                        }
+                        className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 focus:border-brand-blue focus:bg-white rounded-lg text-sm text-slate-900 focus:outline-none"
+                        placeholder="(713) 555-0142"
                         required
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="issue" className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
-                        Describe Cooling Emergency
+                      <label
+                        htmlFor="issue"
+                        className="block text-xs font-semibold text-slate-700 mb-1.5"
+                      >
+                        Cooling Issue
                       </label>
                       <select
                         id="issue"
                         name="issue"
                         value={formData.issue}
-                        onChange={(e) => setFormData({ ...formData, issue: e.target.value })}
-                        className="w-full px-4 py-3 bg-slate-50/50 border border-slate-200 focus:border-blue-600 focus:bg-white rounded-xl text-slate-800 outline-hidden transition-all duration-200 appearance-none"
-                        style={{
-                          backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
-                          backgroundRepeat: "no-repeat",
-                          backgroundPosition: "right 1rem center",
-                          backgroundSize: "1em"
-                        }}
+                        onChange={(e) =>
+                          setFormData({ ...formData, issue: e.target.value })
+                        }
+                        className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 focus:border-brand-blue focus:bg-white rounded-lg text-sm text-slate-900 focus:outline-none cursor-pointer"
                       >
                         <option>AC is blowing warm air</option>
-                        <option>System won&apos;t turn on at all</option>
-                        <option>Strange noise / loud grinding</option>
-                        <option>AC is leaking water inside</option>
-                        <option>Other HVAC emergency</option>
+                        <option>System won&apos;t turn on</option>
+                        <option>Loud noise or electrical smell</option>
+                        <option>Water leaking inside unit</option>
+                        <option>Other urgent HVAC issue</option>
                       </select>
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-bold py-4 rounded-xl shadow-md hover:shadow-lg active:scale-98 transition-all duration-200 cursor-pointer text-lg tracking-wide uppercase mt-4 flex items-center justify-center gap-2"
+                      className="w-full bg-brand-orange hover:bg-brand-orange-hover text-white font-semibold py-3.5 rounded-lg transition-colors cursor-pointer text-sm flex items-center justify-center gap-2"
                     >
-                      <Phone className="w-5 h-5 fill-current" />
-                      Get Help Now
+                      <Phone className="w-4 h-4" aria-hidden="true" />
+                      Request Immediate Callback
                     </button>
 
-                    <div className="flex items-center justify-center gap-1.5 text-xs text-slate-400 mt-4">
-                      <Lock className="w-3.5 h-3.5" />
-                      Your data is 100% private and secure.
+                    <div className="flex items-center justify-center gap-1.5 text-xs text-slate-400 pt-1">
+                      <Lock className="w-3.5 h-3.5" aria-hidden="true" />
+                      <span>Demo template — no dispatch SMS is sent.</span>
                     </div>
                   </form>
                 </>
               ) : (
-                <div className="text-center py-8 space-y-6 animate-fade-in">
-                  <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-sm">
-                    <Check className="w-8 h-8 stroke-[3]" />
+                <div className="text-center py-6 space-y-5">
+                  <div className="w-12 h-12 bg-emerald-50 text-emerald-700 rounded-full flex items-center justify-center mx-auto">
+                    <Check className="w-6 h-6" aria-hidden="true" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-                      Dispatch Requested!
+                    <h2 className="text-xl font-display font-bold text-slate-900">
+                      Callback Request Simulated
                     </h2>
-                    <p className="text-sm text-slate-500 mt-2">
-                      Thanks, <span className="font-bold text-slate-800">{formData.fullName}</span>. A dispatch coordinator is calling you immediately on <span className="font-bold text-slate-800">{formData.phoneNumber}</span> to confirm your technician&apos;s arrival time.
-                    </p>
-                  </div>
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 max-w-xs mx-auto">
-                    <p className="text-xs text-slate-500 font-medium">
-                      📞 Please keep your line clear for a call from <span className="text-blue-600 font-bold">(555) 0199</span>.
+                    <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                      In a live client deployment,{" "}
+                      <span className="font-semibold text-slate-900">
+                        {formData.fullName}
+                      </span>{" "}
+                      ({formData.phoneNumber}) would be routed to dispatch and logged as an Enhanced Conversion in Google Ads.
                     </p>
                   </div>
                   <button
+                    type="button"
                     onClick={() => {
                       setIsSubmitted(false);
-                      setFormData({ fullName: "", phoneNumber: "", issue: "AC is blowing warm air" });
+                      setFormData({
+                        fullName: "",
+                        phoneNumber: "",
+                        issue: "AC is blowing warm air",
+                      });
                     }}
-                    className="text-xs text-slate-400 hover:text-slate-600 underline font-medium cursor-pointer"
+                    className="text-xs text-brand-blue hover:underline font-semibold cursor-pointer"
                   >
-                    Submit another request
+                    Reset demo form
                   </button>
                 </div>
               )}
             </div>
           </div>
-          
         </div>
       </main>
 
-      {/* Trust Footer */}
-      <footer className="bg-white border-t border-slate-100 py-6 text-center text-xs text-slate-400">
+      <footer className="bg-white border-t border-slate-200 py-5 text-center text-xs text-slate-500">
         <div className="max-w-6xl mx-auto px-4">
-          <p>&copy; {new Date().getFullYear()} HVACPROS. Certified Local Cooling Services. All rights reserved.</p>
+          <p>
+            Sample Conversion Landing Page built by LeadGrow Agency · Distraction-free layout engineered for Google Ads traffic.
+          </p>
         </div>
       </footer>
     </div>

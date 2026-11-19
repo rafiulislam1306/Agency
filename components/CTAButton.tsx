@@ -23,27 +23,26 @@ export default function CTAButton({
   className = "",
 }: CTAButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-bold rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-sm transform active:scale-[0.98] cursor-pointer";
-  
+    "inline-flex items-center justify-center font-semibold rounded-lg whitespace-nowrap shrink-0 transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98] cursor-pointer";
+
   const variantStyles = {
     primary:
-      "bg-brand-orange hover:bg-brand-orange-hover text-white hover:shadow-md focus:ring-brand-orange",
+      "bg-brand-orange hover:bg-brand-orange-hover text-white focus-visible:ring-brand-orange shadow-xs",
     secondary:
-      "bg-brand-blue hover:bg-brand-blue-hover text-white hover:shadow-md focus:ring-brand-blue",
+      "bg-brand-blue hover:bg-brand-blue-hover text-white focus-visible:ring-brand-blue shadow-xs",
     outline:
-      "border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white focus:ring-brand-blue",
+      "border border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white focus-visible:ring-brand-blue",
     white:
-      "bg-white hover:bg-brand-light text-brand-blue hover:shadow-md focus:ring-white",
+      "bg-white hover:bg-slate-100 text-brand-blue focus-visible:ring-white shadow-xs",
   };
 
   const sizeStyles = {
     sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg",
+    md: "px-5 py-2.5 text-sm",
+    lg: "px-6 py-3.5 text-base",
   };
 
   const widthStyles = fullWidth ? "w-full" : "";
-
   const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${widthStyles} ${className}`;
 
   if (href) {
@@ -60,14 +59,14 @@ export default function CTAButton({
       );
     }
     return (
-      <Link href={href} className={combinedStyles}>
+      <Link href={href} className={combinedStyles} onClick={onClick}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button onClick={onClick} className={combinedStyles}>
+    <button type="button" onClick={onClick} className={combinedStyles}>
       {children}
     </button>
   );
