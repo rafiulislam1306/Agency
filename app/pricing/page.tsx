@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
@@ -47,17 +47,20 @@ export default function PricingPage() {
   ];
 
   return (
-    <div className="bg-white min-h-screen py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+    <div className="bg-canvas min-h-screen py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 space-y-20">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <p className="text-xs font-semibold text-brand-blue">
+        <div
+          data-cta-sentinel="hero"
+          className="text-center max-w-3xl mx-auto space-y-4"
+        >
+          <p className="eyebrow-mono text-trust">
             Flat-Fee Accountability · 0% of Ad Spend · No Annual Lock-Ins
           </p>
-          <h1 className="text-4xl sm:text-5xl font-serif font-extrabold text-slate-900 tracking-tight leading-tight text-balance">
+          <h1 className="type-hero font-display font-bold text-ink">
             Flat Monthly Retainers Aligned With Your Profit—Not Your Ad Spend
           </h1>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="type-lead text-ink-secondary mx-auto">
             Traditional agencies charge percentages of spend and lock you into 12-month contracts. We charge one flat monthly rate, work month-to-month, and put every account in your legal ownership.
           </p>
         </div>
@@ -69,46 +72,34 @@ export default function PricingPage() {
             return (
               <div
                 key={plan.id}
-                className={`rounded-2xl p-7 sm:p-8 flex flex-col justify-between border ${
+                className={`rounded-[var(--radius-bento)] p-7 sm:p-8 flex flex-col justify-between border ${
                   isHighlighted
-                    ? "bg-slate-950 text-white border-slate-800"
-                    : "bg-white text-slate-900 border-slate-200"
+                    ? "surface-dark bg-canvas text-ink border-border-hairline shadow-[var(--shadow-dark-edge)]"
+                    : "bg-card text-ink border-border-hairline shadow-[var(--shadow-whisper)]"
                 }`}
               >
                 <div className="space-y-6">
-                  <div
-                    className={`pb-6 border-b ${
-                      isHighlighted ? "border-slate-800" : "border-slate-100"
-                    } space-y-2`}
-                  >
+                  <div className="pb-6 border-b border-border-hairline space-y-2">
                     <p
-                      className={`text-xs font-semibold ${
-                        isHighlighted ? "text-brand-green" : "text-brand-blue"
+                      className={`eyebrow-mono ${
+                        isHighlighted ? "text-kpi-positive" : "text-trust"
                       }`}
                     >
                       {plan.tag} · {plan.billingModel}
                     </p>
-                    <h2 className="text-2xl font-display font-bold">
+                    <h2 className="text-2xl font-display font-bold text-ink">
                       {plan.name}
                     </h2>
-                    <p
-                      className={`text-sm leading-relaxed ${
-                        isHighlighted ? "text-slate-300" : "text-slate-600"
-                      }`}
-                    >
+                    <p className="text-sm leading-relaxed text-ink-secondary">
                       {plan.subtitle}
                     </p>
                   </div>
 
                   <div>
-                    <div className="text-3xl font-display font-extrabold tabular-nums">
+                    <div className="type-kpi-card text-ink">
                       {plan.flatFee}
                     </div>
-                    <p
-                      className={`text-xs mt-1.5 leading-relaxed ${
-                        isHighlighted ? "text-slate-400" : "text-slate-500"
-                      }`}
-                    >
+                    <p className="text-xs mt-1.5 leading-relaxed text-ink-muted">
                       {plan.adSpendNote}
                     </p>
                   </div>
@@ -117,12 +108,10 @@ export default function PricingPage() {
                     {plan.features.map((feat) => (
                       <li
                         key={feat}
-                        className={`flex items-start gap-2.5 text-sm ${
-                          isHighlighted ? "text-slate-200" : "text-slate-700"
-                        }`}
+                        className="flex items-start gap-2.5 text-sm text-ink-secondary"
                       >
                         <CheckCircle2
-                          className="w-4 h-4 text-brand-green shrink-0 mt-0.5"
+                          className="w-4 h-4 text-kpi-positive shrink-0 mt-0.5"
                           aria-hidden="true"
                         />
                         <span>{feat}</span>
@@ -131,20 +120,16 @@ export default function PricingPage() {
                   </ul>
                 </div>
 
-                <div
-                  className={`pt-6 mt-8 border-t space-y-4 ${
-                    isHighlighted ? "border-slate-800" : "border-slate-100"
-                  }`}
-                >
-                  <p
-                    className={`text-xs leading-relaxed ${
-                      isHighlighted ? "text-slate-300" : "text-slate-600"
-                    }`}
-                  >
-                    <strong className="font-semibold">Accountability:</strong>{" "}
+                <div className="pt-6 mt-8 border-t border-border-hairline space-y-4">
+                  <p className="text-xs leading-relaxed text-ink-secondary">
+                    <strong className="font-semibold text-ink">Accountability:</strong>{" "}
                     {plan.accountabilityGuarantee}
                   </p>
-                  <CTAButton href="/contact" variant="primary" fullWidth>
+                  <CTAButton
+                    href="/contact"
+                    variant={isHighlighted ? "dark-primary" : "primary"}
+                    fullWidth
+                  >
                     Book Free Audit &amp; Scope Quote
                   </CTAButton>
                 </div>
@@ -153,15 +138,24 @@ export default function PricingPage() {
           })}
         </div>
 
-        {/* Interactive ROI & Break-Even Calculator */}
-        <ROICalculator />
+        {/* Interactive ROI & Break-Even Calculator (Granular Suspense boundary for selective hydration) */}
+        <Suspense
+          fallback={
+            <div
+              aria-busy="true"
+              className="bento-card min-h-[540px] p-8 animate-pulse bg-subtle/60"
+            />
+          }
+        >
+          <ROICalculator />
+        </Suspense>
 
-        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="bento-card p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
-            <p className="text-xs font-semibold text-brand-green-hover">
+            <p className="eyebrow-mono text-kpi-positive">
               Local Service Businesses · 42% Map Pack Click Share
             </p>
-            <p className="text-sm font-medium text-slate-800">
+            <p className="text-sm font-medium text-ink">
               Want to model how much monthly revenue you lose sitting at Rank #8 vs. the Google Maps 3-Pack?
             </p>
           </div>
@@ -174,13 +168,13 @@ export default function PricingPage() {
         <section className="space-y-6">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
             <div className="max-w-3xl space-y-2">
-              <p className="text-xs font-semibold text-brand-blue">
+              <p className="eyebrow-mono text-trust">
                 Standalone Diagnostic Option · Zero Retainer Required
               </p>
-              <h2 className="text-2xl sm:text-3xl font-display font-bold text-slate-900">
+              <h2 className="type-h2 font-display font-bold text-ink">
                 Phase 0: Conversion Tracking Audit &amp; Repair Sprint
               </h2>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-sm text-ink-secondary leading-relaxed">
                 Not ready for a monthly retainer? Fix the broken cash register first. Right-sized to your monthly ad spend, every tier reaches full payback in 0.8 to 5.0 months under conservative 10%–20% ad-efficiency gains.
               </p>
             </div>
@@ -199,36 +193,36 @@ export default function PricingPage() {
               return (
                 <div
                   key={tier.id}
-                  className="p-6 rounded-2xl border border-slate-200 bg-white flex flex-col justify-between space-y-5"
+                  className="p-6 bento-card flex flex-col justify-between space-y-5"
                 >
                   <div className="space-y-3">
-                    <p className="text-xs font-semibold text-brand-blue">
+                    <p className="eyebrow-mono text-trust">
                       {tier.spendBand}
                     </p>
-                    <h3 className="text-lg font-display font-bold text-slate-900">
+                    <h3 className="text-lg font-display font-bold text-ink">
                       {tier.name}
                     </h3>
-                    <div className="tabular-nums">
-                      <span className="text-2xl font-display font-extrabold text-slate-900">
+                    <div className="metric-tabular">
+                      <span className="type-kpi-card text-ink">
                         ${tier.setupFee.toLocaleString()} setup
                       </span>
-                      <span className="block text-xs text-slate-500 mt-0.5">
+                      <span className="block text-xs text-ink-muted mt-0.5">
                         ${tier.annualTco.toLocaleString()} 12-month TCO ($
                         {tier.monthlyInfraCost}/mo infra · $
                         {tier.monthlyMaintenanceCost}/mo QA)
                       </span>
                     </div>
-                    <p className="text-xs font-semibold text-slate-800 bg-slate-50 border border-slate-200 rounded-lg p-3 leading-relaxed">
+                    <p className="text-xs font-semibold text-ink bg-canvas border border-border-hairline rounded-[var(--radius-btn)] p-3 leading-relaxed">
                       {tier.recommendedStack}
                     </p>
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                    <p className="text-xs text-ink-secondary leading-relaxed">
                       {tier.summary}
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-100 space-y-3">
-                    <p className="text-xs font-semibold text-emerald-700 tabular-nums">
-                      {paybackLabels[idx]}
+                  <div className="pt-4 border-t border-border-hairline space-y-3">
+                    <p className="text-xs font-semibold text-kpi-positive metric-tabular">
+                      ▲ {paybackLabels[idx]}
                     </p>
                     <CTAButton href="/contact" variant="outline" size="sm" fullWidth>
                       Request Phase 0 Tracking Audit
@@ -241,59 +235,77 @@ export default function PricingPage() {
         </section>
 
         {/* Why Traditional Pricing Models Break Down */}
-        <section className="space-y-6">
+        <section className="cv-auto space-y-6">
           <div className="max-w-3xl space-y-2">
-            <p className="text-xs font-semibold text-brand-orange">
+            <p className="eyebrow-mono text-cta">
               2026 Agency Market Comparison
             </p>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-slate-900">
+            <h2 className="type-h2 font-display font-bold text-ink">
               Why Keyword-Only &amp; Percentage-of-Spend Retainers Fail
             </h2>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-ink-secondary leading-relaxed">
               With Google automating micro-bidding, paying an agency simply to pull keyword levers—or paying 15% of ad spend without landing page CRO and CRM attribution—leaves money on the table.
             </p>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
-            <table className="min-w-full divide-y divide-slate-200 text-sm">
-              <thead className="bg-slate-50 text-slate-900">
-                <tr>
-                  <th className="px-6 py-4 text-left font-bold">Agency Model</th>
-                  <th className="px-6 py-4 text-left font-bold">Typical Cost</th>
-                  <th className="px-6 py-4 text-left font-bold">Structural Flaw</th>
-                  <th className="px-6 py-4 text-left font-bold">LeadGrow Standard</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                {marketModelComparisons.map((row) => (
-                  <tr key={row.model}>
-                    <td className="px-6 py-4 font-semibold text-slate-900">
-                      {row.model}
-                    </td>
-                    <td className="px-6 py-4 text-slate-600 tabular-nums whitespace-nowrap">
-                      {row.typicalCost}
-                    </td>
-                    <td className="px-6 py-4 text-slate-600">{row.hiddenFlaw}</td>
-                    <td className="px-6 py-4 font-medium text-emerald-700">
-                      {row.leadGrowDifference}
-                    </td>
+          <div className="space-y-2">
+            <p className="md:hidden caption-meta font-semibold text-ink-muted text-right">
+              Scroll horizontally to compare →
+            </p>
+            <div className="overflow-x-auto bento-card">
+              <table className="min-w-full divide-y divide-border-hairline text-sm">
+                <thead className="bg-subtle text-ink">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="sticky left-0 z-10 bg-subtle border-r border-border-hairline px-5 sm:px-6 py-4 text-left font-bold min-w-[148px]"
+                    >
+                      Agency Model
+                    </th>
+                    <th scope="col" className="px-6 py-4 text-left font-bold">
+                      Typical Cost
+                    </th>
+                    <th scope="col" className="px-6 py-4 text-left font-bold">
+                      Structural Flaw
+                    </th>
+                    <th scope="col" className="px-6 py-4 text-left font-bold">
+                      LeadGrow Standard
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-border-hairline bg-card">
+                  {marketModelComparisons.map((row) => (
+                    <tr key={row.model}>
+                      <td className="sticky left-0 z-10 bg-card border-r border-border-hairline px-5 sm:px-6 py-4 font-semibold text-ink">
+                        {row.model}
+                      </td>
+                      <td className="px-6 py-4 text-ink-secondary metric-tabular whitespace-nowrap">
+                        {row.typicalCost}
+                      </td>
+                      <td className="px-6 py-4 text-ink-secondary">
+                        {row.hiddenFlaw}
+                      </td>
+                      <td className="px-6 py-4 font-semibold text-kpi-positive">
+                        ▲ {row.leadGrowDifference}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
 
         {/* Included Digital Bill of Rights */}
-        <section className="bg-slate-50 rounded-2xl border border-slate-200 p-7 sm:p-10 space-y-6">
+        <section className="bento-card p-7 sm:p-10 space-y-6">
           <div className="max-w-2xl space-y-2">
-            <p className="text-xs font-semibold text-brand-blue">
+            <p className="eyebrow-mono text-trust">
               Included With Every Plan
             </p>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-slate-900">
+            <h2 className="type-h2 font-display font-bold text-ink">
               The Digital Bill of Rights
             </h2>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-ink-secondary leading-relaxed">
               We earn your business every month through verified revenue—never by locking your accounts under agency emails.
             </p>
           </div>
@@ -302,15 +314,15 @@ export default function PricingPage() {
             {digitalBillOfRights.map((item) => (
               <div
                 key={item.asset}
-                className="bg-white p-5 rounded-xl border border-slate-200 space-y-1.5"
+                className="bg-canvas p-5 rounded-[var(--radius-tile)] border border-border-hairline space-y-1.5"
               >
-                <h3 className="text-sm font-display font-bold text-slate-900">
+                <h3 className="text-sm font-display font-bold text-ink">
                   {item.asset}
                 </h3>
-                <p className="text-xs font-semibold text-emerald-700">
+                <p className="text-xs font-semibold text-kpi-positive">
                   {item.owner}
                 </p>
-                <p className="text-xs text-slate-600 leading-relaxed">
+                <p className="text-xs text-ink-secondary leading-relaxed">
                   {item.guarantee}
                 </p>
               </div>
@@ -319,12 +331,12 @@ export default function PricingPage() {
         </section>
 
         {/* FAQs */}
-        <section className="space-y-8">
+        <section data-cta-sentinel="footer-cta" className="cv-auto space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
-            <h2 className="text-3xl font-display font-extrabold text-slate-900">
+            <h2 className="type-h2 font-display font-bold text-ink">
               Pricing &amp; Contract FAQs
             </h2>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-ink-secondary">
               Clear answers about flat retainers, ad spend ownership, and cancellation terms.
             </p>
           </div>

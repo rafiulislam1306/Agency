@@ -25,16 +25,16 @@ export default function CaseStudyCard({
   serviceUsed,
   quote,
   quoteAuthor,
-  bgColor = "bg-white",
+  bgColor = "bg-card",
 }: CaseStudyCardProps) {
   return (
     <article
-      className={`flex flex-col justify-between p-7 rounded-2xl border border-slate-200 transition-colors duration-150 hover:border-brand-blue/40 ${bgColor}`}
+      className={`bento-card bento-card--interactive flex flex-col justify-between p-6 sm:p-8 ${bgColor}`}
     >
       <div className="space-y-4">
         {/* Quiet unboxed metadata line */}
-        <div className="text-xs font-medium text-slate-500">
-          <span className="text-brand-green-hover font-semibold">{serviceUsed}</span>
+        <div className="caption-meta font-medium text-ink-muted">
+          <span className="text-kpi-positive font-semibold">{serviceUsed}</span>
           {region ? (
             <>
               <span aria-hidden="true"> · </span>
@@ -42,37 +42,37 @@ export default function CaseStudyCard({
             </>
           ) : null}
           <span aria-hidden="true"> · </span>
-          <span className="tabular-nums">{timeframe}</span>
+          <span className="tracking-id">{timeframe}</span>
         </div>
 
         {/* Title & Metric */}
         <div className="space-y-1">
-          <h3 className="text-xl font-display font-bold text-brand-blue">
+          <h3 className="type-h4 text-trust">
             {businessType}
           </h3>
-          <div className="text-3xl font-display font-extrabold text-slate-900 tracking-tight tabular-nums">
+          <div className="type-kpi-card text-ink">
             {metric}
           </div>
         </div>
 
         {/* Clean quote without thick left border */}
-        <p className="text-sm text-slate-600 leading-relaxed pt-2 border-t border-slate-100">
+        <p className="text-sm text-ink-secondary leading-relaxed pt-3 border-t border-border-hairline">
           &ldquo;{quote}&rdquo;
         </p>
         {quoteAuthor ? (
-          <p className="text-xs text-slate-500 font-medium">— {quoteAuthor}</p>
+          <p className="caption-meta text-ink-muted font-medium">— {quoteAuthor}</p>
         ) : null}
       </div>
 
       {/* Action Link */}
-      <div className="mt-6 pt-4 border-t border-slate-100">
+      <div className="mt-6 pt-4 border-t border-border-hairline">
         <Link
           href={`/case-studies/${slug}`}
-          className="inline-flex items-center text-sm font-semibold text-brand-blue hover:text-brand-orange transition-colors group"
+          className="inline-flex items-center min-h-11 text-sm font-semibold text-trust hover:text-trust-hover transition-colors group"
         >
-          View full case study
+          <span>View full case study</span>
           <ArrowRight
-            className="w-4 h-4 ml-1.5 transition-transform duration-150 group-hover:translate-x-1"
+            className="w-4 h-4 ml-1.5 transition-transform duration-150 group-hover:translate-x-0.5"
             aria-hidden="true"
           />
         </Link>

@@ -47,13 +47,13 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   }
 
   return (
-    <div className="bg-white min-h-screen py-16 md:py-24">
+    <div className="bg-canvas min-h-screen py-16 md:py-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Back Link */}
         <div className="flex flex-wrap items-center justify-between gap-4">
           <Link
             href="/case-studies"
-            className="inline-flex items-center text-sm font-semibold text-slate-600 hover:text-brand-blue transition-colors group"
+            className="inline-flex items-center text-sm font-semibold text-ink-secondary hover:text-trust transition-colors group"
           >
             <ArrowLeft
               className="w-4 h-4 mr-2 transition-transform duration-150 group-hover:-translate-x-1"
@@ -61,48 +61,48 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             />
             Back to Case Studies
           </Link>
-          <span className="text-xs font-medium text-slate-500">
+          <span className="text-xs font-mono font-medium text-ink-muted">
             Un-Gated Buying-Committee Brief · Shareable Internally
           </span>
         </div>
 
         {/* 1. Result-Led Headline (Numbers First) */}
-        <div className="border-b border-slate-200 pb-8 space-y-4">
-          <div className="text-xs font-medium text-slate-500">
-            <span className="text-brand-green-hover font-semibold">
+        <div className="border-b border-border-hairline pb-8 space-y-4">
+          <div className="text-xs font-mono font-medium text-ink-muted">
+            <span className="text-kpi-positive font-semibold">
               {study.serviceUsed}
             </span>
             <span aria-hidden="true"> · </span>
             <span>{study.region}</span>
             <span aria-hidden="true"> · </span>
-            <span className="tabular-nums">{study.timeframe}</span>
+            <span className="metric-tabular">{study.timeframe}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-serif font-extrabold text-slate-900 tracking-tight leading-tight text-balance">
+          <h1 className="type-hero font-display font-extrabold text-ink">
             {study.heroHeadline}
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-600">
-            <span className="font-semibold text-slate-800">
+          <p className="type-lead text-ink-secondary">
+            <span className="font-semibold text-ink">
               {study.businessType}:
             </span>{" "}
             {study.heroSubheadline}
           </p>
         </div>
 
-        {/* 2. 3-Metric Buying-Group Bar (Leadership / Marketing / Operations) */}
+        {/* 2. 3-Metric Buying-Group Bar (Dark Technical Proof Surface for WCAG AAA KPI contrast) */}
         <section
           aria-label="Buying group outcomes"
-          className="bg-brand-blue rounded-2xl p-6 sm:p-8 text-white space-y-6"
+          className="surface-dark rounded-bento border border-border-hairline p-6 sm:p-8 space-y-6"
         >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/15 pb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border-hairline pb-4">
             <div>
-              <p className="text-xs font-semibold text-brand-green">
+              <p className="eyebrow-mono text-kpi-positive">
                 Verified Outcomes by Stakeholder Role
               </p>
-              <p className="text-sm text-blue-100 mt-0.5">{study.goal}</p>
+              <p className="text-sm text-ink-secondary mt-1">{study.goal}</p>
             </div>
-            <CTAButton href="/contact" variant="white" size="sm">
+            <CTAButton href="/contact" variant="dark-primary" size="sm">
               Get Similar Audit
             </CTAButton>
           </div>
@@ -111,15 +111,17 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             {study.buyingGroupMetrics.map((item) => (
               <div
                 key={item.stakeholder}
-                className="rounded-xl bg-white/10 border border-white/15 p-4 space-y-1"
+                className="dark-panel rounded-tile p-4 space-y-1.5"
               >
-                <span className="text-[11px] font-semibold text-blue-200 block">
+                <span className="eyebrow-mono text-ink-muted block">
                   {item.stakeholder}
                 </span>
-                <span className="text-2xl font-display font-extrabold text-brand-green block tabular-nums">
+                <span className="type-kpi-card text-kpi-positive block">
                   {item.value}
                 </span>
-                <span className="text-xs text-blue-100 block">{item.label}</span>
+                <span className="text-xs text-ink-secondary block">
+                  {item.label}
+                </span>
               </div>
             ))}
           </div>
@@ -128,63 +130,63 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         {/* 3. 4-Second Qualification Metadata Panel + Anchored Jump Links */}
         <section
           aria-label="Qualification metadata"
-          className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-5"
+          className="bg-subtle border border-border-hairline rounded-bento p-6 space-y-5"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-xs">
             <div>
-              <span className="text-slate-500 font-medium block">
+              <span className="text-ink-muted font-medium block">
                 Industry &amp; Region
               </span>
-              <span className="font-bold text-slate-900 mt-1 block">
+              <span className="font-bold text-ink mt-1 block">
                 {study.businessType} ({study.region})
               </span>
             </div>
             <div>
-              <span className="text-slate-500 font-medium block">
+              <span className="text-ink-muted font-medium block">
                 Company Profile
               </span>
-              <span className="font-bold text-slate-900 mt-1 block">
+              <span className="font-bold text-ink mt-1 block">
                 {study.companySize}
               </span>
             </div>
             <div>
-              <span className="text-slate-500 font-medium block">
+              <span className="text-ink-muted font-medium block">
                 Service Delivered
               </span>
               <Link
                 href={study.relatedServiceHref}
-                className="font-bold text-brand-blue hover:text-brand-orange mt-1 inline-flex items-center gap-1"
+                className="font-bold text-trust hover:text-cta mt-1 inline-flex items-center gap-1 transition-colors"
               >
                 {study.relatedServiceLabel}
                 <ArrowRight className="w-3 h-3 shrink-0" aria-hidden="true" />
               </Link>
             </div>
             <div>
-              <span className="text-slate-500 font-medium block">
+              <span className="text-ink-muted font-medium block">
                 Tech Stack &amp; Timeframe
               </span>
-              <span className="font-bold text-slate-900 mt-1 block">
+              <span className="font-bold text-ink mt-1 block">
                 {study.techStack} · {study.timeframe}
               </span>
             </div>
           </div>
 
           {/* Jump Links */}
-          <div className="pt-4 border-t border-slate-200 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-semibold text-slate-600">
-            <span className="text-slate-400">Jump to:</span>
-            <a href="#problem" className="hover:text-brand-blue">
+          <div className="pt-4 border-t border-border-hairline flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-semibold text-ink-secondary">
+            <span className="text-ink-muted font-mono">Jump to:</span>
+            <a href="#problem" className="hover:text-trust transition-colors">
               01. Problem
             </a>
-            <a href="#hypothesis" className="hover:text-brand-blue">
+            <a href="#hypothesis" className="hover:text-trust transition-colors">
               02. Hypothesis
             </a>
-            <a href="#execution" className="hover:text-brand-blue">
+            <a href="#execution" className="hover:text-trust transition-colors">
               04. Execution
             </a>
-            <a href="#results" className="hover:text-brand-blue">
+            <a href="#results" className="hover:text-trust transition-colors">
               05. Results
             </a>
-            <a href="#migration-risk" className="hover:text-brand-blue">
+            <a href="#migration-risk" className="hover:text-trust transition-colors">
               06. Migration Risk
             </a>
           </div>
@@ -192,10 +194,10 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
         {/* 4. Answer-First CSR Narrative */}
         <section id="problem" className="space-y-3 scroll-mt-24">
-          <h2 className="text-2xl font-display font-bold text-slate-900">
+          <h2 className="type-h3 font-display font-bold text-ink">
             01. The Problem
           </h2>
-          <p className="text-base text-slate-600 leading-relaxed">
+          <p className="text-base text-ink-secondary leading-relaxed prose-measure">
             {study.situation}
           </p>
         </section>
@@ -203,21 +205,21 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         {/* Strategic Hypothesis */}
         <section
           id="hypothesis"
-          className="bg-slate-50 rounded-2xl border border-slate-200 p-6 sm:p-8 space-y-2.5 scroll-mt-24"
+          className="bg-subtle rounded-bento border border-border-hairline p-6 sm:p-8 space-y-2.5 scroll-mt-24"
         >
-          <h2 className="text-xl font-display font-bold text-brand-blue">
+          <h2 className="type-h4 font-display font-bold text-trust">
             02. Strategic Hypothesis
           </h2>
-          <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+          <p className="text-sm sm:text-base text-ink-secondary leading-relaxed">
             {study.hypothesis}
           </p>
         </section>
 
         {/* Leaks Sealed First */}
-        <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 space-y-4">
-          <h2 className="text-xl font-display font-bold text-slate-900 flex items-center gap-2">
+        <section className="bento-card p-6 sm:p-8 space-y-4">
+          <h2 className="type-h4 font-display font-bold text-ink flex items-center gap-2">
             <ShieldAlert
-              className="w-5 h-5 text-brand-orange shrink-0"
+              className="w-5 h-5 text-cta shrink-0"
               aria-hidden="true"
             />
             03. Immediate Leaks Sealed Before Scaling
@@ -226,10 +228,10 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             {study.leaksSealed.map((leak) => (
               <li
                 key={leak}
-                className="flex items-start gap-2.5 text-sm sm:text-base text-slate-700"
+                className="flex items-start gap-2.5 text-sm sm:text-base text-ink-secondary"
               >
                 <CheckCircle2
-                  className="w-4 h-4 text-brand-green shrink-0 mt-1"
+                  className="w-4 h-4 text-kpi-positive shrink-0 mt-1"
                   aria-hidden="true"
                 />
                 <span>{leak}</span>
@@ -240,19 +242,19 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
         {/* Execution Plan */}
         <section id="execution" className="space-y-4 scroll-mt-24">
-          <h2 className="text-2xl font-display font-bold text-slate-900">
+          <h2 className="type-h3 font-display font-bold text-ink">
             04. Technical Execution &amp; Attribution Steps
           </h2>
           <div className="space-y-3">
             {study.whatWeDid.map((action, idx) => (
               <div
                 key={action}
-                className="flex items-start gap-4 p-4 rounded-xl border border-slate-200 bg-white"
+                className="flex items-start gap-4 p-4 rounded-tile border border-border-hairline bg-card"
               >
-                <span className="text-xs font-bold text-brand-blue tabular-nums mt-1">
+                <span className="text-xs font-mono font-bold text-trust metric-tabular mt-1">
                   0{idx + 1}
                 </span>
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                <p className="text-sm sm:text-base text-ink-secondary leading-relaxed">
                   {action}
                 </p>
               </div>
@@ -262,19 +264,19 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
         {/* Verified Results */}
         <section id="results" className="space-y-4 scroll-mt-24">
-          <h2 className="text-2xl font-display font-bold text-slate-900">
+          <h2 className="type-h3 font-display font-bold text-ink">
             05. Pipeline &amp; Revenue Result
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {study.results.map((result) => (
               <div
                 key={result.label}
-                className="border border-slate-200 rounded-xl p-5 bg-white"
+                className="border border-border-hairline rounded-tile p-5 bg-card"
               >
-                <span className="text-xs text-slate-500 font-medium block">
+                <span className="text-xs text-ink-muted font-medium block">
                   {result.label}
                 </span>
-                <span className="text-xl font-display font-bold text-emerald-700 block mt-1 tabular-nums">
+                <span className="type-kpi-card text-kpi-positive block mt-1.5">
                   {result.value}
                 </span>
               </div>
@@ -284,79 +286,79 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
         {/* Financial Impact if present */}
         {study.financialImpact ? (
-          <section className="bg-emerald-50/60 border border-emerald-200 rounded-2xl p-6 sm:p-8 space-y-5">
-            <h3 className="text-xl font-display font-bold text-slate-900">
+          <section className="bg-kpi-positive-bg border border-border-hairline rounded-bento p-6 sm:p-8 space-y-5">
+            <h3 className="type-h4 font-display font-bold text-ink">
               Bottom-Line Financial Impact
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 tabular-nums">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 metric-tabular">
               <div>
-                <span className="text-xs text-slate-600 font-medium block">
+                <span className="text-xs text-ink-muted font-medium block">
                   Avg. Job Value
                 </span>
-                <span className="text-lg font-bold text-slate-900">
+                <span className="text-lg font-mono font-bold text-ink">
                   {study.financialImpact.avgJobValue}
                 </span>
               </div>
               <div>
-                <span className="text-xs text-slate-600 font-medium block">
+                <span className="text-xs text-ink-muted font-medium block">
                   Previous GBP Rev
                 </span>
-                <span className="text-lg font-bold text-slate-600">
+                <span className="text-lg font-mono font-bold text-ink-secondary">
                   {study.financialImpact.previousRevenue}/mo
                 </span>
               </div>
               <div>
-                <span className="text-xs text-slate-600 font-medium block">
+                <span className="text-xs text-ink-muted font-medium block">
                   Current GBP Rev
                 </span>
-                <span className="text-lg font-bold text-emerald-700">
+                <span className="text-lg font-mono font-bold text-kpi-positive">
                   {study.financialImpact.currentRevenue}/mo
                 </span>
               </div>
               <div>
-                <span className="text-xs text-slate-600 font-medium block">
+                <span className="text-xs text-ink-muted font-medium block">
                   Net Monthly Gain
                 </span>
-                <span className="text-lg font-bold text-emerald-700">
-                  +{study.financialImpact.additionalRevenue}/mo
+                <span className="text-lg font-mono font-bold text-kpi-positive">
+                  ▲ +{study.financialImpact.additionalRevenue}/mo
                 </span>
               </div>
             </div>
-            <div className="border-t border-emerald-200 pt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-              <span className="text-sm font-medium text-slate-700">
+            <div className="border-t border-border-hairline pt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+              <span className="text-sm font-medium text-ink-secondary">
                 Annualized Map Pack Revenue Impact:
               </span>
-              <span className="text-xl font-display font-extrabold text-emerald-700 tabular-nums">
-                {study.financialImpact.annualImpact}/yr
+              <span className="type-kpi-card text-kpi-positive">
+                ▲ {study.financialImpact.annualImpact}/yr
               </span>
             </div>
           </section>
         ) : null}
 
-        {/* 5. Migration Risk & Switching Objection Box (Research #5 Section 4) */}
+        {/* 5. Migration Risk & Switching Objection Box */}
         <section
           id="migration-risk"
-          className="bg-amber-50/60 border border-amber-200 rounded-2xl p-6 sm:p-8 space-y-4 scroll-mt-24"
+          className="bg-kpi-warning-bg border border-border-hairline rounded-bento p-6 sm:p-8 space-y-4 scroll-mt-24"
         >
-          <div className="flex items-center gap-2 text-xs font-semibold text-amber-800">
+          <div className="flex items-center gap-2 eyebrow-mono text-kpi-warning">
             <ShieldCheck className="w-4 h-4 shrink-0" aria-hidden="true" />
             06. Migration Risk &amp; Switching Objection Handled
           </div>
-          <h2 className="text-xl font-display font-bold text-slate-900">
+          <h2 className="type-h4 font-display font-bold text-ink">
             {study.migrationRisk.fearTitle}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-sm leading-relaxed">
-            <div className="bg-white rounded-xl border border-amber-200/80 p-4 space-y-1.5">
-              <span className="text-xs font-semibold text-amber-800 block">
+            <div className="bg-card rounded-tile border border-border-hairline p-4 space-y-1.5">
+              <span className="eyebrow-mono text-kpi-warning block">
                 What Nearly Blocked the Switch
               </span>
-              <p className="text-slate-700">{study.migrationRisk.objection}</p>
+              <p className="text-ink-secondary">{study.migrationRisk.objection}</p>
             </div>
-            <div className="bg-white rounded-xl border border-emerald-200 p-4 space-y-1.5">
-              <span className="text-xs font-semibold text-emerald-700 block">
+            <div className="bg-card rounded-tile border border-border-hairline p-4 space-y-1.5">
+              <span className="eyebrow-mono text-kpi-positive block">
                 How We De-Risked Execution
               </span>
-              <p className="text-slate-700">
+              <p className="text-ink-secondary">
                 {study.migrationRisk.howWeDeRisked}
               </p>
             </div>
@@ -364,29 +366,29 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         </section>
 
         {/* Client Quote (clean hairline box, no thick left border) */}
-        <blockquote className="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 space-y-3">
-          <p className="text-base sm:text-lg text-slate-800 leading-relaxed italic">
+        <blockquote className="bg-subtle border border-border-hairline rounded-bento p-6 sm:p-8 space-y-3">
+          <p className="text-base sm:text-lg text-ink leading-relaxed italic">
             &ldquo;{study.quote}&rdquo;
           </p>
-          <cite className="text-xs text-slate-600 font-semibold not-italic block">
+          <cite className="text-xs text-ink-secondary font-semibold not-italic block">
             — {study.quoteAuthor}
           </cite>
-          <p className="text-xs text-slate-500 pt-1">{study.disclosureNote}</p>
+          <p className="text-xs text-ink-muted pt-1">{study.disclosureNote}</p>
         </blockquote>
 
         {/* Key Learnings */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-display font-bold text-slate-900">
+          <h2 className="type-h3 font-display font-bold text-ink">
             Key Takeaways
           </h2>
           <ul className="space-y-2.5">
             {study.keyLearnings.map((learning) => (
               <li
                 key={learning}
-                className="flex items-start gap-2.5 text-base text-slate-700"
+                className="flex items-start gap-2.5 text-base text-ink-secondary"
               >
                 <CheckCircle2
-                  className="w-4 h-4 text-brand-green shrink-0 mt-1"
+                  className="w-4 h-4 text-kpi-positive shrink-0 mt-1"
                   aria-hidden="true"
                 />
                 <span>{learning}</span>
@@ -396,11 +398,11 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         </section>
 
         {/* Footer CTA */}
-        <section className="border-t border-slate-200 pt-10 text-center space-y-5">
-          <h3 className="text-2xl font-display font-bold text-slate-900">
+        <section className="border-t border-border-hairline pt-10 text-center space-y-5">
+          <h3 className="type-h3 font-display font-bold text-ink">
             Want a Similar Breakdown for Your Business?
           </h3>
-          <p className="text-sm sm:text-base text-slate-600 max-w-lg mx-auto">
+          <p className="text-sm sm:text-base text-ink-secondary max-w-lg mx-auto">
             {study.nextStepsText}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -411,7 +413,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               Explore {study.relatedServiceLabel}
             </CTAButton>
           </div>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-ink-muted">
             *Results vary by industry competition, close rate, and local market size.
           </p>
         </section>

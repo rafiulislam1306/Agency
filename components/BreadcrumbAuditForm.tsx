@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -24,6 +24,7 @@ import {
   type AuditTimelineId,
   type AuditRoutingDecision,
 } from "@/lib/auditFormLogic";
+import { readLeadDraft, writeLeadDraft } from "@/lib/uxQaLogic";
 
 interface BreadcrumbAuditFormProps {
   compact?: boolean;
@@ -56,12 +57,30 @@ export default function BreadcrumbAuditForm({
   );
   const [attributionSaved, setAttributionSaved] = useState(false);
 
+  // WCAG 2.2 SC 3.3.7 Redundant Entry: hydrate previously entered URL/email post-mount (zero SSR mismatch)
+  useEffect(() => {
+    const syncDraft = () => {
+      const draft = readLeadDraft();
+      if (draft.websiteUrl) {
+        setWebsiteUrl((prev) => (prev ? prev : draft.websiteUrl));
+      }
+      if (draft.email) {
+        setEmail((prev) => (prev ? prev : draft.email));
+      }
+    };
+    syncDraft();
+    window.addEventListener("leadgrow:draft-updated", syncDraft);
+    return () => window.removeEventListener("leadgrow:draft-updated", syncDraft);
+  }, []);
+
   const emailPreview = email.trim() ? validateAuditEmail(email) : null;
 
   const handleStep1Continue = () => {
     setStepError("");
     if (!priority) {
-      setStepError("Select your #1 growth priority so we audit the right signals.");
+      setStepError(
+        "Select your #1 growth priority so we audit the right signals."
+      );
       return;
     }
     const urlCheck = normalizeAuditUrl(websiteUrl);
@@ -100,7 +119,9 @@ export default function BreadcrumbAuditForm({
     }
 
     if (!priority || !budget || !timeline) {
-      setStepError("Please complete the prior audit questions before submitting.");
+      setStepError(
+        "Please complete the prior audit questions before submitting."
+      );
       return;
     }
 
@@ -158,7 +179,6 @@ export default function BreadcrumbAuditForm({
       });
       setAttributionSaved(true);
     } catch {
-      // Non-blocking optional telemetry
       setAttributionSaved(true);
     }
   };
@@ -181,86 +201,86 @@ export default function BreadcrumbAuditForm({
     return (
       <div
         id="free-audit-confirmation"
-        className={`bg-white rounded-2xl border border-slate-200 ${
+        className={`bento-card ${
           compact ? "p-6" : "p-6 sm:p-8"
-        } text-slate-900 space-y-6`}
+        } text-ink space-y-6`}
       >
         <div className="flex items-start gap-4">
-          <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+          <div className="w-11 h-11 rounded-[var(--radius-tile)] bg-kpi-positive-bg text-kpi-positive flex items-center justify-center shrink-0">
             <CheckCircle2 className="w-6 h-6" aria-hidden="true" />
           </div>
           <div className="space-y-1">
-            <p className="text-xs font-semibold text-emerald-700 tabular-nums">
+            <p className="tracking-id text-xs font-semibold text-kpi-positive">
               Audit Request Confirmed · Ref {submissionResult.referenceId}
             </p>
-            <h3 className="text-xl sm:text-2xl font-display font-bold text-slate-900">
+            <h3 className="text-xl sm:text-2xl font-display font-bold text-ink">
               We&apos;re Auditing {submissionResult.domain}
             </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-ink-secondary leading-relaxed">
               Your personalized teardown and prioritized fix scorecard will be sent to{" "}
-              <strong className="text-slate-900">{email}</strong>.
+              <strong className="text-ink">{email}</strong>.
             </p>
           </div>
         </div>
 
         {/* Routing Decision Card */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-canvas border border-border-hairline rounded-[var(--radius-tile)] p-4 text-xs">
           <div>
-            <span className="text-slate-500 font-medium block">
+            <span className="text-ink-muted font-medium block">
               Assigned Track
             </span>
-            <span className="font-bold text-slate-900 mt-0.5 block">
+            <span className="font-bold text-ink mt-0.5 block">
               {submissionResult.routing.trackLabel}
             </span>
           </div>
           <div>
-            <span className="text-slate-500 font-medium block">
+            <span className="text-ink-muted font-medium block">
               Reviewer Role
             </span>
-            <span className="font-bold text-slate-900 mt-0.5 block">
+            <span className="font-bold text-ink mt-0.5 block">
               {submissionResult.routing.specialistRole}
             </span>
           </div>
           <div>
-            <span className="text-slate-500 font-medium block">
+            <span className="text-ink-muted font-medium block">
               Delivery SLA
             </span>
-            <span className="font-bold text-emerald-700 mt-0.5 block tabular-nums">
+            <span className="font-bold text-kpi-positive mt-0.5 block metric-tabular">
               {submissionResult.routing.deliverySla}
             </span>
           </div>
         </div>
 
         {/* Matched Un-Gated Case Study */}
-        <div className="rounded-xl border border-brand-blue/20 bg-brand-blue/[0.03] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="rounded-[var(--radius-tile)] border border-trust/25 bg-trust-tint p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
-            <p className="text-xs font-semibold text-brand-blue">
+            <p className="text-xs font-semibold text-trust">
               Recommended Case Study While We Audit Your Account
             </p>
-            <p className="text-sm font-bold text-slate-900">
+            <p className="text-sm font-bold text-ink">
               {submissionResult.routing.matchedCaseStudy.title}
             </p>
-            <p className="text-xs font-semibold text-emerald-700 tabular-nums">
-              {submissionResult.routing.matchedCaseStudy.metric}
+            <p className="text-xs font-semibold text-kpi-positive metric-tabular">
+              ▲ {submissionResult.routing.matchedCaseStudy.metric}
             </p>
           </div>
           <Link
             href={`/case-studies/${submissionResult.routing.matchedCaseStudy.slug}`}
-            className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg bg-brand-blue text-white text-xs font-semibold hover:bg-brand-blue/90 transition-colors whitespace-nowrap shrink-0"
+            className="inline-flex items-center justify-center gap-1.5 min-h-11 px-4 py-2.5 rounded-[var(--radius-btn)] bg-trust text-white text-xs font-semibold hover:bg-trust-hover transition-colors whitespace-nowrap shrink-0"
           >
             Read Case Study
             <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
           </Link>
         </div>
 
-        {/* Post-Submission Optional Attribution (zero pre-conversion friction) */}
-        <div className="border-t border-slate-200 pt-5 space-y-3">
+        {/* Post-Submission Optional Attribution */}
+        <div className="border-t border-border-hairline pt-5 space-y-3">
           <div className="flex items-center justify-between gap-2">
-            <p className="text-xs font-semibold text-slate-700">
+            <p className="text-xs font-semibold text-ink-secondary">
               Quick optional question: How did you hear about LeadGrow?
             </p>
             {attributionSaved ? (
-              <span className="text-xs font-semibold text-emerald-700">
+              <span className="text-xs font-semibold text-kpi-positive">
                 Thanks for sharing
               </span>
             ) : null}
@@ -271,10 +291,10 @@ export default function BreadcrumbAuditForm({
                 key={option}
                 type="button"
                 onClick={() => handleSaveAttribution(option)}
-                className={`px-3 py-1.5 rounded-lg border text-xs font-medium transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                className={`min-h-11 px-3.5 py-2 rounded-[var(--radius-btn)] border text-xs font-medium transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                   selectedAttribution === option
-                    ? "border-brand-blue bg-brand-blue text-white"
-                    : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
+                    ? "border-trust bg-trust text-white"
+                    : "border-border-control bg-card text-ink-secondary hover:border-trust hover:text-trust"
                 }`}
               >
                 {option}
@@ -283,12 +303,12 @@ export default function BreadcrumbAuditForm({
           </div>
         </div>
 
-        <div className="pt-1 flex items-center justify-between text-xs text-slate-500">
+        <div className="pt-1 flex flex-wrap items-center justify-between gap-2 text-xs text-ink-muted">
           <span>Zero forced sales calls · Keep the full audit either way</span>
           <button
             type="button"
             onClick={resetForm}
-            className="font-semibold text-brand-blue hover:underline cursor-pointer whitespace-nowrap shrink-0"
+            className="min-h-11 px-2 font-semibold text-trust hover:underline cursor-pointer whitespace-nowrap shrink-0"
           >
             Audit another URL
           </button>
@@ -299,14 +319,14 @@ export default function BreadcrumbAuditForm({
 
   return (
     <div
-      className={`bg-white rounded-2xl border border-slate-200 ${
+      className={`bento-card ${
         compact ? "p-6" : "p-6 sm:p-8"
-      } text-slate-900 space-y-5`}
+      } text-ink space-y-5`}
     >
       {/* Header */}
-      <div className="space-y-1.5 border-b border-slate-100 pb-4">
+      <div className="space-y-1.5 border-b border-border-hairline pb-4">
         <div className="flex items-center justify-between gap-3">
-          <span className="text-xs font-semibold text-brand-blue">
+          <span className="eyebrow-mono text-trust">
             {step === 1
               ? "Free Website & Ads Teardown · 45 Seconds"
               : step === 2
@@ -314,13 +334,13 @@ export default function BreadcrumbAuditForm({
                 : "Last step! Where should we send your audit?"}
           </span>
           {step >= 2 ? (
-            <span className="text-xs font-semibold text-slate-500 tabular-nums whitespace-nowrap shrink-0">
-              {step === 2 ? "66% complete" : "Almost done"}
+            <span className="tracking-id text-xs font-semibold text-ink-muted whitespace-nowrap shrink-0">
+              {step === 2 ? "66%" : "92%"}
             </span>
           ) : null}
         </div>
 
-        <h3 className="text-xl font-display font-bold text-slate-900">
+        <h3 className="text-xl font-display font-bold text-ink">
           {step === 1
             ? "Get Your Free Website & Pipeline Leak Audit"
             : step === 2
@@ -328,7 +348,7 @@ export default function BreadcrumbAuditForm({
               : "Last step! Enter Your Work Email"}
         </h3>
 
-        <p className="text-sm text-slate-600">
+        <p className="text-sm text-ink-secondary">
           {step === 1
             ? "Start anonymously — pick your top priority and enter your URL. No phone number or account required."
             : step === 2
@@ -339,7 +359,7 @@ export default function BreadcrumbAuditForm({
         {/* Research #5 rule: NO progress bar on Step 1; introduce progress bar starting on Step 2 */}
         {step >= 2 ? (
           <div
-            className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden mt-3"
+            className="w-full h-1.5 bg-subtle rounded-full overflow-hidden mt-3"
             role="progressbar"
             aria-valuenow={step === 2 ? 66 : 92}
             aria-valuemin={0}
@@ -347,7 +367,7 @@ export default function BreadcrumbAuditForm({
             aria-label="Audit form progress"
           >
             <div
-              className="h-full bg-brand-green transition-all duration-300"
+              className="h-full bg-kpi-positive transition-[width] duration-300"
               style={{ width: step === 2 ? "66%" : "92%" }}
             />
           </div>
@@ -358,7 +378,7 @@ export default function BreadcrumbAuditForm({
       {step === 1 ? (
         <div className="space-y-5">
           <fieldset className="space-y-2.5">
-            <legend className="text-xs font-semibold text-slate-800">
+            <legend className="text-xs font-semibold text-ink">
               1. What is your #1 priority over the next 90 days? *
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -373,16 +393,16 @@ export default function BreadcrumbAuditForm({
                       setStepError("");
                     }}
                     aria-pressed={selected}
-                    className={`p-3.5 rounded-xl border text-left transition-colors cursor-pointer space-y-1 ${
+                    className={`min-h-14 p-3.5 rounded-[var(--radius-tile)] border text-left transition-colors cursor-pointer space-y-1 ${
                       selected
-                        ? "border-brand-blue bg-brand-blue/[0.06] ring-1 ring-brand-blue"
-                        : "border-slate-200 bg-slate-50/50 hover:border-slate-300 hover:bg-white"
+                        ? "border-trust bg-trust-tint ring-1 ring-trust"
+                        : "border-border-control bg-card hover:border-trust hover:bg-canvas"
                     }`}
                   >
-                    <span className="text-sm font-semibold text-slate-900 block leading-snug">
+                    <span className="text-sm font-semibold text-ink block leading-snug">
                       {item.label}
                     </span>
-                    <span className="text-xs text-slate-500 block leading-snug">
+                    <span className="text-xs text-ink-muted block leading-snug">
                       {item.helper}
                     </span>
                   </button>
@@ -394,13 +414,13 @@ export default function BreadcrumbAuditForm({
           <div className="space-y-1.5">
             <label
               htmlFor="breadcrumb-website-url"
-              className="block text-xs font-semibold text-slate-800"
+              className="block text-xs font-semibold text-ink"
             >
               2. Which website URL should we audit? *
             </label>
             <div className="relative">
               <Globe
-                className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
+                className="w-4 h-4 text-ink-muted absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
                 aria-hidden="true"
               />
               <input
@@ -409,8 +429,13 @@ export default function BreadcrumbAuditForm({
                 inputMode="url"
                 autoComplete="url"
                 value={websiteUrl}
+                aria-invalid={stepError ? true : undefined}
+                aria-describedby={stepError ? "breadcrumb-step1-error" : undefined}
                 onChange={(e) => {
-                  setWebsiteUrl(e.target.value);
+                  const nextUrl = e.target.value;
+                  setWebsiteUrl(nextUrl);
+                  writeLeadDraft({ websiteUrl: nextUrl });
+                  window.dispatchEvent(new Event("leadgrow:draft-updated"));
                   if (stepError) setStepError("");
                 }}
                 onKeyDown={(e) => {
@@ -420,13 +445,18 @@ export default function BreadcrumbAuditForm({
                   }
                 }}
                 placeholder="yourcompany.com (no https:// needed)"
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-brand-blue text-sm text-slate-900"
+                className="w-full min-h-11 pl-10 pr-3.5 py-2.5 rounded-[var(--radius-input)] border border-border-control bg-card focus:border-trust text-sm text-ink placeholder:text-ink-muted"
               />
             </div>
           </div>
 
           {stepError ? (
-            <div className="text-xs font-medium text-red-700 bg-red-50 border border-red-200 rounded-lg px-3.5 py-2.5">
+            <div
+              id="breadcrumb-step1-error"
+              role="alert"
+              aria-live="polite"
+              className="text-xs font-medium text-kpi-negative bg-kpi-negative-bg border border-kpi-negative/40 rounded-[var(--radius-btn)] px-3.5 py-2.5"
+            >
               {stepError}
             </div>
           ) : null}
@@ -434,7 +464,7 @@ export default function BreadcrumbAuditForm({
           <button
             type="button"
             onClick={handleStep1Continue}
-            className="w-full bg-brand-orange hover:bg-brand-orange-hover text-white font-semibold py-3 px-5 rounded-lg transition-colors duration-150 flex items-center justify-center gap-2 cursor-pointer text-sm whitespace-nowrap shrink-0"
+            className="w-full min-h-12 bg-cta hover:bg-cta-hover active:bg-cta-active text-cta-ink font-semibold py-3 px-5 rounded-[var(--radius-btn)] transition-colors duration-150 flex items-center justify-center gap-2 cursor-pointer text-sm whitespace-nowrap shrink-0"
           >
             <span>Continue to Scope</span>
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -446,7 +476,7 @@ export default function BreadcrumbAuditForm({
       {step === 2 ? (
         <div className="space-y-5">
           <fieldset className="space-y-2.5">
-            <legend className="text-xs font-semibold text-slate-800">
+            <legend className="text-xs font-semibold text-ink">
               3. What is your monthly Google Ads / search marketing budget? *
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -461,16 +491,16 @@ export default function BreadcrumbAuditForm({
                       setStepError("");
                     }}
                     aria-pressed={selected}
-                    className={`p-3 rounded-xl border text-left transition-colors cursor-pointer space-y-0.5 ${
+                    className={`min-h-14 p-3 rounded-[var(--radius-tile)] border text-left transition-colors cursor-pointer space-y-0.5 ${
                       selected
-                        ? "border-brand-blue bg-brand-blue/[0.06] ring-1 ring-brand-blue"
-                        : "border-slate-200 bg-slate-50/50 hover:border-slate-300 hover:bg-white"
+                        ? "border-trust bg-trust-tint ring-1 ring-trust"
+                        : "border-border-control bg-card hover:border-trust hover:bg-canvas"
                     }`}
                   >
-                    <span className="text-sm font-semibold text-slate-900 block tabular-nums">
+                    <span className="text-sm font-semibold text-ink block metric-tabular">
                       {item.label}
                     </span>
-                    <span className="text-xs text-slate-500 block">
+                    <span className="text-xs text-ink-muted block">
                       {item.helper}
                     </span>
                   </button>
@@ -480,7 +510,7 @@ export default function BreadcrumbAuditForm({
           </fieldset>
 
           <fieldset className="space-y-2.5">
-            <legend className="text-xs font-semibold text-slate-800">
+            <legend className="text-xs font-semibold text-ink">
               4. Target timeline for implementing improvements? *
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -495,16 +525,16 @@ export default function BreadcrumbAuditForm({
                       setStepError("");
                     }}
                     aria-pressed={selected}
-                    className={`p-3 rounded-xl border text-left transition-colors cursor-pointer space-y-0.5 ${
+                    className={`min-h-14 p-3 rounded-[var(--radius-tile)] border text-left transition-colors cursor-pointer space-y-0.5 ${
                       selected
-                        ? "border-brand-blue bg-brand-blue/[0.06] ring-1 ring-brand-blue"
-                        : "border-slate-200 bg-slate-50/50 hover:border-slate-300 hover:bg-white"
+                        ? "border-trust bg-trust-tint ring-1 ring-trust"
+                        : "border-border-control bg-card hover:border-trust hover:bg-canvas"
                     }`}
                   >
-                    <span className="text-xs sm:text-sm font-semibold text-slate-900 block">
+                    <span className="text-xs sm:text-sm font-semibold text-ink block">
                       {item.label}
                     </span>
-                    <span className="text-xs text-slate-500 block leading-snug">
+                    <span className="text-xs text-ink-muted block leading-snug">
                       {item.helper}
                     </span>
                   </button>
@@ -514,7 +544,10 @@ export default function BreadcrumbAuditForm({
           </fieldset>
 
           {stepError ? (
-            <div className="text-xs font-medium text-red-700 bg-red-50 border border-red-200 rounded-lg px-3.5 py-2.5">
+            <div
+              role="alert"
+              className="text-xs font-medium text-kpi-negative bg-kpi-negative-bg border border-kpi-negative/40 rounded-[var(--radius-btn)] px-3.5 py-2.5"
+            >
               {stepError}
             </div>
           ) : null}
@@ -526,7 +559,7 @@ export default function BreadcrumbAuditForm({
                 setStep(1);
                 setStepError("");
               }}
-              className="px-4 py-3 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 text-sm font-semibold inline-flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0"
+              className="min-h-12 px-4 py-3 rounded-[var(--radius-btn)] border border-border-control text-ink hover:bg-canvas text-sm font-semibold inline-flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" aria-hidden="true" />
               Back
@@ -534,7 +567,7 @@ export default function BreadcrumbAuditForm({
             <button
               type="button"
               onClick={handleStep2Continue}
-              className="flex-1 bg-brand-orange hover:bg-brand-orange-hover text-white font-semibold py-3 px-5 rounded-lg transition-colors duration-150 flex items-center justify-center gap-2 cursor-pointer text-sm whitespace-nowrap shrink-0"
+              className="flex-1 min-h-12 bg-cta hover:bg-cta-hover active:bg-cta-active text-cta-ink font-semibold py-3 px-5 rounded-[var(--radius-btn)] transition-colors duration-150 flex items-center justify-center gap-2 cursor-pointer text-sm whitespace-nowrap shrink-0"
             >
               <span>Almost Done</span>
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -546,14 +579,14 @@ export default function BreadcrumbAuditForm({
       {/* Step 3: "Last step!" — Work Email Isolated (5th and final field) */}
       {step === 3 ? (
         <form onSubmit={handleFinalSubmit} className="space-y-5">
-          <div className="rounded-xl bg-slate-50 border border-slate-200 p-3.5 text-xs text-slate-600 flex flex-wrap items-center justify-between gap-2">
+          <div className="rounded-[var(--radius-tile)] bg-canvas border border-border-hairline p-3.5 text-xs text-ink-secondary flex flex-wrap items-center justify-between gap-2">
             <span>
               Auditing:{" "}
-              <strong className="text-slate-900">
+              <strong className="text-ink">
                 {normalizeAuditUrl(websiteUrl).domain || websiteUrl}
               </strong>
             </span>
-            <span className="text-brand-blue font-semibold">
+            <span className="text-trust font-semibold">
               {AUDIT_PRIORITIES.find((p) => p.id === priority)?.label}
             </span>
           </div>
@@ -561,7 +594,7 @@ export default function BreadcrumbAuditForm({
           <div className="space-y-1.5">
             <label
               htmlFor="breadcrumb-work-email"
-              className="block text-xs font-semibold text-slate-800"
+              className="block text-xs font-semibold text-ink"
             >
               5. Work Email (where we&apos;ll deliver your audit video &amp; PDF) *
             </label>
@@ -571,22 +604,32 @@ export default function BreadcrumbAuditForm({
               required
               autoComplete="email"
               value={email}
+              aria-invalid={stepError ? true : undefined}
+              aria-describedby={stepError ? "breadcrumb-step3-error" : undefined}
               onChange={(e) => {
-                setEmail(e.target.value);
+                const nextEmail = e.target.value;
+                setEmail(nextEmail);
+                writeLeadDraft({ email: nextEmail });
+                window.dispatchEvent(new Event("leadgrow:draft-updated"));
                 if (stepError) setStepError("");
               }}
               placeholder="name@yourcompany.com"
-              className="w-full px-3.5 py-3 rounded-lg border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-brand-blue text-sm text-slate-900"
+              className="w-full min-h-11 px-3.5 py-2.5 rounded-[var(--radius-input)] border border-border-control bg-card focus:border-trust text-sm text-ink placeholder:text-ink-muted"
             />
             {emailPreview?.valid && emailPreview.isPersonalWebmail ? (
-              <p className="text-xs text-amber-700">
+              <p className="text-xs text-kpi-warning">
                 Work email preferred so we can verify domain ownership, though personal email is accepted.
               </p>
             ) : null}
           </div>
 
           {stepError ? (
-            <div className="text-xs font-medium text-red-700 bg-red-50 border border-red-200 rounded-lg px-3.5 py-2.5">
+            <div
+              id="breadcrumb-step3-error"
+              role="alert"
+              aria-live="polite"
+              className="text-xs font-medium text-kpi-negative bg-kpi-negative-bg border border-kpi-negative/40 rounded-[var(--radius-btn)] px-3.5 py-2.5"
+            >
               {stepError}
             </div>
           ) : null}
@@ -598,7 +641,7 @@ export default function BreadcrumbAuditForm({
                 setStep(2);
                 setStepError("");
               }}
-              className="px-4 py-3 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 text-sm font-semibold inline-flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0"
+              className="min-h-12 px-4 py-3 rounded-[var(--radius-btn)] border border-border-control text-ink hover:bg-canvas text-sm font-semibold inline-flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 transition-colors"
             >
               <ArrowLeft className="w-4 h-4" aria-hidden="true" />
               Back
@@ -606,7 +649,7 @@ export default function BreadcrumbAuditForm({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 bg-brand-orange hover:bg-brand-orange-hover text-white font-semibold py-3 px-5 rounded-lg transition-colors duration-150 flex items-center justify-center gap-2 cursor-pointer text-sm disabled:opacity-60 whitespace-nowrap shrink-0"
+              className="flex-1 min-h-12 bg-cta hover:bg-cta-hover active:bg-cta-active text-cta-ink font-semibold py-3 px-5 rounded-[var(--radius-btn)] transition-colors duration-150 flex items-center justify-center gap-2 cursor-pointer text-sm disabled:opacity-60 whitespace-nowrap shrink-0"
             >
               <Sparkles className="w-4 h-4" aria-hidden="true" />
               <span>
@@ -617,17 +660,17 @@ export default function BreadcrumbAuditForm({
         </form>
       ) : null}
 
-      {/* Partner & Security Badges Flanking the Form (Proof Element #5) */}
-      <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-xs text-slate-500">
-        <span className="inline-flex items-center gap-1.5 font-medium text-slate-600">
+      {/* Partner & Security Badges Flanking the Form */}
+      <div className="pt-4 border-t border-border-hairline flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-xs text-ink-muted">
+        <span className="inline-flex items-center gap-1.5 font-medium text-ink-secondary">
           <ShieldCheck
-            className="w-3.5 h-3.5 text-brand-green shrink-0"
+            className="w-3.5 h-3.5 text-kpi-positive shrink-0"
             aria-hidden="true"
           />
           Google Partner · GA4 &amp; sGTM Certified
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <Lock className="w-3.5 h-3.5 text-slate-400 shrink-0" aria-hidden="true" />
+          <Lock className="w-3.5 h-3.5 text-ink-muted shrink-0" aria-hidden="true" />
           No phone required · Zero spam
         </span>
       </div>

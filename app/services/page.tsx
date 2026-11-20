@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Clock, ArrowUpRight } from "lucide-react";
@@ -153,50 +153,38 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-canvas min-h-screen">
       {/* Header Banner */}
-      <section className="bg-gradient-to-br from-brand-blue to-slate-950 text-white py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
-          <p className="text-xs font-semibold text-brand-green">
+      <section
+        data-cta-sentinel="hero"
+        className="surface-dark bg-canvas text-ink py-16 md:py-24 border-b border-border-hairline"
+      >
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-5">
+          <p className="eyebrow-mono text-kpi-positive">
             Operational Architecture · Revenue Infrastructure Over Vanity Clicks
           </p>
-          <h1 className="text-4xl sm:text-5xl font-serif font-extrabold tracking-tight leading-tight text-balance">
+          <h1 className="type-hero font-display font-bold">
             Built Around Qualified Pipeline—Not Cheap Clicks
           </h1>
-          <p className="text-base sm:text-lg text-blue-100 leading-relaxed max-w-2xl mx-auto">
+          <p className="type-lead text-ink-secondary mx-auto">
             With Enhanced CPC deprecated, manual bid tweaking is obsolete. We win by engineering superior query control, 1:1 CRO landing pages, CRM offline feedback loops, and Map Pack authority.
           </p>
           <div className="flex flex-wrap justify-center gap-3 pt-2">
-            <a
-              href="#tracking-architecture"
-              className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm font-medium border border-white/15 transition-colors whitespace-nowrap"
-            >
-              Phase 0 Tracking
-            </a>
-            <a
-              href="#google-ads"
-              className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm font-medium border border-white/15 transition-colors whitespace-nowrap"
-            >
-              Google Ads &amp; VBB
-            </a>
-            <a
-              href="#cro-heuristics"
-              className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm font-medium border border-white/15 transition-colors whitespace-nowrap"
-            >
-              Landing Page CRO
-            </a>
-            <a
-              href="#local-seo"
-              className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm font-medium border border-white/15 transition-colors whitespace-nowrap"
-            >
-              GBP-First Local SEO
-            </a>
-            <a
-              href="#comparison"
-              className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm font-medium border border-white/15 transition-colors whitespace-nowrap"
-            >
-              Compare Channels
-            </a>
+            {[
+              { href: "#tracking-architecture", label: "Phase 0 Tracking" },
+              { href: "#google-ads", label: "Google Ads & VBB" },
+              { href: "#cro-heuristics", label: "Landing Page CRO" },
+              { href: "#local-seo", label: "GBP-First Local SEO" },
+              { href: "#comparison", label: "Compare Channels" },
+            ].map((anchor) => (
+              <a
+                key={anchor.href}
+                href={anchor.href}
+                className="min-h-11 inline-flex items-center px-4 py-2 rounded-[var(--radius-btn)] bg-card hover:bg-subtle text-ink text-sm font-medium border border-border-control transition-colors whitespace-nowrap"
+              >
+                {anchor.label}
+              </a>
+            ))}
           </div>
         </div>
       </section>
@@ -204,23 +192,23 @@ export default function ServicesPage() {
       {/* Phase 0: Conversion Tracking, sGTM & Signal Recovery */}
       <section
         id="tracking-architecture"
-        className="py-16 md:py-24 bg-slate-50 border-b border-slate-200 scroll-mt-20"
+        className="py-16 md:py-24 bg-canvas border-b border-border-hairline scroll-mt-20"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 space-y-14">
           <div className="max-w-3xl space-y-4">
-            <p className="text-xs font-semibold text-brand-blue">
+            <p className="eyebrow-mono text-trust">
               00. Mandatory Phase 0 · Financial Control System for Paid Media
             </p>
-            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 tracking-tight leading-tight text-balance">
+            <h2 className="type-h2 font-display font-bold text-ink">
               Fix the Cash Register Before Scaling Ad Spend
             </h2>
-            <p className="text-base text-slate-600 leading-relaxed">
+            <p className="text-base text-ink-secondary leading-relaxed">
               In 2026, standard browser pixels routinely lose 34.5% to 70.5% of real conversions to ad blockers, Safari 7-day/CNAME caps, and consent gates—or double-count form fills. Launching Google Ads on corrupted signals forces you to pay tuition twice: once while Smart Bidding learns the wrong buyers, and again during a 30-day relearning slump after cleanup.
             </p>
           </div>
 
           {/* 2026 Signal Loss & Recovery Benchmarks Strip */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 tabular-nums">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 metric-tabular">
             {[
               {
                 value: "34.5%–70.5%",
@@ -245,15 +233,15 @@ export default function ServicesPage() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="p-5 rounded-xl bg-white border border-slate-200 space-y-1"
+                className="p-5 rounded-[var(--radius-tile)] bg-card border border-border-hairline space-y-1"
               >
-                <span className="text-2xl sm:text-3xl font-display font-extrabold text-brand-blue block">
+                <span className="type-kpi-card text-trust block">
                   {stat.value}
                 </span>
-                <span className="text-sm font-bold text-slate-900 block">
+                <span className="text-sm font-bold text-ink block">
                   {stat.label}
                 </span>
-                <span className="text-xs text-slate-600 block">
+                <span className="text-xs text-ink-muted block">
                   {stat.detail}
                 </span>
               </div>
@@ -261,102 +249,145 @@ export default function ServicesPage() {
           </div>
 
           {/* Interactive 2026 Signal Loss & Payback Calculator */}
-          <SignalLossCalculator />
+          <Suspense
+            fallback={
+              <div
+                aria-busy="true"
+                className="bento-card min-h-[540px] p-8 animate-pulse bg-subtle/60"
+              />
+            }
+          >
+            <SignalLossCalculator />
+          </Suspense>
 
           {/* 4 Tracking Failure Modes Table */}
           <div className="space-y-4">
             <div className="max-w-3xl space-y-1.5">
-              <h3 className="text-xl font-display font-bold text-slate-900">
+              <h3 className="type-h3 font-display font-semibold text-ink">
                 Four Tracking Failures That Silently Corrupt Smart Bidding
               </h3>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-ink-secondary">
                 During Phase 0, we reconcile 30–90 days of real Shopify, Stripe, or CRM receipts against Google Ads and GA4 (healthy variance sits within 5%–10%) to eliminate every leak below:
               </p>
             </div>
-            <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
-              <table className="min-w-full divide-y divide-slate-200 text-sm">
-                <thead className="bg-slate-100/70 text-slate-900">
-                  <tr>
-                    <th className="px-5 py-3.5 text-left font-bold">Failure Mode</th>
-                    <th className="px-5 py-3.5 text-left font-bold">Technical Root Cause</th>
-                    <th className="px-5 py-3.5 text-left font-bold">How Smart Bidding Misbehaves</th>
-                    <th className="px-5 py-3.5 text-left font-bold">Financial Consequence</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {TRACKING_FAILURE_MODES.map((row) => (
-                    <tr key={row.mode}>
-                      <td className="px-5 py-4 font-semibold text-slate-900 whitespace-nowrap">
-                        {row.mode}
-                      </td>
-                      <td className="px-5 py-4 text-slate-700">{row.rootCause}</td>
-                      <td className="px-5 py-4 text-slate-700">{row.biddingBehavior}</td>
-                      <td className="px-5 py-4 font-medium text-rose-700">
-                        {row.financialConsequence}
-                      </td>
+            <div className="space-y-2">
+              <p className="md:hidden caption-meta font-semibold text-ink-muted text-right">
+                Scroll horizontally to inspect →
+              </p>
+              <div className="overflow-x-auto bento-card">
+                <table className="min-w-full divide-y divide-border-hairline text-sm">
+                  <thead className="bg-subtle text-ink">
+                    <tr>
+                      <th
+                        scope="col"
+                        className="sticky left-0 z-10 bg-subtle border-r border-border-hairline px-5 py-3.5 text-left font-bold"
+                      >
+                        Failure Mode
+                      </th>
+                      <th scope="col" className="px-5 py-3.5 text-left font-bold">
+                        Technical Root Cause
+                      </th>
+                      <th scope="col" className="px-5 py-3.5 text-left font-bold">
+                        How Smart Bidding Misbehaves
+                      </th>
+                      <th scope="col" className="px-5 py-3.5 text-left font-bold">
+                        Financial Consequence
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-border-hairline bg-card">
+                    {TRACKING_FAILURE_MODES.map((row) => (
+                      <tr key={row.mode}>
+                        <td className="sticky left-0 z-10 bg-card border-r border-border-hairline px-5 py-4 font-semibold text-ink whitespace-nowrap">
+                          {row.mode}
+                        </td>
+                        <td className="px-5 py-4 text-ink-secondary">{row.rootCause}</td>
+                        <td className="px-5 py-4 text-ink-secondary">{row.biddingBehavior}</td>
+                        <td className="px-5 py-4 font-semibold text-kpi-negative">
+                          ▼ {row.financialConsequence}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
 
           {/* Right-Sized Measurement Stack Table */}
           <div className="space-y-4">
             <div className="max-w-3xl space-y-1.5">
-              <h3 className="text-xl font-display font-bold text-slate-900">
+              <h3 className="type-h3 font-display font-semibold text-ink">
                 Right-Sized 2026 Measurement Architecture (Never Overbuilt)
               </h3>
-              <p className="text-sm text-slate-600">
-                Not every advertiser needs self-hosted Google Cloud Run. We match your stack to your monthly ad spend while enforcing post-June 15, 2026 <code className="text-xs font-mono text-slate-800">ad_storage</code> Consent Mode rules and true same-origin routing for Safari ITP:
+              <p className="text-sm text-ink-secondary">
+                Not every advertiser needs self-hosted Google Cloud Run. We match your stack to your monthly ad spend while enforcing post-June 15, 2026 <code className="type-code text-ink">ad_storage</code> Consent Mode rules and true same-origin routing for Safari ITP:
               </p>
             </div>
-            <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
-              <table className="min-w-full divide-y divide-slate-200 text-sm">
-                <thead className="bg-slate-100/70 text-slate-900">
-                  <tr>
-                    <th className="px-5 py-3.5 text-left font-bold">Architecture Option</th>
-                    <th className="px-5 py-3.5 text-left font-bold">2026 Infra Cost</th>
-                    <th className="px-5 py-3.5 text-left font-bold">Key Capabilities</th>
-                    <th className="px-5 py-3.5 text-left font-bold">Candid Trade-Offs</th>
-                    <th className="px-5 py-3.5 text-left font-bold">Best Fit</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {MEASUREMENT_STACK_OPTIONS.map((opt) => (
-                    <tr key={opt.option}>
-                      <td className="px-5 py-4 font-semibold text-slate-900">
-                        {opt.option}
-                      </td>
-                      <td className="px-5 py-4 text-slate-700 tabular-nums whitespace-nowrap">
-                        {opt.monthlyInfra}
-                      </td>
-                      <td className="px-5 py-4 text-slate-700">{opt.capabilities}</td>
-                      <td className="px-5 py-4 text-slate-600">{opt.tradeOffs}</td>
-                      <td className="px-5 py-4 font-medium text-brand-blue">
-                        {opt.bestFit}
-                      </td>
+            <div className="space-y-2">
+              <p className="md:hidden caption-meta font-semibold text-ink-muted text-right">
+                Scroll horizontally to inspect →
+              </p>
+              <div className="overflow-x-auto bento-card">
+                <table className="min-w-full divide-y divide-border-hairline text-sm">
+                  <thead className="bg-subtle text-ink">
+                    <tr>
+                      <th
+                        scope="col"
+                        className="sticky left-0 z-10 bg-subtle border-r border-border-hairline px-5 py-3.5 text-left font-bold min-w-[152px]"
+                      >
+                        Architecture Option
+                      </th>
+                      <th scope="col" className="px-5 py-3.5 text-left font-bold">
+                        2026 Infra Cost
+                      </th>
+                      <th scope="col" className="px-5 py-3.5 text-left font-bold">
+                        Key Capabilities
+                      </th>
+                      <th scope="col" className="px-5 py-3.5 text-left font-bold">
+                        Candid Trade-Offs
+                      </th>
+                      <th scope="col" className="px-5 py-3.5 text-left font-bold">
+                        Best Fit
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-border-hairline bg-card">
+                    {MEASUREMENT_STACK_OPTIONS.map((opt) => (
+                      <tr key={opt.option}>
+                        <td className="sticky left-0 z-10 bg-card border-r border-border-hairline px-5 py-4 font-semibold text-ink">
+                          {opt.option}
+                        </td>
+                        <td className="px-5 py-4 text-ink-secondary metric-tabular whitespace-nowrap">
+                          {opt.monthlyInfra}
+                        </td>
+                        <td className="px-5 py-4 text-ink-secondary">{opt.capabilities}</td>
+                        <td className="px-5 py-4 text-ink-muted">{opt.tradeOffs}</td>
+                        <td className="px-5 py-4 font-medium text-trust">
+                          {opt.bestFit}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
 
           {/* Pre-Framing the Post-Fix Dip */}
-          <div className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200 space-y-4">
+          <div className="p-6 sm:p-7 bento-card space-y-4">
             <div className="space-y-1">
-              <p className="text-xs font-semibold text-brand-orange">
+              <p className="eyebrow-mono text-cta">
                 Radical Candor · What to Expect After Repair
               </p>
-              <h3 className="text-lg font-display font-bold text-slate-900">
+              <h3 className="text-lg font-display font-bold text-ink">
                 Why Reported Conversions Can Dip Overnight While Bank Deposits Rise
               </h3>
-              <p className="text-sm text-slate-600 max-w-3xl leading-relaxed">
+              <p className="text-sm text-ink-secondary max-w-3xl leading-relaxed">
                 Stripping duplicate tags, &ldquo;Every&rdquo; lead inflation, and Primary micro-conversions removes phantom numbers immediately. We pre-brief your team on three exact milestones so nobody panics during cleanup:
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 tabular-nums">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 metric-tabular">
               {[
                 {
                   window: "Day 1 (Cleanup)",
@@ -376,15 +407,15 @@ export default function ServicesPage() {
               ].map((step) => (
                 <div
                   key={step.window}
-                  className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5"
+                  className="p-4 rounded-[var(--radius-tile)] bg-canvas border border-border-hairline space-y-1.5"
                 >
-                  <span className="text-xs font-bold text-brand-blue block">
+                  <span className="text-xs font-bold text-trust block">
                     {step.window}
                   </span>
-                  <h4 className="text-sm font-display font-bold text-slate-900">
+                  <h4 className="text-sm font-display font-bold text-ink">
                     {step.title}
                   </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-ink-secondary leading-relaxed">
                     {step.text}
                   </p>
                 </div>
@@ -397,36 +428,36 @@ export default function ServicesPage() {
       {/* Service 1: Zero-Waste Google Ads + CRM VBB */}
       <section
         id="google-ads"
-        className="py-16 md:py-24 bg-white border-b border-slate-200 scroll-mt-20"
+        className="py-16 md:py-24 bg-card border-b border-border-hairline scroll-mt-20"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-5">
-              <p className="text-xs font-semibold text-brand-orange">
+              <p className="eyebrow-mono text-cta">
                 01. Paid Search, PMax Restraint &amp; RevOps
               </p>
-              <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 tracking-tight leading-tight text-balance">
+              <h2 className="type-h2 font-display font-bold text-ink">
                 Zero-Waste Google Ads &amp; CRM Value-Based Bidding
               </h2>
-              <p className="text-base text-slate-600 leading-relaxed">
+              <p className="text-base text-ink-secondary leading-relaxed">
                 Standard Smart Bidding treats a student PDF download the same as a signed contract. We feed real CRM deal values back into Google Ads so the algorithm acts like an automated SDR—bidding strictly for your Ideal Customer Profile.
               </p>
 
-              <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
-                <h3 className="text-sm font-display font-bold text-slate-900">
+              <div className="p-5 rounded-[var(--radius-tile)] bg-canvas border border-border-hairline space-y-2.5">
+                <h3 className="text-sm font-display font-bold text-ink">
                   Ideal For:
                 </h3>
-                <ul className="space-y-2 text-sm text-slate-700">
+                <ul className="space-y-2 text-sm text-ink-secondary">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-brand-green shrink-0 mt-0.5" aria-hidden="true" />
+                    <CheckCircle2 className="w-4 h-4 text-kpi-positive shrink-0 mt-0.5" aria-hidden="true" />
                     <span>Teams burned by cheap leads that never survive a sales call</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-brand-green shrink-0 mt-0.5" aria-hidden="true" />
+                    <CheckCircle2 className="w-4 h-4 text-kpi-positive shrink-0 mt-0.5" aria-hidden="true" />
                     <span>High-CPC markets ($5–$15+/click) needing strict query isolation</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-brand-green shrink-0 mt-0.5" aria-hidden="true" />
+                    <CheckCircle2 className="w-4 h-4 text-kpi-positive shrink-0 mt-0.5" aria-hidden="true" />
                     <span>Advertisers allocating $1,500+/mo directly to Google</span>
                   </li>
                 </ul>
@@ -438,7 +469,7 @@ export default function ServicesPage() {
                 </CTAButton>
                 <Link
                   href="/templates/hvac"
-                  className="inline-flex items-center px-4 py-2.5 rounded-lg border border-slate-200 text-sm font-semibold text-slate-700 hover:border-brand-blue hover:text-brand-blue transition-colors whitespace-nowrap"
+                  className="min-h-11 inline-flex items-center px-4 py-2.5 rounded-[var(--radius-btn)] border border-border-control text-sm font-semibold text-ink hover:border-trust hover:text-trust transition-colors whitespace-nowrap"
                 >
                   Inspect 1:1 CRO Template
                   <ArrowUpRight className="w-4 h-4 ml-1" aria-hidden="true" />
@@ -450,12 +481,12 @@ export default function ServicesPage() {
               {googleAdsProtocol.map((item) => (
                 <div
                   key={item.title}
-                  className="p-5 rounded-xl border border-slate-200 bg-white space-y-2"
+                  className="p-5 rounded-[var(--radius-tile)] border border-border-hairline bg-canvas space-y-2"
                 >
-                  <h3 className="text-base font-display font-bold text-slate-900">
+                  <h3 className="text-base font-display font-bold text-ink">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
+                  <p className="text-sm text-ink-secondary leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -464,29 +495,29 @@ export default function ServicesPage() {
           </div>
 
           {/* 60/20/20 Intent Split & 4-Category Negative Matrix */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-10 border-t border-slate-100">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-10 border-t border-border-hairline">
             <div className="lg:col-span-6 space-y-4">
-              <h3 className="text-xl font-display font-bold text-slate-900">
+              <h3 className="type-h3 font-display font-semibold text-ink">
                 The 60 / 20 / 20 Intent Budget Allocation
               </h3>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-ink-secondary">
                 Capital is deployed first against active buyer evaluation—never drowned in educational broad terms:
               </p>
               <div className="space-y-3">
                 {queryControlAllocation.map((tier) => (
                   <div
                     key={tier.tier}
-                    className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-4"
+                    className="p-4 rounded-[var(--radius-tile)] bg-canvas border border-border-hairline flex items-start gap-4"
                   >
-                    <span className="text-lg font-display font-extrabold text-brand-blue tabular-nums shrink-0">
+                    <span className="text-lg font-mono font-bold text-trust metric-tabular shrink-0">
                       {tier.share}
                     </span>
                     <div className="space-y-1">
-                      <h4 className="text-sm font-display font-bold text-slate-900">
+                      <h4 className="text-sm font-display font-bold text-ink">
                         {tier.tier}
                       </h4>
-                      <p className="text-xs text-slate-600">{tier.intentFocus}</p>
-                      <p className="text-xs text-slate-500 italic">{tier.examples}</p>
+                      <p className="text-xs text-ink-secondary">{tier.intentFocus}</p>
+                      <p className="text-xs text-ink-muted italic">{tier.examples}</p>
                     </div>
                   </div>
                 ))}
@@ -494,24 +525,24 @@ export default function ServicesPage() {
             </div>
 
             <div className="lg:col-span-6 space-y-4">
-              <h3 className="text-xl font-display font-bold text-slate-900">
+              <h3 className="type-h3 font-display font-semibold text-ink">
                 4-Category Exclusionary Negative Matrix
               </h3>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-ink-secondary">
                 We pre-emptively block non-buyer queries before budget disappears on dead clicks:
               </p>
-              <div className="divide-y divide-slate-200 border border-slate-200 rounded-xl overflow-hidden bg-white">
+              <div className="divide-y divide-border-hairline border border-border-hairline rounded-[var(--radius-tile)] overflow-hidden bg-card">
                 {negativeExclusionMatrix.map((group) => (
                   <div key={group.category} className="p-4 space-y-1">
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <h4 className="text-sm font-display font-bold text-slate-900">
+                      <h4 className="text-sm font-display font-bold text-ink">
                         {group.category}
                       </h4>
-                      <span className="text-xs font-medium text-brand-orange">
+                      <span className="text-xs font-semibold text-cta">
                         Blocked: {group.blockedTerms}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-600">{group.reason}</p>
+                    <p className="text-xs text-ink-secondary">{group.reason}</p>
                   </div>
                 ))}
               </div>
@@ -519,12 +550,12 @@ export default function ServicesPage() {
           </div>
 
           {/* CRM VBB Pipeline Stages */}
-          <div className="pt-10 border-t border-slate-100 space-y-5">
+          <div className="pt-10 border-t border-border-hairline space-y-5">
             <div className="max-w-3xl space-y-1.5">
-              <h3 className="text-xl font-display font-bold text-slate-900">
+              <h3 className="type-h3 font-display font-semibold text-ink">
                 How CRM Value-Based Bidding (VBB) Trains Google&apos;s Algorithm
               </h3>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-ink-secondary">
                 Because complex B2B and high-ticket sales cycles outlast immediate ad clicks, we pass synthetic stage values back within Google&apos;s 63-day Enhanced Conversions window:
               </p>
             </div>
@@ -532,17 +563,17 @@ export default function ServicesPage() {
               {vbbPipelineStages.map((stage) => (
                 <div
                   key={stage.stage}
-                  className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-3"
+                  className="p-4 rounded-[var(--radius-tile)] bg-canvas border border-border-hairline flex flex-col justify-between space-y-3"
                 >
                   <div className="space-y-1">
-                    <h4 className="text-xs font-bold text-brand-blue">{stage.stage}</h4>
-                    <p className="text-xs text-slate-700 leading-relaxed">{stage.trigger}</p>
+                    <h4 className="text-xs font-bold text-trust">{stage.stage}</h4>
+                    <p className="text-xs text-ink-secondary leading-relaxed">{stage.trigger}</p>
                   </div>
-                  <div className="pt-2 border-t border-slate-200 tabular-nums">
-                    <span className="text-sm font-bold text-emerald-700 block">
-                      {stage.syntheticValue}
+                  <div className="pt-2 border-t border-border-hairline metric-tabular">
+                    <span className="text-sm font-bold text-kpi-positive block">
+                      ▲ {stage.syntheticValue}
                     </span>
-                    <span className="text-xs text-slate-500">{stage.uploadWindow}</span>
+                    <span className="text-xs text-ink-muted">{stage.uploadWindow}</span>
                   </div>
                 </div>
               ))}
@@ -550,24 +581,24 @@ export default function ServicesPage() {
           </div>
 
           {/* Ads 90-Day Timeline */}
-          <div className="pt-10 border-t border-slate-100">
-            <h3 className="text-lg font-display font-bold text-slate-900 flex items-center gap-2 mb-6">
-              <Clock className="w-5 h-5 text-brand-orange" aria-hidden="true" />
+          <div className="pt-10 border-t border-border-hairline">
+            <h3 className="text-lg font-display font-bold text-ink flex items-center gap-2 mb-6">
+              <Clock className="w-5 h-5 text-cta" aria-hidden="true" />
               90-Day Execution &amp; Target ROAS Cadence
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {adsTimeline.map((step) => (
                 <div
                   key={step.period}
-                  className="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2"
+                  className="p-5 rounded-[var(--radius-tile)] bg-canvas border border-border-hairline space-y-2"
                 >
-                  <span className="text-xs font-semibold text-brand-blue tabular-nums">
+                  <span className="tracking-id text-xs font-semibold text-trust">
                     {step.period}
                   </span>
-                  <h4 className="text-base font-display font-bold text-slate-900">
+                  <h4 className="text-base font-display font-bold text-ink">
                     {step.title}
                   </h4>
-                  <p className="text-sm text-slate-600 leading-relaxed">
+                  <p className="text-sm text-ink-secondary leading-relaxed">
                     {step.desc}
                   </p>
                 </div>
@@ -580,18 +611,18 @@ export default function ServicesPage() {
       {/* Section: Systemic Landing Page CRO */}
       <section
         id="cro-heuristics"
-        className="py-16 md:py-24 bg-slate-50 border-b border-slate-200 scroll-mt-20"
+        className="py-16 md:py-24 bg-canvas border-b border-border-hairline scroll-mt-20"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 space-y-8">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="max-w-3xl space-y-3">
-              <p className="text-xs font-semibold text-brand-blue">
+              <p className="eyebrow-mono text-trust">
                 02. Systemic Conversion Rate Optimization (CRO)
               </p>
-              <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 tracking-tight text-balance">
+              <h2 className="type-h2 font-display font-bold text-ink">
                 The Media Buyer Controls the Click. The Landing Page Controls Your CPA.
               </h2>
-              <p className="text-base text-slate-600 leading-relaxed">
+              <p className="text-base text-ink-secondary leading-relaxed">
                 Lifting landing page conversion from a generic 2.5% homepage to an optimized 5.8% halves your Cost Per Acquisition without raising your Google Ads budget by a dollar.
               </p>
             </div>
@@ -600,24 +631,24 @@ export default function ServicesPage() {
             </CTAButton>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
-            <table className="min-w-full divide-y divide-slate-200 text-sm">
-              <thead className="bg-slate-100/70 text-slate-900">
+          <div className="overflow-x-auto bento-card">
+            <table className="min-w-full divide-y divide-border-hairline text-sm">
+              <thead className="bg-subtle text-ink">
                 <tr>
-                  <th className="px-6 py-4 text-left font-bold">Landing Page Element</th>
-                  <th className="px-6 py-4 text-left font-bold">CRO Execution Standard</th>
-                  <th className="px-6 py-4 text-left font-bold">Measured Impact</th>
+                  <th scope="col" className="px-6 py-4 text-left font-bold">Landing Page Element</th>
+                  <th scope="col" className="px-6 py-4 text-left font-bold">CRO Execution Standard</th>
+                  <th scope="col" className="px-6 py-4 text-left font-bold">Measured Impact</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 tabular-nums">
+              <tbody className="divide-y divide-border-hairline metric-tabular">
                 {croHeuristics.map((row) => (
                   <tr key={row.element}>
-                    <td className="px-6 py-4 font-semibold text-slate-900">
+                    <td className="px-6 py-4 font-semibold text-ink">
                       {row.element}
                     </td>
-                    <td className="px-6 py-4 text-slate-700">{row.bestPractice}</td>
-                    <td className="px-6 py-4 font-semibold text-emerald-700">
-                      {row.measuredImpact}
+                    <td className="px-6 py-4 text-ink-secondary">{row.bestPractice}</td>
+                    <td className="px-6 py-4 font-semibold text-kpi-positive">
+                      ▲ {row.measuredImpact}
                     </td>
                   </tr>
                 ))}
@@ -630,23 +661,23 @@ export default function ServicesPage() {
       {/* Service 3: GBP-First Local Dominance */}
       <section
         id="local-seo"
-        className="py-16 md:py-24 bg-white border-b border-slate-200 scroll-mt-20"
+        className="py-16 md:py-24 bg-card border-b border-border-hairline scroll-mt-20"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 space-y-14">
           {/* 2026 Local Map Pack Reality Strip */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 tabular-nums">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 metric-tabular">
             {localEcosystemMetrics.map((metric) => (
               <div
                 key={metric.label}
-                className="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-1"
+                className="p-5 rounded-[var(--radius-tile)] bg-canvas border border-border-hairline space-y-1"
               >
-                <span className="text-2xl sm:text-3xl font-display font-extrabold text-brand-blue block">
+                <span className="type-kpi-card text-trust block">
                   {metric.value}
                 </span>
-                <span className="text-sm font-bold text-slate-900 block">
+                <span className="text-sm font-bold text-ink block">
                   {metric.label}
                 </span>
-                <span className="text-xs text-slate-600 block">
+                <span className="text-xs text-ink-muted block">
                   {metric.detail}
                 </span>
               </div>
@@ -655,31 +686,31 @@ export default function ServicesPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-5">
-              <p className="text-xs font-semibold text-brand-green-hover">
+              <p className="eyebrow-mono text-kpi-positive">
                 03. Google Business Profile, Map Pack &amp; Ask Maps
               </p>
-              <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 tracking-tight leading-tight text-balance">
+              <h2 className="type-h2 font-display font-bold text-ink">
                 GBP-First Local Dominance
               </h2>
-              <p className="text-base text-slate-600 leading-relaxed">
+              <p className="text-base text-ink-secondary leading-relaxed">
                 Post-AI Overviews, organic #1 CTR fell to 19%—while Google&apos;s Local 3-Pack captures 42% of local clicks. Generic blog retainers don&apos;t make the phone ring. We engineer the exact signals that overcome office proximity bias and keep your business surfaced in both Google Maps and AI recommendations.
               </p>
 
-              <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
-                <h3 className="text-sm font-display font-bold text-slate-900">
+              <div className="p-5 rounded-[var(--radius-tile)] bg-canvas border border-border-hairline space-y-2.5">
+                <h3 className="text-sm font-display font-bold text-ink">
                   Ideal For:
                 </h3>
-                <ul className="space-y-2 text-sm text-slate-700">
+                <ul className="space-y-2 text-sm text-ink-secondary">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-brand-green shrink-0 mt-0.5" aria-hidden="true" />
+                    <CheckCircle2 className="w-4 h-4 text-kpi-positive shrink-0 mt-0.5" aria-hidden="true" />
                     <span>Home services (HVAC, plumbing, roofing, electrical)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-brand-green shrink-0 mt-0.5" aria-hidden="true" />
+                    <CheckCircle2 className="w-4 h-4 text-kpi-positive shrink-0 mt-0.5" aria-hidden="true" />
                     <span>Medical, dental, legal, and storefront practices</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-brand-green shrink-0 mt-0.5" aria-hidden="true" />
+                    <CheckCircle2 className="w-4 h-4 text-kpi-positive shrink-0 mt-0.5" aria-hidden="true" />
                     <span>Owners ranking #1 at HQ but invisible 2 miles away</span>
                   </li>
                 </ul>
@@ -691,7 +722,7 @@ export default function ServicesPage() {
                 </CTAButton>
                 <a
                   href="#map-pack-calculator"
-                  className="inline-flex items-center px-4 py-2.5 rounded-lg border border-slate-200 text-sm font-semibold text-slate-700 hover:border-brand-blue hover:text-brand-blue transition-colors whitespace-nowrap"
+                  className="min-h-11 inline-flex items-center px-4 py-2.5 rounded-[var(--radius-btn)] border border-border-control text-sm font-semibold text-ink hover:border-trust hover:text-trust transition-colors whitespace-nowrap"
                 >
                   Calculate Missed Revenue
                 </a>
@@ -702,12 +733,12 @@ export default function ServicesPage() {
               {localSeoProtocol.map((item) => (
                 <div
                   key={item.title}
-                  className="p-5 rounded-xl border border-slate-200 bg-slate-50/50 space-y-2"
+                  className="p-5 rounded-[var(--radius-tile)] border border-border-hairline bg-canvas space-y-2"
                 >
-                  <h3 className="text-base font-display font-bold text-slate-900">
+                  <h3 className="text-base font-display font-bold text-ink">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
+                  <p className="text-sm text-ink-secondary leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -716,15 +747,15 @@ export default function ServicesPage() {
           </div>
 
           {/* 2026 Local Map Pack Ranking Factor Weights */}
-          <div className="pt-10 border-t border-slate-100 space-y-6">
+          <div className="pt-10 border-t border-border-hairline space-y-6">
             <div className="max-w-3xl space-y-1.5">
-              <p className="text-xs font-semibold text-slate-500">
+              <p className="eyebrow-mono text-ink-muted">
                 2026 Local Search Ranking Factors (Whitespark Industry Benchmark)
               </p>
-              <h3 className="text-xl font-display font-bold text-slate-900">
+              <h3 className="type-h3 font-display font-semibold text-ink">
                 Where Our Monthly Execution Hours Actually Go
               </h3>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-ink-secondary">
                 Traditional SEO agencies spend 80% of your budget on low-weight blog posts or bloated directories. We allocate effort directly to the weighted signals that move Map Pack grids:
               </p>
             </div>
@@ -733,26 +764,26 @@ export default function ServicesPage() {
               {localRankingWeights2026.map((item) => (
                 <div
                   key={item.factor}
-                  className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5"
+                  className="p-4 rounded-[var(--radius-tile)] bg-canvas border border-border-hairline space-y-2.5"
                 >
                   <div className="flex items-baseline justify-between gap-3">
-                    <h4 className="text-sm font-display font-bold text-slate-900">
+                    <h4 className="text-sm font-display font-bold text-ink">
                       {item.factor}
                     </h4>
-                    <span className="text-sm font-bold text-brand-blue tabular-nums shrink-0">
+                    <span className="text-sm font-mono font-bold text-trust metric-tabular shrink-0">
                       {item.weightLabel}
                     </span>
                   </div>
                   <div
-                    className="h-2 w-full rounded-full bg-slate-200 overflow-hidden"
+                    className="h-2 w-full rounded-full bg-subtle overflow-hidden"
                     aria-hidden="true"
                   >
                     <div
-                      className="h-full rounded-full bg-brand-blue"
+                      className="h-full rounded-full bg-trust"
                       style={{ width: `${Math.min(100, item.percentBar * 2.8)}%` }}
                     />
                   </div>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-ink-secondary leading-relaxed">
                     {item.focus}
                   </p>
                 </div>
@@ -761,41 +792,57 @@ export default function ServicesPage() {
           </div>
 
           {/* Interactive Missed Revenue & 5x5 Geo-Grid Simulator */}
-          <div className="pt-4">
-            <MapPackOpportunityWidget />
+          <div className="pt-4 space-y-3">
+            <Suspense
+              fallback={
+                <div
+                  aria-busy="true"
+                  className="bento-card min-h-[540px] p-8 animate-pulse bg-subtle/60"
+                />
+              }
+            >
+              <MapPackOpportunityWidget />
+            </Suspense>
+            <p className="caption-meta text-ink-muted">
+              Compliance Notice: LeadGrow Agency is an independent agency. Google Business Profile optimization and Local SEO services are not verified, certified, or endorsed by Google.
+            </p>
           </div>
         </div>
       </section>
 
       {/* Channel Comparison */}
-      <section id="comparison" className="py-16 md:py-24 bg-slate-50 scroll-mt-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <section
+        id="comparison"
+        data-cta-sentinel="footer-cta"
+        className="cv-auto py-16 md:py-24 bg-canvas scroll-mt-20"
+      >
+        <div className="max-w-5xl mx-auto px-6 lg:px-8 space-y-10">
           <div className="text-center max-w-2xl mx-auto space-y-3">
-            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 tracking-tight">
+            <h2 className="type-h2 font-display font-bold text-ink">
               Google Ads + VBB vs. GBP-First Local SEO
             </h2>
-            <p className="text-base text-slate-600">
+            <p className="text-base text-ink-secondary">
               How both channels work together to capture immediate SQLs while compounding zero-click-cost Map calls.
             </p>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
-            <table className="min-w-full divide-y divide-slate-200 text-sm">
-              <thead className="bg-slate-50 text-slate-900">
+          <div className="overflow-x-auto bento-card">
+            <table className="min-w-full divide-y divide-border-hairline text-sm">
+              <thead className="bg-subtle text-ink">
                 <tr>
-                  <th className="px-6 py-4 text-left font-bold">Dimension</th>
-                  <th className="px-6 py-4 text-left font-bold">Zero-Waste Google Ads + CRO</th>
-                  <th className="px-6 py-4 text-left font-bold">GBP-First Local SEO</th>
+                  <th scope="col" className="px-6 py-4 text-left font-bold">Dimension</th>
+                  <th scope="col" className="px-6 py-4 text-left font-bold">Zero-Waste Google Ads + CRO</th>
+                  <th scope="col" className="px-6 py-4 text-left font-bold">GBP-First Local SEO</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 bg-white">
+              <tbody className="divide-y divide-border-hairline bg-card">
                 {comparisonRows.map((row) => (
                   <tr key={row.feature}>
-                    <td className="px-6 py-4 font-semibold text-slate-900">
+                    <td className="px-6 py-4 font-semibold text-ink">
                       {row.feature}
                     </td>
-                    <td className="px-6 py-4 text-slate-700">{row.ads}</td>
-                    <td className="px-6 py-4 text-slate-700">{row.seo}</td>
+                    <td className="px-6 py-4 text-ink-secondary">{row.ads}</td>
+                    <td className="px-6 py-4 text-ink-secondary">{row.seo}</td>
                   </tr>
                 ))}
               </tbody>

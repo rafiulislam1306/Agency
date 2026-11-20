@@ -14,17 +14,20 @@ export default function CaseStudiesPage() {
   const studies = Object.values(caseStudiesData);
 
   return (
-    <div className="bg-white min-h-screen py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <div className="bg-canvas min-h-screen py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <p className="text-xs font-semibold text-brand-green-hover">
+        <div
+          data-cta-sentinel="hero"
+          className="text-center max-w-3xl mx-auto space-y-4"
+        >
+          <p className="eyebrow-mono text-kpi-positive">
             Verified Outcomes · Closed-Loop Attribution
           </p>
-          <h1 className="text-4xl sm:text-5xl font-serif font-extrabold text-slate-900 tracking-tight leading-tight text-balance">
+          <h1 className="type-hero font-display font-bold text-ink">
             Results Built on Sealed Leaks, Not Vanity Impressions
           </h1>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="type-lead text-ink-secondary mx-auto">
             Inspect the exact wasted-spend leaks we shut down, the Google Business Profile fixes we deployed, and the verified revenue tracked for each client.
           </p>
         </div>
@@ -46,23 +49,26 @@ export default function CaseStudiesPage() {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="max-w-4xl mx-auto bg-brand-blue rounded-2xl p-8 sm:p-12 text-white text-center space-y-5">
-          <h2 className="text-2xl sm:text-3xl font-display font-bold">
+        {/* Bottom CTA (.surface-dark proof band) */}
+        <div
+          data-cta-sentinel="footer-cta"
+          className="surface-dark max-w-4xl mx-auto bg-canvas border border-border-hairline rounded-[var(--radius-bento)] p-8 sm:p-12 text-ink text-center space-y-5 shadow-[var(--shadow-dark-edge)]"
+        >
+          <h2 className="type-h2 font-display font-bold text-ink">
             Want to See Our Flat-Fee Retainers &amp; ROI Calculator?
           </h2>
-          <p className="text-blue-100 text-base max-w-xl mx-auto leading-relaxed">
+          <p className="text-ink-secondary text-base max-w-xl mx-auto leading-relaxed">
             Zero percentage-of-spend markups, month-to-month terms, and 100% client ownership of every account from day one.
           </p>
           <div className="pt-2 flex flex-wrap justify-center gap-3">
-            <CTAButton href="/pricing" variant="primary" size="lg">
+            <CTAButton href="/pricing" variant="dark-primary" size="lg">
               View Flat-Fee Pricing
             </CTAButton>
             <CTAButton href="/contact" variant="white" size="lg">
               Book Free Leak Audit
             </CTAButton>
           </div>
-          <p className="text-xs text-blue-200 pt-2">
+          <p className="caption-meta text-ink-muted pt-2">
             *Illustrative benchmarks reflect documented optimization frameworks; outcomes depend on local market competition, close rate, and budget.
           </p>
         </div>

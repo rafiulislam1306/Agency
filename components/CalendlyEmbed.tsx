@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Calendar, CheckCircle2, Clock } from "lucide-react";
+import { readLeadDraft, writeLeadDraft } from "@/lib/uxQaLogic";
 
 interface CalendlyEmbedProps {
   url?: string;
@@ -31,19 +32,42 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
   const [error, setError] = useState("");
   const [confirmationId, setConfirmationId] = useState<string | null>(null);
 
-  if (configuredUrl && !configuredUrl.includes("your-link") && !configuredUrl.includes("acme-demos")) {
+  // WCAG 2.2 SC 3.3.7 Redundant Entry: auto-populate previously entered details across audit tracks
+  useEffect(() => {
+    const syncDraft = () => {
+      const draft = readLeadDraft();
+      if (draft.websiteUrl) {
+        setWebsiteUrl((prev) => (prev ? prev : draft.websiteUrl));
+      }
+      if (draft.email) {
+        setEmail((prev) => (prev ? prev : draft.email));
+      }
+      if (draft.businessName) {
+        setBusinessName((prev) => (prev ? prev : draft.businessName));
+      }
+    };
+    syncDraft();
+    window.addEventListener("leadgrow:draft-updated", syncDraft);
+    return () => window.removeEventListener("leadgrow:draft-updated", syncDraft);
+  }, []);
+
+  if (
+    configuredUrl &&
+    !configuredUrl.includes("your-link") &&
+    !configuredUrl.includes("acme-demos")
+  ) {
     return (
-      <div className="relative w-full rounded-2xl overflow-hidden border border-slate-200 bg-white min-h-[650px]">
+      <div className="relative w-full bento-card overflow-hidden min-h-[650px]">
         {isLoading && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-50 z-10">
-            <div className="animate-spin rounded-full h-9 w-9 border-t-2 border-b-2 border-brand-blue" />
-            <p className="mt-4 text-sm text-slate-600 font-medium">
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-canvas z-10">
+            <div className="animate-spin rounded-full h-9 w-9 border-t-2 border-b-2 border-trust" />
+            <p className="mt-4 text-sm text-ink-secondary font-medium">
               Loading audit calendar...
             </p>
           </div>
         )}
         <iframe
-          src={`${configuredUrl}?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=1f2937&primary_color=1e3a8a`}
+          src={`${configuredUrl}?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=0f172a&primary_color=1d4ed8`}
           width="100%"
           height="680px"
           style={{ width: "100%", height: "680px", border: "0" }}
@@ -76,7 +100,9 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "Could not reserve slot. Please check your details.");
+        setError(
+          data.error || "Could not reserve slot. Please check your details."
+        );
         return;
       }
       setConfirmationId(data.referenceId);
@@ -89,18 +115,18 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
 
   if (confirmationId) {
     return (
-      <div className="bg-white rounded-2xl border border-slate-200 p-8 text-slate-900 space-y-5">
-        <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
+      <div className="bento-card p-8 text-ink space-y-5">
+        <div className="w-12 h-12 rounded-[var(--radius-tile)] bg-kpi-positive-bg text-kpi-positive flex items-center justify-center">
           <CheckCircle2 className="w-6 h-6" aria-hidden="true" />
         </div>
         <div className="space-y-2">
-          <p className="text-xs font-semibold text-emerald-700 tabular-nums">
+          <p className="tracking-id text-xs font-semibold text-kpi-positive">
             Audit &amp; Marketing Plan Confirmed · Ref {confirmationId}
           </p>
-          <h3 className="text-2xl font-display font-bold text-slate-900">
+          <h3 className="text-2xl font-display font-bold text-ink">
             Your Free 90-Day Plan &amp; Audit Is Reserved
           </h3>
-          <p className="text-sm text-slate-600 leading-relaxed">
+          <p className="text-sm text-ink-secondary leading-relaxed">
             We reserved <strong>{selectedSlot}</strong> for{" "}
             <strong>{businessName}</strong> and sent calendar details to{" "}
             <strong>{email}</strong>. Ahead of the call, we will prepare your account leak audit, a message-match review of your landing pages, and a CRM pipeline forecast—yours to keep either way.
@@ -114,7 +140,7 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
             setWebsiteUrl("");
             setEmail("");
           }}
-          className="text-sm font-semibold text-brand-blue hover:underline cursor-pointer"
+          className="min-h-11 text-sm font-semibold text-trust hover:underline cursor-pointer"
         >
           Schedule for another business
         </button>
@@ -125,54 +151,55 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
   return (
     <form
       onSubmit={handleBookAudit}
-      className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 text-slate-900 space-y-5"
+      className="bento-card p-6 sm:p-8 text-ink space-y-5"
     >
-      <div className="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+      <div className="flex items-start justify-between gap-4 border-b border-border-hairline pb-4">
         <div>
-          <h3 className="text-xl font-display font-bold text-slate-900">
+          <h3 className="text-xl font-display font-bold text-ink">
             Get Your Free Leak Audit &amp; 90-Day Search Plan
           </h3>
-          <p className="text-sm text-slate-600 mt-1">
+          <p className="text-sm text-ink-secondary mt-1">
             Includes a live ad leak teardown, landing page message-match score, and CRM pipeline forecast.
           </p>
         </div>
-        <span className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-600 whitespace-nowrap shrink-0">
-          <Clock className="w-4 h-4 text-brand-blue" aria-hidden="true" />
+        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-secondary whitespace-nowrap shrink-0">
+          <Clock className="w-4 h-4 text-trust" aria-hidden="true" />
           30 min
         </span>
       </div>
 
       {/* Time slots */}
-      <div className="space-y-2.5">
-        <span className="flex items-center gap-1.5 text-xs font-semibold text-slate-700">
-          <Calendar className="w-4 h-4 text-brand-blue" aria-hidden="true" />
+      <fieldset className="space-y-2.5">
+        <legend className="flex items-center gap-1.5 text-xs font-semibold text-ink">
+          <Calendar className="w-4 h-4 text-trust" aria-hidden="true" />
           1. Pick a Time Slot
-        </span>
+        </legend>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           {AUDIT_SLOTS.map((slot) => (
             <button
               type="button"
               key={slot}
+              aria-pressed={selectedSlot === slot}
               onClick={() => setSelectedSlot(slot)}
-              className={`px-3.5 py-2.5 rounded-lg border text-left text-sm font-medium transition-colors cursor-pointer tabular-nums ${
+              className={`min-h-11 px-3.5 py-2.5 rounded-[var(--radius-btn)] border text-left text-sm font-medium transition-colors cursor-pointer metric-tabular ${
                 selectedSlot === slot
-                  ? "border-brand-blue bg-brand-blue/5 text-brand-blue font-semibold"
-                  : "border-slate-200 text-slate-700 hover:border-slate-300"
+                  ? "border-trust bg-trust-tint text-trust font-semibold ring-1 ring-trust"
+                  : "border-border-control bg-card text-ink-secondary hover:border-trust"
               }`}
             >
               {slot}
             </button>
           ))}
         </div>
-      </div>
+      </fieldset>
 
-      {/* Diagnostic inputs (5-7 calibrated fields matching our B2B CRO guidelines) */}
+      {/* Diagnostic inputs */}
       <div className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label
               htmlFor="audit-business"
-              className="block text-xs font-semibold text-slate-700 mb-1.5"
+              className="block text-xs font-semibold text-ink mb-1.5"
             >
               Business Name *
             </label>
@@ -180,17 +207,23 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
               id="audit-business"
               type="text"
               required
+              autoComplete="organization"
               value={businessName}
-              onChange={(e) => setBusinessName(e.target.value)}
+              aria-describedby={error ? "calendly-form-error" : undefined}
+              onChange={(e) => {
+                const nextName = e.target.value;
+                setBusinessName(nextName);
+                writeLeadDraft({ businessName: nextName });
+              }}
               placeholder="e.g. Lone Star Cooling"
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:outline-none focus:border-brand-blue"
+              className="w-full min-h-11 px-3.5 py-2.5 rounded-[var(--radius-input)] border border-border-control text-sm text-ink bg-card focus:border-trust placeholder:text-ink-muted"
             />
           </div>
 
           <div>
             <label
               htmlFor="audit-email"
-              className="block text-xs font-semibold text-slate-700 mb-1.5"
+              className="block text-xs font-semibold text-ink mb-1.5"
             >
               Work Email *
             </label>
@@ -198,10 +231,17 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
               id="audit-email"
               type="email"
               required
+              autoComplete="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              aria-describedby={error ? "calendly-form-error" : undefined}
+              onChange={(e) => {
+                const nextEmail = e.target.value;
+                setEmail(nextEmail);
+                writeLeadDraft({ email: nextEmail });
+                window.dispatchEvent(new Event("leadgrow:draft-updated"));
+              }}
               placeholder="owner@company.com"
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:outline-none focus:border-brand-blue"
+              className="w-full min-h-11 px-3.5 py-2.5 rounded-[var(--radius-input)] border border-border-control text-sm text-ink bg-card focus:border-trust placeholder:text-ink-muted"
             />
           </div>
         </div>
@@ -210,24 +250,31 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
           <div>
             <label
               htmlFor="audit-url"
-              className="block text-xs font-semibold text-slate-700 mb-1.5"
+              className="block text-xs font-semibold text-ink mb-1.5"
             >
               Website or Landing Page URL
             </label>
             <input
               id="audit-url"
               type="text"
+              inputMode="url"
+              autoComplete="url"
               value={websiteUrl}
-              onChange={(e) => setWebsiteUrl(e.target.value)}
-              placeholder="https://yourbusiness.com"
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:outline-none focus:border-brand-blue"
+              onChange={(e) => {
+                const nextUrl = e.target.value;
+                setWebsiteUrl(nextUrl);
+                writeLeadDraft({ websiteUrl: nextUrl });
+                window.dispatchEvent(new Event("leadgrow:draft-updated"));
+              }}
+              placeholder="yourbusiness.com"
+              className="w-full min-h-11 px-3.5 py-2.5 rounded-[var(--radius-input)] border border-border-control text-sm text-ink bg-card focus:border-trust placeholder:text-ink-muted"
             />
           </div>
 
           <div>
             <label
               htmlFor="audit-pain"
-              className="block text-xs font-semibold text-slate-700 mb-1.5"
+              className="block text-xs font-semibold text-ink mb-1.5"
             >
               Primary Bottleneck
             </label>
@@ -235,14 +282,26 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
               id="audit-pain"
               value={primaryPain}
               onChange={(e) => setPrimaryPain(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:outline-none focus:border-brand-blue cursor-pointer"
+              className="w-full min-h-11 px-3.5 py-2.5 rounded-[var(--radius-input)] border border-border-control text-sm text-ink bg-card focus:border-trust cursor-pointer"
             >
-              <option value="wasted-spend">Wasted clicks / broad-match bleed</option>
-              <option value="broken-tracking">Broken tracking / duplicate conversions / signal loss</option>
-              <option value="unqualified-leads">Cheap leads that don&apos;t convert to SQLs</option>
-              <option value="map-invisibility">Invisible in Google Maps 3-Pack</option>
-              <option value="incomplete-attribution">No CRM / offline revenue attribution</option>
-              <option value="asset-ownership">Need clean setup we own 100%</option>
+              <option value="wasted-spend">
+                Wasted clicks / broad-match bleed
+              </option>
+              <option value="broken-tracking">
+                Broken tracking / duplicate conversions / signal loss
+              </option>
+              <option value="unqualified-leads">
+                Cheap leads that don&apos;t convert to SQLs
+              </option>
+              <option value="map-invisibility">
+                Invisible in Google Maps 3-Pack
+              </option>
+              <option value="incomplete-attribution">
+                No CRM / offline revenue attribution
+              </option>
+              <option value="asset-ownership">
+                Need clean setup we own 100%
+              </option>
             </select>
           </div>
         </div>
@@ -251,7 +310,7 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
           <div>
             <label
               htmlFor="audit-budget"
-              className="block text-xs font-semibold text-slate-700 mb-1.5"
+              className="block text-xs font-semibold text-ink mb-1.5"
             >
               Monthly Google Ad Spend
             </label>
@@ -259,9 +318,11 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
               id="audit-budget"
               value={monthlyAdSpend}
               onChange={(e) => setMonthlyAdSpend(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:outline-none focus:border-brand-blue cursor-pointer"
+              className="w-full min-h-11 px-3.5 py-2.5 rounded-[var(--radius-input)] border border-border-control text-sm text-ink bg-card focus:border-trust cursor-pointer"
             >
-              <option value="under-1500">Under $1,500 / mo (or Local SEO only)</option>
+              <option value="under-1500">
+                Under $1,500 / mo (or Local SEO only)
+              </option>
               <option value="1500-5000">$1,500 – $5,000 / mo</option>
               <option value="5000-15000">$5,000 – $15,000 / mo</option>
               <option value="15000-plus">$15,000+ / mo</option>
@@ -271,7 +332,7 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
           <div>
             <label
               htmlFor="audit-crm"
-              className="block text-xs font-semibold text-slate-700 mb-1.5"
+              className="block text-xs font-semibold text-ink mb-1.5"
             >
               Current CRM / Lead Tracking
             </label>
@@ -279,11 +340,13 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
               id="audit-crm"
               value={crmSetup}
               onChange={(e) => setCrmSetup(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:outline-none focus:border-brand-blue cursor-pointer"
+              className="w-full min-h-11 px-3.5 py-2.5 rounded-[var(--radius-input)] border border-border-control text-sm text-ink bg-card focus:border-trust cursor-pointer"
             >
               <option value="hubspot">HubSpot</option>
               <option value="salesforce">Salesforce</option>
-              <option value="servicetitan-jobber">ServiceTitan / Jobber / Housecall Pro</option>
+              <option value="servicetitan-jobber">
+                ServiceTitan / Jobber / Housecall Pro
+              </option>
               <option value="call-tracking">Call Tracking / Spreadsheets</option>
               <option value="none-yet">No closed-loop tracking yet</option>
             </select>
@@ -292,7 +355,12 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
       </div>
 
       {error ? (
-        <div className="text-xs font-medium text-red-700 bg-red-50 border border-red-200 rounded-lg px-3.5 py-2.5">
+        <div
+          id="calendly-form-error"
+          role="alert"
+          aria-live="polite"
+          className="text-xs font-medium text-kpi-negative bg-kpi-negative-bg border border-kpi-negative/40 rounded-[var(--radius-btn)] px-3.5 py-2.5"
+        >
           {error}
         </div>
       ) : null}
@@ -300,12 +368,14 @@ export default function CalendlyEmbed({ url }: CalendlyEmbedProps) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-brand-orange hover:bg-brand-orange-hover text-white font-semibold py-3 rounded-lg transition-colors duration-150 cursor-pointer text-sm disabled:opacity-60"
+        className="w-full min-h-12 bg-cta hover:bg-cta-hover active:bg-cta-active text-cta-ink font-semibold py-3 rounded-[var(--radius-btn)] transition-colors duration-150 cursor-pointer text-sm disabled:opacity-60"
       >
-        {isSubmitting ? "Preparing Your Audit Slot..." : "Claim Free Leak Audit & 90-Day Plan"}
+        {isSubmitting
+          ? "Preparing Your Audit Slot..."
+          : "Claim Free Leak Audit & 90-Day Plan"}
       </button>
 
-      <p className="text-xs text-slate-500 text-center">
+      <p className="text-xs text-ink-muted text-center">
         Zero obligation · We never touch billing · Keep your custom search &amp; landing-page teardown either way.
       </p>
     </form>

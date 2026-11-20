@@ -1,49 +1,374 @@
 @import "tailwindcss";
 
-html {
-  scroll-behavior: smooth;
+/* ==========================================================================
+   Signal Precision Design System v2026.1 (Part B — Production Tokens)
+   80/20 Light-First Strategic Hybrid · WCAG 2.1/2.2 AA · Deuteranopia-Safe
+   ========================================================================== */
+
+/* 1. Zero-CLS Metric-Matched System Fallback (@capsizecss/metrics for Inter) */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial"), local("ArialMT");
+  size-adjust: 107.12%;
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #1f2937; /* Dark Gray */
-  
-  --brand-blue: #1e3a8a;
-  --brand-green: #10b981;
-  --brand-orange: #f97316;
-  --brand-light: #f3f4f6;
-  --brand-dark: #1f2937;
-}
-
+/* 2. Tailwind v4 Theme Tokens */
 @theme {
-  --color-brand-blue: var(--brand-blue);
-  --color-brand-blue-hover: #172554;
-  --color-brand-green: var(--brand-green);
-  --color-brand-green-hover: #059669;
-  --color-brand-orange: var(--brand-orange);
-  --color-brand-orange-hover: #ea580c;
-  --color-brand-light: var(--brand-light);
-  --color-brand-dark: var(--brand-dark);
-  
-  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  /* Self-Hosted Variable Font Families (Zero fonts.googleapis.com calls) */
+  --font-display: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", "Inter Fallback", system-ui, sans-serif;
+  --font-sans: "Inter Variable", "Inter", "Inter Fallback", system-ui, sans-serif;
+  --font-serif: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", "Inter Fallback", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Exact Fluid WCAG 1.4.4-Safe Type Sizes (375px -> 1280px, all <= 1.56x ratio) */
+  --text-hero: clamp(2.25rem, 1.7320rem + 2.2099vw, 3.5rem);
+  --text-h2: clamp(1.75rem, 1.4392rem + 1.3260vw, 2.5rem);
+  --text-h3: clamp(1.375rem, 1.2196rem + 0.6630vw, 1.75rem);
+  --text-h4: clamp(1.125rem, 1.0732rem + 0.2210vw, 1.25rem);
+  --text-lead: clamp(1.0625rem, 0.9848rem + 0.3315vw, 1.25rem);
+  --text-kpi-hero: clamp(2.25rem, 1.8356rem + 1.7680vw, 3.25rem);
+  --text-kpi-card: clamp(1.5rem, 1.2928rem + 0.8840vw, 2rem);
+  --text-code: clamp(0.8125rem, 0.7866rem + 0.1105vw, 0.875rem);
+
+  /* Purpose-Mapped Corner Radii (Anti-8px-Everywhere System) */
+  --radius-chip: 4px;
+  --radius-input: 6px;
+  --radius-btn: 8px;
+  --radius-tile: 12px;
+  --radius-bento: 16px;
+  --radius-modal: 20px;
+
+  /* Calibrated 3-Layer Slate-Tinted Elevation Shadows */
+  --shadow-whisper: 0 0 0 1px rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.06), 0 2px 4px 0 rgba(15, 23, 42, 0.04);
+  --shadow-floating: 0 0 0 1px rgba(15, 23, 42, 0.06), 0 8px 24px -4px rgba(15, 23, 42, 0.08), 0 2px 6px 0 rgba(15, 23, 42, 0.04);
+  --shadow-dark-edge: inset 0 1px 0 0 rgba(255, 255, 255, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+
+  /* Centralized B2B Micro-Interaction Motion Easing Curves (100–400ms Standard) */
+  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+  --ease-out-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-smooth: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  line-height: 1.6;
-  font-size: 1rem;
+/* Mode-Aware Semantic Color Hooks (must use @theme inline so var() evaluates per-surface in .surface-dark / .surface-light) */
+@theme inline {
+  --color-canvas: var(--surface-canvas);
+  --color-card: var(--surface-card);
+  --color-subtle: var(--surface-subtle);
+  --color-ink: var(--text-primary);
+  --color-ink-secondary: var(--text-secondary);
+  --color-ink-muted: var(--text-muted);
+  --color-border-hairline: var(--border-decorative);
+  --color-border-strong: var(--border-strong);
+  --color-border-control: var(--border-interactive);
+  --color-trust: var(--brand-trust);
+  --color-trust-hover: var(--brand-trust-hover);
+  --color-trust-tint: var(--brand-trust-tint);
+  --color-cta: var(--cta-bg);
+  --color-cta-hover: var(--cta-bg-hover);
+  --color-cta-active: var(--cta-bg-active);
+  --color-cta-ink: var(--cta-text);
+  --color-kpi-positive: var(--status-positive);
+  --color-kpi-positive-bg: var(--status-positive-bg);
+  --color-kpi-negative: var(--status-negative);
+  --color-kpi-negative-bg: var(--status-negative-bg);
+  --color-kpi-warning: var(--status-warning);
+  --color-kpi-warning-bg: var(--status-warning-bg);
+  --color-kpi-info: var(--status-info);
+
+  /* Legacy Alias Bridge (keeps existing utilities synced to Signal Precision tokens) */
+  --color-brand-blue: var(--brand-trust);
+  --color-brand-blue-hover: var(--brand-trust-hover);
+  --color-brand-green: var(--status-positive);
+  --color-brand-green-hover: #0d9488;
+  --color-brand-orange: var(--cta-bg);
+  --color-brand-orange-hover: var(--cta-bg-hover);
+  --color-brand-light: var(--surface-subtle);
+  --color-brand-dark: var(--text-primary);
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* 3. Default 80% Light Mode Semantic Tokens (also resets polarity inside .surface-dark) */
+:root,
+.surface-light {
+  color-scheme: light;
+  --surface-canvas: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-subtle: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #475569;
+  --border-decorative: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --border-interactive: #64748b;
+  --brand-trust: #1d4ed8;
+  --brand-trust-hover: #1e40af;
+  --brand-trust-tint: #eff6ff;
+  --cta-bg: #ba3a09;
+  --cta-bg-hover: #9a3412;
+  --cta-bg-active: #7c2d12;
+  --cta-text: #ffffff;
+  --cta-tint: #fff7ed;
+  --focus-ring: #1d4ed8;
+  --status-positive: #0f766e;
+  --status-positive-bg: #f0fdfa;
+  --status-negative: #b91c1c;
+  --status-negative-bg: #fef2f2;
+  --status-warning: #b45309;
+  --status-warning-bg: #fffbeb;
+  --status-info: #1d4ed8;
+}
+
+/* 4. 20% Dark Technical Proof Bands (sGTM / GA4 / Closing CTA) & Optional Dark Theme */
+.surface-dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-canvas: #0b1120;
+  --surface-card: #111c33;
+  --surface-subtle: #1a2744;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-decorative: #263554;
+  --border-strong: #334155;
+  --border-interactive: #64748b;
+  --brand-trust: #60a5fa;
+  --brand-trust-hover: #93c5fd;
+  --brand-trust-tint: rgba(96, 165, 250, 0.14);
+  --cta-bg: #f97316;
+  --cta-bg-hover: #fb923c;
+  --cta-bg-active: #ea580c;
+  --cta-text: #0b1120;
+  --focus-ring: #60a5fa;
+  --status-positive: #2dd4bf;
+  --status-positive-bg: rgba(45, 212, 191, 0.12);
+  --status-negative: #f87171;
+  --status-negative-bg: rgba(248, 113, 113, 0.12);
+  --status-warning: #fbbf24;
+  --status-warning-bg: rgba(251, 191, 36, 0.12);
+  --status-info: #38bdf8;
+  background-color: var(--surface-canvas);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Base Ergonomic, Accessibility & Typography Rules */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px; /* WCAG 2.2 SC 2.4.11: prevents sticky header obscuring focused elements */
+    scroll-padding-bottom: calc(88px + env(safe-area-inset-bottom)); /* Clears mobile sticky CTA bar + OS gesture bar */
+    font-synthesis: none;
+  }
+
+  body {
+    background-color: var(--surface-canvas);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    font-size: 1rem;
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Static two-color :focus-visible outline (WCAG C40 + SC 1.4.11 + SC 2.4.13; Windows Forced Colors safe) */
+  :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--surface-canvas);
+  }
+}
+
+/* 6. Domain Typography & Utility Primitives (KPI Numerals & Concentric Bento Frames) */
+.type-hero {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
   font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 
-.text-gradient {
-  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.type-h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.type-h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.type-h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.type-lead {
+  font-family: var(--font-sans);
+  font-size: var(--text-lead);
+  font-weight: 400;
+  line-height: 1.55;
+  max-width: 60ch;
+  text-wrap: pretty;
+}
+
+.prose-measure {
+  max-width: 65ch;
+}
+
+.type-kpi-hero {
+  font-family: var(--font-display);
+  font-size: var(--text-kpi-hero);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.type-kpi-card {
+  font-family: var(--font-mono);
+  font-size: var(--text-kpi-card);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums slashed-zero;
+  font-feature-settings: "tnum" 1, "zero" 1;
+}
+
+.type-code {
+  font-family: var(--font-mono);
+  font-size: var(--text-code);
+  font-weight: 400;
+  line-height: 1.6;
+  font-variant-ligatures: none;
+  font-variant-numeric: tabular-nums slashed-zero;
+  font-feature-settings: "tnum" 1, "zero" 1;
+}
+
+.metric-tabular {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.tracking-id {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums slashed-zero;
+  font-feature-settings: "tnum" 1, "zero" 1;
+  font-variant-ligatures: none;
+}
+
+.eyebrow-mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.33;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.caption-meta {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+}
+
+/* Concentric Nested Bento Architecture (r_inner = max(0px, r_outer - bezel)) */
+.bento-card {
+  --card-radius: var(--radius-bento);
+  --frame-bezel: 8px;
+  border-radius: var(--card-radius);
+  border: 1px solid var(--border-decorative);
+  background-color: var(--surface-card);
+}
+
+.bento-card--interactive {
+  box-shadow: var(--shadow-whisper);
+  transition: border-color 150ms ease-out;
+}
+
+.bento-card--interactive:hover {
+  border-color: var(--border-strong);
+}
+
+.bento-card__visual-well {
+  border-radius: max(0px, calc(var(--card-radius) - var(--frame-bezel)));
+  border: 1px solid var(--border-decorative);
+  background-color: var(--surface-subtle);
+}
+
+/* Dark Technical Proof Band Surface Ladder (#0B1120 -> #111C33 -> #1A2744 -> #263554) */
+.dark-panel {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-decorative);
+  box-shadow: var(--shadow-dark-edge);
+}
+
+.dark-panel-elevated {
+  background-color: var(--surface-subtle);
+  border: 1px solid var(--border-decorative);
+  box-shadow: var(--shadow-dark-edge);
+}
+
+.shadow-floating {
+  box-shadow: var(--shadow-floating);
+}
+
+/* Off-screen CSS containment for long marketing & FAQ bands (INP presentation delay protection) */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 640px;
+}
+
+/* Prevent ViewTransition overlay from capturing clicks during route changes */
+::view-transition {
+  pointer-events: none;
+}
+
+/* Disable sticky header on short viewports / 200%-400% zoom (WCAG 2.2 SC 2.4.11 & 1.4.10) */
+@media (max-height: 500px) {
+  .sticky-header-guard {
+    position: static !important;
+    transform: none !important;
+  }
+}
+
+/* Reduced Motion Compliance (WCAG 2.2 + ViewTransition zero-duration reset) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    animation: none !important;
+  }
 }

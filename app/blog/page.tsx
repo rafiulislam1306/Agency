@@ -13,17 +13,17 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <div className="bg-white min-h-screen py-16 md:py-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+    <div className="bg-canvas min-h-screen py-16 md:py-24">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 space-y-14">
         {/* Header */}
-        <div className="max-w-3xl space-y-4">
-          <p className="text-xs font-semibold text-brand-blue">
+        <div data-cta-sentinel="hero" className="max-w-3xl space-y-4">
+          <p className="eyebrow-mono text-trust">
             SMB Field Playbooks · Actionable Checklists
           </p>
-          <h1 className="text-4xl sm:text-5xl font-serif font-extrabold text-slate-900 tracking-tight leading-tight text-balance">
+          <h1 className="type-hero font-display font-bold text-ink">
             Practical Guides to Stop Wasting Search Budget
           </h1>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="type-lead text-ink-secondary">
             No fluff or theory. Read the exact leak-sealing, Google Business Profile, attribution, and asset-ownership checklists we run for every client.
           </p>
         </div>
@@ -33,11 +33,11 @@ export default function BlogPage() {
           {blogPlaybooks.map((post) => (
             <article
               key={post.slug}
-              className="flex flex-col justify-between p-7 rounded-2xl border border-slate-200 bg-white hover:border-brand-blue/40 transition-colors"
+              className="bento-card bento-card--interactive flex flex-col justify-between p-7"
             >
               <div className="space-y-3">
-                <div className="text-xs font-medium text-slate-500">
-                  <span className="text-brand-green-hover font-semibold">
+                <div className="eyebrow-mono text-ink-muted">
+                  <span className="text-kpi-positive font-semibold">
                     {post.category}
                   </span>
                   <span aria-hidden="true"> · </span>
@@ -46,24 +46,24 @@ export default function BlogPage() {
                   <span>{post.updatedAt}</span>
                 </div>
 
-                <h2 className="text-xl font-display font-bold text-slate-900 leading-snug">
+                <h2 className="text-xl font-display font-bold text-ink leading-snug">
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="hover:text-brand-blue transition-colors"
+                    className="hover:text-trust transition-colors"
                   >
                     {post.title}
                   </Link>
                 </h2>
 
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm text-ink-secondary leading-relaxed">
                   {post.summary}
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-slate-100">
+              <div className="mt-6 pt-4 border-t border-border-hairline">
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="inline-flex items-center text-sm font-semibold text-brand-blue hover:text-brand-orange transition-colors group"
+                  className="min-h-11 inline-flex items-center text-sm font-semibold text-trust hover:text-cta transition-colors group"
                 >
                   Read full checklist
                   <ArrowRight
@@ -77,11 +77,14 @@ export default function BlogPage() {
         </div>
 
         {/* CTA Block */}
-        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 sm:p-10 text-center space-y-4">
-          <h3 className="text-2xl font-display font-bold text-slate-900">
+        <div
+          data-cta-sentinel="footer-cta"
+          className="bento-card p-8 sm:p-10 text-center space-y-4"
+        >
+          <h3 className="text-2xl font-display font-bold text-ink">
             Want Us to Run These Checklists on Your Live Account?
           </h3>
-          <p className="text-sm sm:text-base text-slate-600 max-w-lg mx-auto">
+          <p className="text-sm sm:text-base text-ink-secondary max-w-lg mx-auto">
             Book a 30-minute diagnostic call and we will audit your Google Ads settings and Google Business Profile with you live.
           </p>
           <div className="pt-2">

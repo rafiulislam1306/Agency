@@ -55,17 +55,20 @@ const LEADERSHIP_TEAM = [
 
 export default function AboutPage() {
   return (
-    <div className="bg-white min-h-screen py-16 md:py-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <div className="bg-canvas min-h-screen py-16 md:py-24">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 space-y-16">
         {/* 1. Point-of-View Header & Customer-Outcome Mission */}
-        <div className="space-y-5 border-b border-slate-200 pb-12">
-          <p className="text-xs font-semibold text-brand-blue">
+        <div
+          data-cta-sentinel="hero"
+          className="space-y-5 border-b border-border-hairline pb-12"
+        >
+          <p className="eyebrow-mono text-trust">
             Our Fiduciary Thesis · Senior-Only Delivery
           </p>
-          <h1 className="text-4xl sm:text-5xl font-serif font-extrabold text-slate-900 tracking-tight leading-tight text-balance">
+          <h1 className="type-hero font-display font-bold text-ink">
             Built for Operators Tired of Paying Percentage Markups for Unaccountable Agencies
           </h1>
-          <p className="text-lg text-slate-600 leading-relaxed max-w-3xl">
+          <p className="type-lead text-ink-secondary">
             Buying committees don&apos;t need another polished sales deck followed by a junior account handoff. The senior specialists who audit your conversion tracking, Google Ads, and Map Pack on day one are the exact engineers executing inside your accounts every Monday.
           </p>
 
@@ -74,15 +77,15 @@ export default function AboutPage() {
             {OPERATIONAL_TRACTION.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-xl bg-slate-50 border border-slate-200 p-4 space-y-1"
+                className="rounded-[var(--radius-tile)] bg-card border border-border-hairline p-4 space-y-1"
               >
-                <span className="text-2xl sm:text-3xl font-display font-extrabold text-brand-blue tabular-nums block">
+                <span className="type-kpi-card text-trust block">
                   {stat.value}
                 </span>
-                <span className="text-xs font-bold text-slate-900 block leading-snug">
+                <span className="text-xs font-bold text-ink block leading-snug">
                   {stat.label}
                 </span>
-                <span className="text-[11px] text-slate-500 block leading-snug">
+                <span className="text-[11px] text-ink-muted block leading-snug">
                   {stat.detail}
                 </span>
               </div>
@@ -93,13 +96,13 @@ export default function AboutPage() {
         {/* 2. Senior Leadership & Delivery Specialists (Named Humans Behind the Work) */}
         <section className="space-y-8">
           <div className="max-w-2xl space-y-2">
-            <p className="text-xs font-semibold text-brand-green-hover">
+            <p className="eyebrow-mono text-kpi-positive">
               Who Actually Touches Your Accounts
             </p>
-            <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-slate-900 tracking-tight">
+            <h2 className="type-h2 font-display font-bold text-ink">
               Senior Strategists — Zero Post-Sale Bait-and-Switch
             </h2>
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            <p className="text-sm sm:text-base text-ink-secondary leading-relaxed">
               We cap active client load per strategist so every search term report, sGTM container, and GBP ranking grid is reviewed manually each week.
             </p>
           </div>
@@ -108,9 +111,9 @@ export default function AboutPage() {
             {LEADERSHIP_TEAM.map((member) => (
               <div
                 key={member.name}
-                className="rounded-2xl border border-slate-200 bg-white p-6 flex flex-col sm:flex-row items-start gap-5"
+                className="bento-card p-6 flex flex-col sm:flex-row items-start gap-5"
               >
-                <div className="relative w-24 h-24 rounded-xl overflow-hidden border border-slate-200 shrink-0">
+                <div className="relative w-24 h-24 rounded-[var(--radius-tile)] overflow-hidden border border-border-hairline shrink-0">
                   <Image
                     src={member.image}
                     alt={member.alt}
@@ -122,17 +125,17 @@ export default function AboutPage() {
                 </div>
                 <div className="space-y-2">
                   <div>
-                    <h3 className="text-lg font-display font-bold text-slate-900">
+                    <h3 className="text-lg font-display font-bold text-ink">
                       {member.name}
                     </h3>
-                    <p className="text-xs font-semibold text-brand-blue">
+                    <p className="text-xs font-semibold text-trust">
                       {member.role}
                     </p>
-                    <p className="text-[11px] font-medium text-emerald-700 mt-0.5">
+                    <p className="text-[11px] font-medium text-kpi-positive mt-0.5">
                       {member.credentials}
                     </p>
                   </div>
-                  <p className="text-sm text-slate-600 leading-relaxed">
+                  <p className="text-sm text-ink-secondary leading-relaxed">
                     {member.bio}
                   </p>
                 </div>
@@ -141,36 +144,36 @@ export default function AboutPage() {
           </div>
 
           {/* Delivery Pod Governance Note */}
-          <div className="rounded-xl bg-slate-50 border border-slate-200 p-5 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+          <div className="rounded-[var(--radius-tile)] bg-card border border-border-hairline p-5 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <div className="flex items-start gap-2.5">
-              <Users className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" aria-hidden="true" />
+              <Users className="w-4 h-4 text-trust shrink-0 mt-0.5" aria-hidden="true" />
               <div>
-                <span className="font-bold text-slate-900 block">
+                <span className="font-bold text-ink block">
                   Dedicated Delivery Pod
                 </span>
-                <span className="text-slate-600">
+                <span className="text-ink-secondary">
                   Max 6 accounts per lead strategist for deep weekly execution.
                 </span>
               </div>
             </div>
             <div className="flex items-start gap-2.5">
-              <Clock className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" aria-hidden="true" />
+              <Clock className="w-4 h-4 text-trust shrink-0 mt-0.5" aria-hidden="true" />
               <div>
-                <span className="font-bold text-slate-900 block">
+                <span className="font-bold text-ink block">
                   Published Weekly Change Logs
                 </span>
-                <span className="text-slate-600">
+                <span className="text-ink-secondary">
                   Every negative keyword, bid change &amp; GBP update documented.
                 </span>
               </div>
             </div>
             <div className="flex items-start gap-2.5">
-              <Award className="w-4 h-4 text-brand-blue shrink-0 mt-0.5" aria-hidden="true" />
+              <Award className="w-4 h-4 text-trust shrink-0 mt-0.5" aria-hidden="true" />
               <div>
-                <span className="font-bold text-slate-900 block">
+                <span className="font-bold text-ink block">
                   Certified Measurement Stack
                 </span>
-                <span className="text-slate-600">
+                <span className="text-ink-secondary">
                   Google Partner · GA4 · Stape sGTM · HubSpot RevOps.
                 </span>
               </div>
@@ -179,13 +182,13 @@ export default function AboutPage() {
         </section>
 
         {/* 3. Why We Built This Differently */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-t border-slate-200 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-t border-border-hairline pt-12">
           <div className="md:col-span-4">
-            <h2 className="text-xl font-display font-bold text-slate-900">
+            <h2 className="text-xl font-display font-bold text-ink">
               Why the Industry Needed an Antidote
             </h2>
           </div>
-          <div className="md:col-span-8 space-y-4 text-base text-slate-600 leading-relaxed">
+          <div className="md:col-span-8 space-y-4 text-base text-ink-secondary leading-relaxed">
             <p>
               Too many B2B and local service leaders spend thousands on retainers only to get automated PDF decks praising &ldquo;impressions&rdquo; while qualified pipeline stalls—or discover when trying to switch vendors that the agency registered their ad history or Google Business Profile under agency emails.
             </p>
@@ -196,9 +199,9 @@ export default function AboutPage() {
         </div>
 
         {/* 4. How We Operate */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-t border-slate-200 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start border-t border-border-hairline pt-12">
           <div className="md:col-span-4">
-            <h2 className="text-xl font-display font-bold text-slate-900">
+            <h2 className="text-xl font-display font-bold text-ink">
               Our Four-Step Operating Standard
             </h2>
           </div>
@@ -223,14 +226,14 @@ export default function AboutPage() {
             ].map((step) => (
               <div key={step.title} className="flex items-start gap-3.5">
                 <CheckCircle2
-                  className="w-5 h-5 text-brand-green shrink-0 mt-0.5"
+                  className="w-5 h-5 text-kpi-positive shrink-0 mt-0.5"
                   aria-hidden="true"
                 />
                 <div>
-                  <h3 className="font-display font-bold text-slate-900 text-base">
+                  <h3 className="font-display font-bold text-ink text-base">
                     {step.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-slate-600 mt-1 leading-relaxed">
+                  <p className="text-sm sm:text-base text-ink-secondary mt-1 leading-relaxed">
                     {step.text}
                   </p>
                 </div>
@@ -240,43 +243,43 @@ export default function AboutPage() {
         </div>
 
         {/* 5. Digital Bill of Rights Table */}
-        <div className="border-t border-slate-200 pt-12 space-y-6">
+        <div className="border-t border-border-hairline pt-12 space-y-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-blue">
-              <ShieldCheck className="w-4 h-4 text-brand-green" aria-hidden="true" />
+            <div className="inline-flex items-center gap-1.5 eyebrow-mono text-trust">
+              <ShieldCheck className="w-4 h-4 text-kpi-positive" aria-hidden="true" />
               Contractual Protection
             </div>
-            <h2 className="text-2xl font-display font-bold text-slate-900">
+            <h2 className="type-h2 font-display font-bold text-ink">
               The Digital Bill of Rights
             </h2>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-ink-secondary">
               Enshrined in every client agreement so you never lose control of your digital footprint.
             </p>
           </div>
 
-          <div className="overflow-x-auto rounded-xl border border-slate-200">
-            <table className="min-w-full divide-y divide-slate-200 text-sm">
-              <thead className="bg-slate-50 text-slate-900">
+          <div className="overflow-x-auto bento-card">
+            <table className="min-w-full divide-y divide-border-hairline text-sm">
+              <thead className="bg-subtle text-ink">
                 <tr>
-                  <th className="px-4 py-3 text-left font-semibold">Asset</th>
-                  <th className="px-4 py-3 text-left font-semibold">Legal Owner</th>
-                  <th className="px-4 py-3 text-left font-semibold">Our Role</th>
-                  <th className="px-4 py-3 text-left font-semibold">Guarantee</th>
+                  <th scope="col" className="px-4 py-3 text-left font-semibold">Asset</th>
+                  <th scope="col" className="px-4 py-3 text-left font-semibold">Legal Owner</th>
+                  <th scope="col" className="px-4 py-3 text-left font-semibold">Our Role</th>
+                  <th scope="col" className="px-4 py-3 text-left font-semibold">Guarantee</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 bg-white">
+              <tbody className="divide-y divide-border-hairline bg-card">
                 {digitalBillOfRights.map((row) => (
                   <tr key={row.asset}>
-                    <td className="px-4 py-3 font-semibold text-slate-900">
+                    <td className="px-4 py-3 font-semibold text-ink">
                       {row.asset}
                     </td>
-                    <td className="px-4 py-3 text-emerald-700 font-medium">
+                    <td className="px-4 py-3 text-kpi-positive font-semibold">
                       {row.owner}
                     </td>
-                    <td className="px-4 py-3 text-slate-600">
+                    <td className="px-4 py-3 text-ink-secondary">
                       {row.agencyAccess}
                     </td>
-                    <td className="px-4 py-3 text-slate-600">{row.guarantee}</td>
+                    <td className="px-4 py-3 text-ink-secondary">{row.guarantee}</td>
                   </tr>
                 ))}
               </tbody>
@@ -285,11 +288,14 @@ export default function AboutPage() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 text-center space-y-4">
-          <h3 className="text-2xl font-display font-bold text-slate-900">
+        <div
+          data-cta-sentinel="footer-cta"
+          className="bento-card p-8 text-center space-y-4"
+        >
+          <h3 className="text-2xl font-display font-bold text-ink">
             Want an Honest Look at Your Current Search Setup?
           </h3>
-          <p className="text-sm sm:text-base text-slate-600 max-w-lg mx-auto">
+          <p className="text-sm sm:text-base text-ink-secondary max-w-lg mx-auto">
             Start with our 45-second free website audit or reserve a live 30-minute diagnostic call with Rafiul &amp; Lin. We will tell you straight whether Google Ads or Local SEO makes financial sense for your margins.
           </p>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">

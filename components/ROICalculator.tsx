@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import CTAButton from "./CTAButton";
+import RangeStepper from "./RangeStepper";
 import {
   calculatePipelineEconomics,
   industryBenchmarkPresets,
@@ -54,14 +55,14 @@ export default function ROICalculator() {
   return (
     <div
       id="roi-calculator"
-      className="bg-white rounded-2xl border border-slate-200 overflow-hidden scroll-mt-24"
+      className="bento-card overflow-hidden scroll-mt-24"
     >
-      <div className="px-6 py-5 bg-slate-50 border-b border-slate-200 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      <div className="px-6 py-5 bg-canvas border-b border-border-hairline flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div>
-          <p className="text-xs font-medium text-slate-500">
+          <p className="eyebrow-mono text-ink-muted">
             Interactive Pipeline &amp; CRO Unit-Economics Model
           </p>
-          <h3 className="text-xl font-display font-bold text-slate-900 mt-0.5">
+          <h3 className="type-h4 text-ink mt-0.5">
             Model Your CPQL, Landing Page CRO Lift &amp; Flat-Fee ROI
           </h3>
         </div>
@@ -70,17 +71,17 @@ export default function ROICalculator() {
         <div
           role="group"
           aria-label="Industry benchmark presets"
-          className="flex flex-wrap items-center gap-1 p-1 bg-slate-200/70 rounded-lg self-start lg:self-auto"
+          className="flex flex-wrap items-center gap-1 p-1 bg-subtle border border-border-hairline rounded-[var(--radius-btn)] self-start lg:self-auto"
         >
           {industryBenchmarkPresets.map((preset) => (
             <button
               key={preset.id}
               type="button"
               onClick={() => applyPreset(preset)}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
+              className={`min-h-11 px-3 py-2 text-xs font-semibold rounded-[var(--radius-input)] transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 selectedPresetId === preset.id
-                  ? "bg-white text-slate-900 shadow-xs"
-                  : "text-slate-600 hover:text-slate-900"
+                  ? "bg-card text-ink shadow-[var(--shadow-whisper)] border border-border-hairline"
+                  : "text-ink-muted hover:text-ink"
               }`}
             >
               {preset.label}
@@ -92,84 +93,64 @@ export default function ROICalculator() {
       <div className="p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Controls */}
         <div className="lg:col-span-6 space-y-5">
-          <p className="text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-3.5 py-2.5 leading-relaxed">
-            <strong className="font-semibold text-slate-800">
+          <p className="caption-meta text-ink-secondary bg-subtle border border-border-hairline rounded-[var(--radius-btn)] px-3.5 py-2.5 leading-relaxed">
+            <strong className="font-semibold text-ink">
               {activePreset.label} Benchmark:
             </strong>{" "}
             {activePreset.benchmarkNote}
           </p>
 
           <div>
-            <div className="flex justify-between text-sm font-semibold text-slate-800 mb-2">
-              <label htmlFor="calc-budget">Monthly Google Ad Spend</label>
-              <span className="tabular-nums text-brand-blue">
-                ${monthlyBudget.toLocaleString()}/mo
-              </span>
-            </div>
-            <input
+            <RangeStepper
               id="calc-budget"
-              type="range"
+              label="Monthly Google Ad Spend"
+              value={monthlyBudget}
+              displayValue={`$${monthlyBudget.toLocaleString()}/mo`}
               min={1000}
               max={15000}
               step={500}
-              value={monthlyBudget}
-              onChange={(e) => setMonthlyBudget(Number(e.target.value))}
-              className="w-full accent-brand-blue cursor-pointer"
+              onChange={setMonthlyBudget}
             />
-            <p className="text-xs text-slate-500 mt-1 tabular-nums">
+            <p className="caption-meta text-ink-muted mt-1.5 metric-tabular">
               LeadGrow flat fee: ${currentProjection.flatManagementFee.toLocaleString()}/mo (0% of spend) vs. ~$
               {currentProjection.percentSpendAgencyFee.toLocaleString()}/mo at a 15% agency
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <div className="flex justify-between text-sm font-semibold text-slate-800 mb-2">
-                <label htmlFor="calc-cpc">Average CPC</label>
-                <span className="tabular-nums text-brand-blue">
-                  ${avgCpc.toFixed(2)}
-                </span>
-              </div>
-              <input
-                id="calc-cpc"
-                type="range"
-                min={1.5}
-                max={18}
-                step={0.5}
-                value={avgCpc}
-                onChange={(e) => setAvgCpc(Number(e.target.value))}
-                className="w-full accent-brand-blue cursor-pointer"
-              />
-            </div>
+            <RangeStepper
+              id="calc-cpc"
+              label="Average CPC"
+              value={avgCpc}
+              displayValue={`$${avgCpc.toFixed(2)}`}
+              min={1.5}
+              max={18}
+              step={0.5}
+              decimals={2}
+              onChange={setAvgCpc}
+            />
 
-            <div>
-              <div className="flex justify-between text-sm font-semibold text-slate-800 mb-2">
-                <label htmlFor="calc-cvr">Landing Page CVR</label>
-                <span className="tabular-nums text-brand-blue">
-                  {landingPageCvr.toFixed(1)}%
-                </span>
-              </div>
-              <input
-                id="calc-cvr"
-                type="range"
-                min={1.5}
-                max={14}
-                step={0.1}
-                value={landingPageCvr}
-                onChange={(e) => setLandingPageCvr(Number(e.target.value))}
-                className="w-full accent-brand-blue cursor-pointer"
-              />
-            </div>
+            <RangeStepper
+              id="calc-cvr"
+              label="Landing Page CVR"
+              value={landingPageCvr}
+              displayValue={`${landingPageCvr.toFixed(1)}%`}
+              min={1.5}
+              max={14}
+              step={0.1}
+              decimals={1}
+              onChange={setLandingPageCvr}
+            />
           </div>
 
           <div className="flex flex-wrap items-center gap-2 pt-0.5">
             <button
               type="button"
               onClick={() => setLandingPageCvr(activePreset.baselineCvr)}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-md border transition-colors whitespace-nowrap shrink-0 cursor-pointer tabular-nums ${
+              className={`min-h-11 px-3.5 py-2 text-xs font-semibold rounded-[var(--radius-input)] border transition-colors whitespace-nowrap shrink-0 cursor-pointer metric-tabular ${
                 Math.abs(landingPageCvr - activePreset.baselineCvr) < 0.05
-                  ? "border-slate-900 bg-slate-900 text-white"
-                  : "border-slate-200 text-slate-600 hover:border-slate-300"
+                  ? "border-ink bg-ink text-card"
+                  : "border-border-control bg-card text-ink-secondary hover:border-trust hover:text-trust"
               }`}
             >
               Generic Homepage ({activePreset.baselineCvr}% CVR)
@@ -177,10 +158,10 @@ export default function ROICalculator() {
             <button
               type="button"
               onClick={() => setLandingPageCvr(activePreset.optimizedCvr)}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-md border transition-colors whitespace-nowrap shrink-0 cursor-pointer tabular-nums ${
+              className={`min-h-11 px-3.5 py-2 text-xs font-semibold rounded-[var(--radius-input)] border transition-colors whitespace-nowrap shrink-0 cursor-pointer metric-tabular ${
                 Math.abs(landingPageCvr - activePreset.optimizedCvr) < 0.05
-                  ? "border-brand-blue bg-brand-blue text-white"
-                  : "border-slate-200 text-slate-600 hover:border-slate-300"
+                  ? "border-trust bg-trust text-white"
+                  : "border-border-control bg-card text-ink-secondary hover:border-trust hover:text-trust"
               }`}
             >
               1:1 Message-Matched CRO ({activePreset.optimizedCvr}% CVR)
@@ -188,98 +169,82 @@ export default function ROICalculator() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <div className="flex justify-between text-sm font-semibold text-slate-800 mb-2">
-                <label htmlFor="calc-job">Avg. Customer Value</label>
-                <span className="tabular-nums text-brand-blue">
-                  ${avgDealValue.toLocaleString()}
-                </span>
-              </div>
-              <input
-                id="calc-job"
-                type="range"
-                min={150}
-                max={12000}
-                step={100}
-                value={avgDealValue}
-                onChange={(e) => setAvgDealValue(Number(e.target.value))}
-                className="w-full accent-brand-blue cursor-pointer"
-              />
-            </div>
+            <RangeStepper
+              id="calc-job"
+              label="Avg. Customer Value"
+              value={avgDealValue}
+              displayValue={`$${avgDealValue.toLocaleString()}`}
+              min={150}
+              max={12000}
+              step={100}
+              onChange={setAvgDealValue}
+            />
 
-            <div>
-              <div className="flex justify-between text-sm font-semibold text-slate-800 mb-2">
-                <label htmlFor="calc-close">Lead-to-Close Rate</label>
-                <span className="tabular-nums text-brand-blue">
-                  {closeRate}%
-                </span>
-              </div>
-              <input
-                id="calc-close"
-                type="range"
-                min={10}
-                max={100}
-                step={5}
-                value={closeRate}
-                onChange={(e) => setCloseRate(Number(e.target.value))}
-                className="w-full accent-brand-blue cursor-pointer"
-              />
-            </div>
+            <RangeStepper
+              id="calc-close"
+              label="Lead-to-Close Rate"
+              value={closeRate}
+              displayValue={`${closeRate}%`}
+              min={10}
+              max={100}
+              step={5}
+              onChange={setCloseRate}
+            />
           </div>
         </div>
 
         {/* Outputs */}
-        <div className="lg:col-span-6 bg-slate-50 rounded-xl border border-slate-200 p-6 space-y-5">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white p-4 rounded-lg border border-slate-200">
-              <span className="text-xs text-slate-500 block">
+        <div className="lg:col-span-6 bento-card__visual-well p-6 space-y-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="bg-card p-4 rounded-[var(--radius-btn)] border border-border-hairline">
+              <span className="text-xs text-ink-muted block">
                 Cost Per Qualified Lead
               </span>
-              <span className="text-xl font-display font-bold text-brand-blue tabular-nums mt-1 block">
-                ${currentProjection.costPerQualifiedLead.toLocaleString()} CPQL
+              <span className="type-kpi-card text-trust mt-1 block">
+                ${currentProjection.costPerQualifiedLead.toLocaleString()}
               </span>
-              <span className="text-xs text-slate-500 tabular-nums">
+              <span className="text-xs text-ink-muted metric-tabular">
                 ~{currentProjection.qualifiedLeads} qualified leads / ~
                 {currentProjection.estimatedClicks} clicks
               </span>
             </div>
 
-            <div className="bg-white p-4 rounded-lg border border-slate-200">
-              <span className="text-xs text-slate-500 block">
+            <div className="bg-card p-4 rounded-[var(--radius-btn)] border border-border-hairline">
+              <span className="text-xs text-ink-muted block">
                 Total Monthly Cost
               </span>
-              <span className="text-xl font-display font-bold text-slate-900 tabular-nums mt-1 block">
+              <span className="type-kpi-card text-ink mt-1 block">
                 ${currentProjection.totalInvestment.toLocaleString()}
               </span>
-              <span className="text-xs text-slate-500 tabular-nums">
+              <span className="text-xs text-ink-muted metric-tabular">
                 ${monthlyBudget.toLocaleString()} spend + $
                 {currentProjection.flatManagementFee.toLocaleString()} flat fee
               </span>
             </div>
 
-            <div className="bg-white p-4 rounded-lg border border-emerald-200">
-              <span className="text-xs text-emerald-800 block">
+            <div className="bg-kpi-positive-bg p-4 rounded-[var(--radius-btn)] border border-kpi-positive/25">
+              <span className="text-xs font-semibold text-kpi-positive block">
                 Projected Closed Revenue
               </span>
-              <span className="text-xl font-display font-bold text-emerald-700 tabular-nums mt-1 block">
+              <span className="type-kpi-card text-kpi-positive mt-1 block">
                 ${currentProjection.projectedRevenue.toLocaleString()}
               </span>
-              <span className="text-xs text-emerald-700 font-medium tabular-nums">
-                {currentProjection.pipelineToSpendRatio}x ad-spend ·{" "}
+              <span className="text-xs text-kpi-positive font-semibold metric-tabular">
+                ▲ {currentProjection.pipelineToSpendRatio}x ad-spend ·{" "}
                 {currentProjection.roasMultiple}x all-in ROAS
               </span>
             </div>
 
-            <div className="bg-white p-4 rounded-lg border border-slate-200">
-              <span className="text-xs text-slate-500 block">
+            <div className="bg-card p-4 rounded-[var(--radius-btn)] border border-border-hairline">
+              <span className="text-xs text-ink-muted block">
                 Break-Even &amp; Customers
               </span>
-              <span className="text-xl font-display font-bold text-slate-900 tabular-nums mt-1 block">
+              <span className="type-kpi-card text-ink mt-1 block">
                 {currentProjection.breakEvenCustomers} to break even
               </span>
-              <span className="text-xs text-slate-500 tabular-nums">
+              <span className="text-xs text-ink-muted metric-tabular">
                 Projected: {currentProjection.closedCustomers} won · Net{" "}
-                {currentProjection.netProfitAfterMarketing >= 0 ? "+" : "-"}$
+                {currentProjection.netProfitAfterMarketing >= 0 ? "▲ +" : "▼ -"}$
                 {Math.abs(
                   currentProjection.netProfitAfterMarketing
                 ).toLocaleString()}
@@ -287,19 +252,19 @@ export default function ROICalculator() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg border border-slate-200 p-4 text-xs text-slate-600 space-y-1.5 leading-relaxed tabular-nums">
+          <div className="bg-card rounded-[var(--radius-btn)] border border-border-hairline p-4 caption-meta text-ink-secondary space-y-1.5 leading-relaxed metric-tabular">
             <p>
-              <strong className="font-semibold text-slate-800">
+              <strong className="font-semibold text-ink">
                 Why CRO &amp; VBB Beat Adding Budget:
               </strong>{" "}
               At your {activePreset.baselineCvr}% baseline homepage rate, CPQL is{" "}
-              <strong>${baselineProjection.costPerQualifiedLead}</strong>. At{" "}
-              <strong>{landingPageCvr.toFixed(1)}%</strong> landing page conversion, CPQL sits at{" "}
-              <strong>${currentProjection.costPerQualifiedLead}</strong> on the exact same media spend.
+              <strong className="font-semibold text-ink">${baselineProjection.costPerQualifiedLead}</strong>. At{" "}
+              <strong className="font-semibold text-ink">{landingPageCvr.toFixed(1)}%</strong> landing page conversion, CPQL sits at{" "}
+              <strong className="font-semibold text-ink">${currentProjection.costPerQualifiedLead}</strong> on the exact same media spend.
             </p>
             {currentProjection.annualFeeSavingsVsPercentModel > 0 ? (
-              <p className="text-emerald-700 font-medium">
-                Flat-fee protection saves you $
+              <p className="text-kpi-positive font-semibold">
+                ▲ Flat-fee protection saves you +$
                 {currentProjection.annualFeeSavingsVsPercentModel.toLocaleString()}
                 /year compared to a traditional 15%-of-ad-spend retainer.
               </p>
